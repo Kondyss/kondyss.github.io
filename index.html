@@ -35,7 +35,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -45,7 +45,7 @@
       justify-content: space-between;
       padding: 0 3rem;
       height: 58px;
-      background: rgba(8, 8, 16, 0.85);
+      background: rgba(9,8,8,0.88);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
@@ -58,11 +58,7 @@
       text-decoration: none;
     }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 2.5rem;
-    }
+    .nav-links { list-style: none; display: flex; gap: 2.5rem; }
 
     .nav-links a {
       color: var(--muted);
@@ -76,7 +72,7 @@
 
     .nav-links a:hover { color: var(--text); }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -95,8 +91,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
     }
@@ -117,19 +113,9 @@
       color: var(--text);
     }
 
-    .hero-sub {
-      margin-top: 1.2rem;
-      font-size: 1rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
+    .hero-sub { margin-top: 1.2rem; font-size: 1rem; color: var(--muted); letter-spacing: 0.06em; }
 
-    .hero-cta {
-      margin-top: 2.5rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-    }
+    .hero-cta { margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; }
 
     .btn {
       display: inline-block;
@@ -144,26 +130,10 @@
       transition: all 0.2s;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      border: 1px solid var(--accent);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-dim);
-      border-color: var(--accent-dim);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border-hover);
-    }
-
-    .btn-outline:hover {
-      background: var(--accent-glow);
-    }
+    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+    .btn-primary:hover { background: var(--accent-dim); border-color: var(--accent-dim); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border-hover); }
+    .btn-outline:hover { background: var(--accent-glow); }
 
     .scroll-hint {
       position: absolute;
@@ -177,20 +147,13 @@
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(6px); }
+      50% { transform: translateY(6px); }
     }
 
-    /* ── SECTIONS ── */
-    .section-wrap {
-      border-top: 1px solid var(--border);
-      width: 100%;
-    }
+    /* SECTIONS */
+    .section-wrap { border-top: 1px solid var(--border); width: 100%; }
 
-    section {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 5.5rem 2rem;
-    }
+    section { max-width: 1160px; margin: 0 auto; padding: 5.5rem 2rem; }
 
     .s-label {
       font-size: 0.68rem;
@@ -209,19 +172,69 @@
       line-height: 1;
     }
 
-    /* ── MOJE TREŚCI ── */
-    .media-grid {
+    /* GAME CARDS */
+    .game-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
     }
 
-    .media-card {
+    .game-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
       background: var(--bg2);
       border: 1px solid var(--border);
       border-radius: 10px;
+      padding: 1.8rem 1.4rem 1.4rem;
+      text-decoration: none;
+      color: var(--text);
+      min-height: 200px;
       overflow: hidden;
+      transition: border-color 0.25s, transform 0.2s;
     }
+
+    .game-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+    .game-card:hover .game-arrow { opacity: 1; transform: translateX(4px); }
+
+    .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .bar-poe  { background: linear-gradient(90deg, #b91c1c, #450a0a); }
+    .bar-poe2 { background: linear-gradient(90deg, #1e3a8a, #0c1a4a); }
+    .bar-d4   { background: linear-gradient(90deg, #7c1d1d, #2d0808); }
+    .bar-le   { background: linear-gradient(90deg, #14532d, #052e16); }
+
+    .game-label {
+      position: relative;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .game-name {
+      position: relative;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+    }
+
+    .game-arrow {
+      position: relative;
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 1rem;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    /* MEDIA */
+    .media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+    .media-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
 
     .media-card-head {
       display: flex;
@@ -236,31 +249,61 @@
       color: var(--muted);
     }
 
-    .live-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #ef4444;
-      box-shadow: 0 0 6px #ef4444;
-      flex-shrink: 0;
-    }
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 6px #ef4444; flex-shrink: 0; }
+    .yt-dot   { width: 7px; height: 7px; border-radius: 50%; background: #ef4444; flex-shrink: 0; }
 
-    .yt-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #ef4444;
-      flex-shrink: 0;
-    }
+    .media-card iframe { display: block; width: 100%; aspect-ratio: 16/9; border: none; }
 
-    .media-card iframe {
-      display: block;
-      width: 100%;
+    /* YouTube click card */
+    .yt-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       aspect-ratio: 16/9;
-      border: none;
+      background: #0d0909;
+      text-decoration: none;
+      transition: background 0.2s;
     }
 
-    /* ── EVENTS ── */
+    .yt-link:hover { background: #160d0d; }
+    .yt-link:hover .yt-play { transform: scale(1.08); }
+
+    .yt-play {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+      transition: transform 0.2s;
+    }
+
+    .yt-play-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .yt-play-icon::after {
+      content: '';
+      display: block;
+      width: 0; height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 18px solid #fff;
+      margin-left: 4px;
+    }
+
+    .yt-play-text {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* EVENTS */
     .event-card {
       display: flex;
       align-items: center;
@@ -275,11 +318,7 @@
       gap: 2rem;
     }
 
-    .event-card:hover {
-      border-color: var(--border-hover);
-      background: var(--bg3);
-      transform: translateY(-2px);
-    }
+    .event-card:hover { border-color: var(--border-hover); background: var(--bg3); transform: translateY(-2px); }
 
     .event-badge {
       display: inline-block;
@@ -295,155 +334,43 @@
       margin-bottom: 0.75rem;
     }
 
-    .event-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.3rem;
-    }
-
-    .event-card p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      max-width: 500px;
-    }
-
-    .event-arrow {
-      font-size: 1.8rem;
-      color: var(--accent);
-      flex-shrink: 0;
-      transition: transform 0.2s;
-    }
-
+    .event-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+    .event-card p  { color: var(--muted); font-size: 0.9rem; max-width: 500px; }
+    .event-arrow   { font-size: 1.8rem; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
     .event-card:hover .event-arrow { transform: translateX(5px); }
 
-    /* ── O MNIE ── */
-    .about-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-    }
+    /* O MNIE */
+    .about-split { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .about-col { padding: 2.5rem; background: var(--bg2); }
+    .about-col + .about-col { border-left: 1px solid var(--border); }
 
-    .about-col {
-      padding: 2.5rem;
-      background: var(--bg2);
-    }
+    .about-lang { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .about-col p { color: var(--muted); font-size: 0.95rem; line-height: 1.9; margin-bottom: 2rem; }
 
-    .about-col + .about-col {
-      border-left: 1px solid var(--border);
-    }
+    .stats-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .stat-chip { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.9rem; font-size: 0.8rem; color: var(--muted); }
+    .stat-chip strong { color: var(--accent); font-weight: 500; }
 
-    .about-lang {
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
+    /* MERCH */
+    .merch-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 6rem 2rem; text-align: center; }
+    .merch-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 0.4em; color: var(--muted); }
+    .merch-box p  { color: var(--muted); margin-top: 0.75rem; font-size: 0.88rem; }
 
-    .about-col p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.9;
-      margin-bottom: 2rem;
-    }
+    /* KONTAKT */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
 
-    .stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .stat-chip {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.4rem 0.9rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .stat-chip strong {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    /* ── MERCH ── */
-    .merch-box {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 6rem 2rem;
-      text-align: center;
-    }
-
-    .merch-box h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 3rem;
-      letter-spacing: 0.4em;
-      color: var(--muted);
-    }
-
-    .merch-box p {
-      color: var(--muted);
-      margin-top: 0.75rem;
-      font-size: 0.88rem;
-      letter-spacing: 0.06em;
-    }
-
-    /* ── KONTAKT ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-
-    .contact-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem 1.6rem;
-      transition: border-color 0.2s;
-    }
-
+    .contact-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem 1.6rem; transition: border-color 0.2s; }
     .contact-card:hover { border-color: var(--border-hover); }
-
-    .contact-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-card a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 400;
-      transition: opacity 0.2s;
-    }
-
+    .contact-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    .contact-card a { color: var(--accent); text-decoration: none; font-size: 0.95rem; transition: opacity 0.2s; }
     .contact-card a:hover { opacity: 0.75; }
 
-    .contact-card span {
-      color: var(--text);
-      font-size: 0.95rem;
-    }
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.06em; }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
+    /* RESPONSIVE */
+    @media (max-width: 900px) { .game-grid { grid-template-columns: repeat(2, 1fr); } }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 0 1.2rem; }
       .nav-links { display: none; }
@@ -453,14 +380,16 @@
       .about-col + .about-col { border-left: none; border-top: 1px solid var(--border); }
       .event-card { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
     }
+
+    @media (max-width: 480px) { .game-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Kondyss</a>
   <ul class="nav-links">
+    <li><a href="#gry">Gry</a></li>
     <li><a href="#tresci">Moje treści</a></li>
     <li><a href="#events">Events</a></li>
     <li><a href="#omnie">O mnie</a></li>
@@ -469,16 +398,54 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <p class="hero-eyebrow">Twórca YouTube &amp; Streamer</p>
   <h1>KONDYSS</h1>
-  <p class="hero-sub">Tworzę treści, których warto szukać.</p>
+  <p class="hero-sub">Polska Twarz w świecie aRPG</p>
   <div class="hero-cta">
     <a href="https://twitch.tv/kondyss" target="_blank" class="btn btn-primary">Oglądaj na Twitch</a>
     <a href="https://youtube.com/@kondyss" target="_blank" class="btn btn-outline">YouTube</a>
   </div>
   <span class="scroll-hint">↓ scroll</span>
+</div>
+
+<!-- GRY -->
+<div class="section-wrap">
+  <section id="gry">
+    <p class="s-label">Poradniki i Buildy</p>
+    <h2 class="s-title">Gry</h2>
+    <div class="game-grid">
+
+      <a href="/poe.html" class="game-card">
+        <span class="top-bar bar-poe"></span>
+        <span class="game-label">aRPG</span>
+        <span class="game-name">Path of Exile</span>
+        <span class="game-arrow">→</span>
+      </a>
+
+      <a href="/poe2.html" class="game-card">
+        <span class="top-bar bar-poe2"></span>
+        <span class="game-label">aRPG</span>
+        <span class="game-name">Path of Exile 2</span>
+        <span class="game-arrow">→</span>
+      </a>
+
+      <a href="/diablo4.html" class="game-card">
+        <span class="top-bar bar-d4"></span>
+        <span class="game-label">aRPG</span>
+        <span class="game-name">Diablo IV</span>
+        <span class="game-arrow">→</span>
+      </a>
+
+      <a href="/lastepoch.html" class="game-card">
+        <span class="top-bar bar-le"></span>
+        <span class="game-label">aRPG</span>
+        <span class="game-name">Last Epoch</span>
+        <span class="game-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
 </div>
 
 <!-- MOJE TREŚCI -->
@@ -487,34 +454,41 @@
     <p class="s-label">Oglądaj</p>
     <h2 class="s-title">Moje treści</h2>
     <div class="media-grid">
+
       <div class="media-card">
         <div class="media-card-head">
           <span class="live-dot"></span>
           Twitch — Na żywo
         </div>
-        <!-- Twitch embed. parent=kondyss.pl is required for your domain. -->
         <iframe
           src="https://player.twitch.tv/?channel=kondyss&parent=kondyss.pl&autoplay=false"
           allowfullscreen>
         </iframe>
       </div>
+
       <div class="media-card">
         <div class="media-card-head">
           <span class="yt-dot"></span>
           YouTube — Ostatnie wideo
         </div>
         <!--
-          Replace VIDEO_ID below with the ID of your latest YouTube video.
-          Example: for https://www.youtube.com/watch?v=dQw4w9WgXcQ
-          the ID is: dQw4w9WgXcQ
-          Update this whenever you upload a new video.
+          Change the href to your latest video URL.
+          e.g. href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          Update it every time you post something new.
         -->
-        <iframe
-          src="https://www.youtube.com/watch?v=XEIzEJk-H78"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+        <a
+          href="https://www.youtube.com/@kondyss"
+          target="_blank"
+          rel="noopener"
+          class="yt-link"
+          aria-label="Obejrzyj ostatnie wideo na YouTube">
+          <div class="yt-play">
+            <div class="yt-play-icon"></div>
+            <span class="yt-play-text">Obejrzyj na YouTube</span>
+          </div>
+        </a>
       </div>
+
     </div>
   </section>
 </div>
@@ -545,12 +519,10 @@
         <p class="about-lang">🇵🇱 Polski</p>
         <p>
           Cześć! Jestem Kondyss — twórca na YouTube i streamer na Twitchu.
-          <!-- Uzupełnij tutaj swój opis po polsku -->
           Wpisz tutaj swój opis. Opowiedz widzom kim jesteś, skąd pochodzisz,
           czym się zajmujesz i jaki content tworzysz na co dzień.
         </p>
         <div class="stats-row">
-          <!-- Zaktualizuj swoje liczby subskrybentów/obserwujących -->
           <span class="stat-chip">YouTube <strong>XX tys.</strong></span>
           <span class="stat-chip">Twitch <strong>XX</strong></span>
           <span class="stat-chip">Instagram <strong>XX</strong></span>
@@ -560,12 +532,10 @@
         <p class="about-lang">🇬🇧 English</p>
         <p>
           Hey! I'm Kondyss — a YouTube creator and Twitch streamer from Poland.
-          <!-- Fill in your English description here -->
           Write your description here. Tell viewers who you are, where you're from,
           what kind of content you make and what they can expect from your channel.
         </p>
         <div class="stats-row">
-          <!-- Update your subscriber/follower numbers -->
           <span class="stat-chip">YouTube <strong>XX k</strong></span>
           <span class="stat-chip">Twitch <strong>XX</strong></span>
           <span class="stat-chip">Instagram <strong>XX</strong></span>
@@ -595,7 +565,6 @@
     <div class="contact-grid">
       <div class="contact-card">
         <p class="contact-label">E-mail biznesowy</p>
-        <!-- Zmień adres e-mail na swój własny -->
         <a href="mailto:kontakt@kondyss.pl">kontakt@kondyss.pl</a>
       </div>
       <div class="contact-card">
@@ -608,7 +577,6 @@
       </div>
       <div class="contact-card">
         <p class="contact-label">Instagram</p>
-        <!-- Zmień na swój profil Instagram -->
         <a href="https://instagram.com/kondyss" target="_blank">@kondyss</a>
       </div>
     </div>

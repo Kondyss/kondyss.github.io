@@ -253,43 +253,51 @@
       pointer-events: none;
     }
 
+    /* Static clip container — does NOT animate */
     .hero-bg-col {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
       overflow: hidden;
     }
 
-    /* left col scrolls up, right col scrolls down */
-    .hero-bg-col.col-up   { animation: scrollUp   40s linear infinite; }
-    .hero-bg-col.col-down { animation: scrollDown 40s linear infinite; }
+    /* Inner strip — this is what animates */
+    .hero-bg-col-inner {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
 
+    /* col-up / col-down classes go on the INNER strip */
+    .col-up   { animation: scrollUp   55s linear infinite; }
+    .col-down { animation: scrollDown 55s linear infinite; }
+
+    /*
+      3 identical sets of 2 images = 6 images total.
+      Animate by -33.333% = move exactly 1 set (2 images).
+      Seamless because set 2 looks identical to set 1.
+    */
     @keyframes scrollUp {
       0%   { transform: translateY(0); }
-      100% { transform: translateY(-50%); }
+      100% { transform: translateY(-33.333%); }
     }
 
     @keyframes scrollDown {
-      0%   { transform: translateY(-50%); }
+      0%   { transform: translateY(-33.333%); }
       100% { transform: translateY(0); }
     }
 
-    /* Natural proportions — no forced aspect-ratio so images don't get cropped */
-    .hero-bg-col img {
+    /* Natural height — no forced aspect-ratio */
+    .hero-bg-col-inner img {
       width: 100%;
       height: auto;
-      object-fit: cover;
-      border-radius: 0;
-      flex-shrink: 0;
       display: block;
+      flex-shrink: 0;
     }
 
-    /* Dark overlay — lighter now since glass card handles text readability */
+    /* Dark overlay — lighter since glass card handles text readability */
     .hero-left-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(9, 8, 8, 0.55);
+      background: rgba(9, 8, 8, 0.50);
       z-index: 1;
       pointer-events: none;
     }
@@ -303,12 +311,12 @@
       align-items: center;
     }
 
-    /* Glass card behind text for readability */
+    /* Glass card behind text */
     .hero-text-card {
-      background: rgba(9, 8, 8, 0.72);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(185, 28, 28, 0.25);
+      background: rgba(9, 8, 8, 0.70);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(185, 28, 28, 0.30);
       border-radius: 14px;
       padding: 2.2rem 2rem;
       display: flex;
@@ -323,16 +331,21 @@
       border-radius: 50%;
       overflow: hidden;
       border: 2px solid var(--border-hover);
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.6rem;
       flex-shrink: 0;
-      background: var(--bg3);
     }
 
-    /* img fills the circle; hide placeholder when img loads */
-    .hero-photo-wrap img {
+    .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+    .hero-photo-placeholder {
       width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--accent);
     }
 
     .hero-eyebrow {
@@ -777,35 +790,47 @@
   <div class="hero">
     <div class="hero-left">
 
-      <!-- Animated background: two portrait-ratio columns -->
+      <!-- Animated background: two portrait-ratio columns, 3 sets each for seamless loop -->
       <div class="hero-bg-columns" aria-hidden="true">
-        <!-- LEFT column — scrolls upward -->
-        <div class="hero-bg-col col-up">
-          <img src="/Vertical1.png" alt="" />
-          <img src="/Vertical2.png" alt="" />
-          <!-- duplicated for seamless loop -->
-          <img src="/Vertical1.png" alt="" />
-          <img src="/Vertical2.png" alt="" />
+
+        <!-- LEFT column — inner strip scrolls upward -->
+        <div class="hero-bg-col">
+          <div class="hero-bg-col-inner col-up">
+            <img src="/Vertical1.png" alt="" />
+            <img src="/Vertical2.png" alt="" />
+            <img src="/Vertical1.png" alt="" />
+            <img src="/Vertical2.png" alt="" />
+            <img src="/Vertical1.png" alt="" />
+            <img src="/Vertical2.png" alt="" />
+          </div>
         </div>
-        <!-- RIGHT column — scrolls downward -->
-        <div class="hero-bg-col col-down">
-          <img src="/Vertical2.png" alt="" />
-          <img src="/Vertical1.png" alt="" />
-          <!-- duplicated for seamless loop -->
-          <img src="/Vertical2.png" alt="" />
-          <img src="/Vertical1.png" alt="" />
+
+        <!-- RIGHT column — inner strip scrolls downward -->
+        <div class="hero-bg-col">
+          <div class="hero-bg-col-inner col-down">
+            <img src="/Vertical2.png" alt="" />
+            <img src="/Vertical1.png" alt="" />
+            <img src="/Vertical2.png" alt="" />
+            <img src="/Vertical1.png" alt="" />
+            <img src="/Vertical2.png" alt="" />
+            <img src="/Vertical1.png" alt="" />
+          </div>
         </div>
+
       </div>
 
       <!-- Dark overlay -->
       <div class="hero-left-overlay"></div>
 
-      <!-- Actual content -->
+      <!-- Content inside glass card -->
       <div class="hero-left-content">
         <div class="hero-text-card">
           <div class="hero-photo-wrap">
-            <img src="/img/kondyss.png" alt="Kondyss" />
+            <img src="/kondyss.png" alt="Kondyss"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="hero-photo-placeholder" style="display:none;">K</div>
           </div>
+
           <p class="hero-eyebrow">Twórca YouTube &amp; Streamer</p>
           <h1>KONDYSS</h1>
           <p class="hero-tagline">Polska Twarz w świecie aRPG</p>
@@ -813,6 +838,7 @@
             <!-- Uzupełnij swój opis (2–3 zdania) -->
             Wpisz tutaj swój opis — kim jesteś, co grasz, czego mogą spodziewać się widzowie.
           </p>
+
         </div>
       </div>
 
@@ -986,7 +1012,7 @@
       <div class="contact-grid">
         <div class="contact-card">
           <p class="contact-label">E-mail biznesowy</p>
-          <a href="/cdn-cgi/l/email-protection#5d363233293c36291d36323339242e2e732d31"><span class="__cf_email__" data-cfemail="412a2e2f35202a35012a2e2f253832326f312d">[email&#160;protected]</span></a>
+          <a href="/cdn-cgi/l/email-protection#2f4440415b4e445b6f4440414b565c5c015f43"><span class="__cf_email__" data-cfemail="32595d5c4653594672595d5c564b41411c425e">[email&#160;protected]</span></a>
         </div>
         <div class="contact-card">
           <p class="contact-label">Twitch</p>

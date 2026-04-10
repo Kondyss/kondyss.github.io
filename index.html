@@ -176,10 +176,7 @@
 
     .game-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 5px; }
 
-    .logo-d4  { background: #12080a; border: 1px solid #3d0d1a; color: #8b1a2a; }
-    .logo-poe2 { background: #0a0f1a; border: 1px solid #102050; color: #3a7bd5; } 
-    .logo-poe  { background: #1a0a0a; border: 1px solid #3d1010; color: #c0392b; } 
-    .logo-le  { background: #080f0a; border: 1px solid #103020; color: #2d8a4e; }
+    .logo-d4, .logo-poe2, .logo-poe, .logo-le { background: transparent; }
 
     /* ═══════════════════════════════
        MOBILE GAME NAV BAR
@@ -332,17 +329,6 @@
 
     .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
 
-    .hero-photo-placeholder {
-      width: 100%; height: 100%;
-      background: var(--bg3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      color: var(--accent);
-    }
-
     .hero-eyebrow {
       font-size: 0.65rem;
       letter-spacing: 0.28em;
@@ -374,26 +360,6 @@
       max-width: 340px;
       margin-bottom: 1.8rem;
     }
-
-    .hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
-
-    .btn {
-      display: inline-block;
-      padding: 0.55rem 1.4rem;
-      border-radius: 6px;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
-    .btn-primary:hover { background: var(--accent-dim); border-color: var(--accent-dim); }
-    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border-hover); }
-    .btn-outline:hover { background: var(--accent-glow); }
 
     .hero-right {
       position: relative;
@@ -722,27 +688,27 @@
   </ul>
 
   <!-- visible only on mobile/tablet -->
-  <button class="games-toggle-btn" id="gamesToggleBtn" onclick="toggleGames()" aria-expanded="false" aria-label="Nawigacja gier">
+  <button class="games-toggle-btn" id="gamesToggleBtn" aria-expanded="false" aria-label="Nawigacja gier">
     <span class="toggle-icon">⊞</span> Gry
   </button>
 </nav>
 
 <!-- ── MOBILE GAME BAR (below nav, hidden by default) ── -->
 <div class="mobile-game-bar" id="mobileGameBar" role="navigation" aria-label="Wybierz grę">
-  <a href="/poe.html">
-    <div class="game-logo logo-poe">POE</div>
-    Path of Exile
-  </a>
-  <a href="/poe2.html">
-    <div class="game-logo logo-poe2">POE2</div>
-    Path of Exile 2
-  </a>
   <a href="/diablo4.html">
-    <div class="game-logo logo-d4">D4</div>
+    <div class="game-logo logo-d4"><img src="/img/logos/d4.webp" alt="Diablo IV" /></div>
     Diablo IV
   </a>
+  <a href="/poe2.html">
+    <div class="game-logo logo-poe2"><img src="/img/logos/poe2.webp" alt="Path of Exile 2" /></div>
+    Path of Exile 2
+  </a>
+  <a href="/poe.html">
+    <div class="game-logo logo-poe"><img src="/img/logos/poe.webp" alt="Path of Exile" /></div>
+    Path of Exile
+  </a>
   <a href="/lastepoch.html">
-    <div class="game-logo logo-le">LE</div>
+    <div class="game-logo logo-le"><img src="/img/logos/le.webp" alt="Last Epoch" /></div>
     Last Epoch
   </a>
 </div>
@@ -886,7 +852,7 @@
 
   <!-- Subathon -->
   <div class="section-wrap">
-    <section id="Subathon">
+    <section id="subathon">
       <p class="s-label">Nadchodzące</p>
       <h2 class="s-title">Subathon</h2>
       <a href="/subathon.html" class="event-card">
@@ -914,9 +880,9 @@
       -->
       <div class="video-grid">
 
-        <a href="https://youtu.be/7zzdEqq4oOY" target="_blank" rel="noopener" class="video-card">
+        <a href="https://www.youtube.com/watch?v=7zzdEqq4oOY" target="_blank" rel="noopener" class="video-card">
           <div class="video-thumb">
-            <img src="https://youtu.be/7zzdEqq4oOY/hqdefault.jpg" alt="Film 1" loading="lazy" />
+            <img src="https://img.youtube.com/vi/7zzdEqq4oOY/hqdefault.jpg" alt="Film 1" loading="lazy" />
             <div class="video-play-overlay"><div class="play-circle"></div></div>
           </div>
           <div class="video-info">
@@ -925,9 +891,9 @@
           </div>
         </a>
 
-        <a href="https://youtu.be/w-9nhk3Eato" target="_blank" rel="noopener" class="video-card">
+        <a href="https://www.youtube.com/watch?v=w-9nhk3Eato" target="_blank" rel="noopener" class="video-card">
           <div class="video-thumb">
-            <img src="https://youtu.be/w-9nhk3Eato/hqdefault.jpg" alt="Film 2" loading="lazy" />
+            <img src="https://img.youtube.com/vi/w-9nhk3Eato/hqdefault.jpg" alt="Film 2" loading="lazy" />
             <div class="video-play-overlay"><div class="play-circle"></div></div>
           </div>
           <div class="video-info">
@@ -936,9 +902,9 @@
           </div>
         </a>
 
-        <a href="https://youtu.be/GblycTb9uVM" target="_blank" rel="noopener" class="video-card">
+        <a href="https://www.youtube.com/watch?v=GblycTb9uVM" target="_blank" rel="noopener" class="video-card">
           <div class="video-thumb">
-            <img src="https://youtu.be/GblycTb9uVM/hqdefault.jpg" alt="Film 3" loading="lazy" />
+            <img src="https://img.youtube.com/vi/GblycTb9uVM/hqdefault.jpg" alt="Film 3" loading="lazy" />
             <div class="video-play-overlay"><div class="play-circle"></div></div>
           </div>
           <div class="video-info">
@@ -947,9 +913,9 @@
           </div>
         </a>
 
-        <a href="https://youtu.be/m7YNFohbGYs" target="_blank" rel="noopener" class="video-card">
+        <a href="https://www.youtube.com/watch?v=m7YNFohbGYs" target="_blank" rel="noopener" class="video-card">
           <div class="video-thumb">
-            <img src="https://youtu.be/m7YNFohbGYs/hqdefault.jpg" alt="Film 4" loading="lazy" />
+            <img src="https://img.youtube.com/vi/m7YNFohbGYs/hqdefault.jpg" alt="Film 4" loading="lazy" />
             <div class="video-play-overlay"><div class="play-circle"></div></div>
           </div>
           <div class="video-info">
@@ -958,9 +924,9 @@
           </div>
         </a>
 
-        <a href="https://youtu.be/aHAH_Y0FdHU" target="_blank" rel="noopener" class="video-card">
+        <a href="https://www.youtube.com/watch?v=aHAH_Y0FdHU" target="_blank" rel="noopener" class="video-card">
           <div class="video-thumb">
-            <img src="https://youtu.be/aHAH_Y0FdHU/hqdefault.jpg" alt="Film 5" loading="lazy" />
+            <img src="https://img.youtube.com/vi/aHAH_Y0FdHU/hqdefault.jpg" alt="Film 5" loading="lazy" />
             <div class="video-play-overlay"><div class="play-circle"></div></div>
           </div>
           <div class="video-info">
@@ -969,9 +935,9 @@
           </div>
         </a>
 
-        <a href="https://youtu.be/4pYOjynphsI" target="_blank" rel="noopener" class="video-card">
+        <a href="https://www.youtube.com/watch?v=4pYOjynphsI" target="_blank" rel="noopener" class="video-card">
           <div class="video-thumb">
-            <img src="https://youtu.be/4pYOjynphsI/hqdefault.jpg" alt="Film 6" loading="lazy" />
+            <img src="https://img.youtube.com/vi/4pYOjynphsI/hqdefault.jpg" alt="Film 6" loading="lazy" />
             <div class="video-play-overlay"><div class="play-circle"></div></div>
           </div>
           <div class="video-info">
@@ -982,7 +948,7 @@
 
         <a href="https://www.youtube.com/watch?v=_BJkZ_8Xkik" target="_blank" rel="noopener" class="video-card">
           <div class="video-thumb">
-            <img src="https://www.youtube.com/watch?v=_BJkZ_8Xkik/hqdefault.jpg" alt="Film 7" loading="lazy" />
+            <img src="https://img.youtube.com/vi/_BJkZ_8Xkik/hqdefault.jpg" alt="Film 7" loading="lazy" />
             <div class="video-play-overlay"><div class="play-circle"></div></div>
           </div>
           <div class="video-info">
@@ -993,7 +959,7 @@
 
         <a href="https://www.youtube.com/watch?v=v8DJk7nyPR0" target="_blank" rel="noopener" class="video-card">
           <div class="video-thumb">
-            <img src="https://www.youtube.com/watch?v=v8DJk7nyPR0/hqdefault.png" alt="Film 8" loading="lazy" />
+            <img src="https://img.youtube.com/vi/v8DJk7nyPR0/hqdefault.jpg" alt="Film 8" loading="lazy" />
             <div class="video-play-overlay"><div class="play-circle"></div></div>
           </div>
           <div class="video-info">
@@ -1026,7 +992,7 @@
       <div class="contact-grid">
         <div class="contact-card">
           <p class="contact-label">E-mail biznesowy</p>
-          <a href="mailto:kontakt.kondyss@gmail.com">kontakt.kondyss@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#99f2f6f7edf8f2edb7f2f6f7fde0eaead9fef4f8f0f5b7faf6f4"><span class="__cf_email__" data-cfemail="4f2420213b2e243b612420212b363c3c0f28222e2623612c2022">[email&#160;protected]</span></a>
         </div>
         <div class="contact-card">
           <p class="contact-label">Twitch</p>
@@ -1050,7 +1016,7 @@
 
 </div><!-- /main-wrap -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   /* ── MOBILE GAME BAR TOGGLE ── */
   function toggleGames() {
     const bar  = document.getElementById('mobileGameBar');
@@ -1063,6 +1029,9 @@
   }
 
   /* close game bar when a game link is clicked */
+  document.getElementById('gamesToggleBtn')
+    .addEventListener('click', toggleGames);
+
   document.getElementById('mobileGameBar')
     .querySelectorAll('a')
     .forEach(a => a.addEventListener('click', () => {
@@ -1078,8 +1047,8 @@
               → włącz "YouTube Data API v3" → Credentials → API Key
               Wklej klucz i Channel ID poniżej.
   */
-  const YOUTUBE_API_KEY    = 'TWOJ_KLUCZ_YOUTUBE_API';
-  const YOUTUBE_CHANNEL_ID = 'TWOJE_CHANNEL_ID';
+  const YOUTUBE_API_KEY    = 'AIzaSyA_atGgFKOyHw8vME1_yJdJ4ltPEg_vwKE';
+  const YOUTUBE_CHANNEL_ID = 'UCQHb6jgWsW0IGBwynQah1vg';
 
   function fmt(n) {
     if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace('.0', '') + ' mln';
@@ -1097,16 +1066,8 @@
   }
 
   async function fetchYT() {
-    if (!YOUTUBE_API_KEY || YOUTUBE_API_KEY === 'TWOJ_KLUCZ_YOUTUBE_API') return '—';
+    if (!YOUTUBE_API_KEY || YOUTUBE_API_KEY === 'AIzaSyA_atGgFKOyHw8vME1_yJdJ4ltPEg_vwKE') return '—';
     try {
       const r = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${YOUTUBE_CHANNEL_ID}&key=${YOUTUBE_API_KEY}`);
       const d = await r.json();
-      const n = parseInt(d?.items?.[0]?.statistics?.subscriberCount, 10);
-      return isNaN(n) ? '—' : fmt(n);
-    } catch { return '—'; }
-  }
-
-  (async () => {
-    const [tw, yt] = await Promise.all([fetchTwitch(), fetchYT()]);
-    ['twitch-followers', 'twitch-followers-en'].forEach(id => {
-      
+      const n = parseInt(d?.items?.[0]?.statistics

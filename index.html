@@ -717,11 +717,11 @@
 <aside class="game-sidebar" aria-label="Wybierz grę">
   <div class="sidebar-heading">Gry</div>
 
-  <a href="/poe.html" class="game-nav-item">
-    <div class="game-logo logo-poe">
-      <img src="/img/logos/poe.webp" alt="Path of Exile" />
+  <a href="/diablo4.html" class="game-nav-item">
+    <div class="game-logo logo-d4">
+      <img src="/img/logos/d4.webp" alt="Diablo IV" />
     </div>
-    Path of Exile
+    Diablo IV
   </a>
 
   <a href="/poe2.html" class="game-nav-item">
@@ -731,11 +731,11 @@
     Path of Exile 2
   </a>
 
-  <a href="/diablo4.html" class="game-nav-item">
-    <div class="game-logo logo-d4">
-      <img src="/img/logos/d4.webp" alt="Diablo IV" />
+  <a href="/poe.html" class="game-nav-item">
+    <div class="game-logo logo-poe">
+      <img src="/img/logos/poe.webp" alt="Path of Exile" />
     </div>
-    Diablo IV
+    Path of Exile
   </a>
 
   <a href="/lastepoch.html" class="game-nav-item">
@@ -992,7 +992,7 @@
       <div class="contact-grid">
         <div class="contact-card">
           <p class="contact-label">E-mail biznesowy</p>
-          <a href="/cdn-cgi/l/email-protection#99f2f6f7edf8f2edb7f2f6f7fde0eaead9fef4f8f0f5b7faf6f4"><span class="__cf_email__" data-cfemail="4f2420213b2e243b612420212b363c3c0f28222e2623612c2022">[email&#160;protected]</span></a>
+          <span style="color: var(--accent); font-size: 0.92rem;">kontakt.kondyss@gmail.com</span>
         </div>
         <div class="contact-card">
           <p class="contact-label">Twitch</p>
@@ -1004,7 +1004,7 @@
         </div>
         <div class="contact-card">
           <p class="contact-label">Instagram</p>
-          <a href="https://instagram.com/kondyss" target="_blank">@kondyss</a>
+          <a href="https://instagram.com/kondyss_" target="_blank">@kondyss_</a>
         </div>
       </div>
     </section>
@@ -1028,17 +1028,20 @@
     wrap.classList.toggle('games-open', open);
   }
 
-  /* close game bar when a game link is clicked */
-  document.getElementById('gamesToggleBtn')
-    .addEventListener('click', toggleGames);
+  document.addEventListener('DOMContentLoaded', function() {
+    /* toggle button */
+    document.getElementById('gamesToggleBtn')
+      .addEventListener('click', toggleGames);
 
-  document.getElementById('mobileGameBar')
-    .querySelectorAll('a')
-    .forEach(a => a.addEventListener('click', () => {
-      document.getElementById('mobileGameBar').classList.remove('open');
-      document.getElementById('gamesToggleBtn').classList.remove('active');
-      document.getElementById('mainWrap').classList.remove('games-open');
-    }));
+    /* close game bar when a game link is clicked */
+    document.getElementById('mobileGameBar')
+      .querySelectorAll('a')
+      .forEach(a => a.addEventListener('click', () => {
+        document.getElementById('mobileGameBar').classList.remove('open');
+        document.getElementById('gamesToggleBtn').classList.remove('active');
+        document.getElementById('mainWrap').classList.remove('games-open');
+      }));
+  });
 
   /* ── AUTO-UPDATING STATS ── */
   /*
@@ -1047,8 +1050,8 @@
               → włącz "YouTube Data API v3" → Credentials → API Key
               Wklej klucz i Channel ID poniżej.
   */
-  const YOUTUBE_API_KEY    = 'AIzaSyA_atGgFKOyHw8vME1_yJdJ4ltPEg_vwKE';
-  const YOUTUBE_CHANNEL_ID = 'UCQHb6jgWsW0IGBwynQah1vg';
+  const YOUTUBE_API_KEY    = 'TWOJ_KLUCZ_YOUTUBE_API';
+  const YOUTUBE_CHANNEL_ID = 'TWOJE_CHANNEL_ID';
 
   function fmt(n) {
     if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace('.0', '') + ' mln';
@@ -1066,7 +1069,7 @@
   }
 
   async function fetchYT() {
-    if (!YOUTUBE_API_KEY || YOUTUBE_API_KEY === 'AIzaSyA_atGgFKOyHw8vME1_yJdJ4ltPEg_vwKE') return '—';
+    if (!YOUTUBE_API_KEY || YOUTUBE_API_KEY === 'TWOJ_KLUCZ_YOUTUBE_API') return '—';
     try {
       const r = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${YOUTUBE_CHANNEL_ID}&key=${YOUTUBE_API_KEY}`);
       const d = await r.json();

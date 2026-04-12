@@ -737,6 +737,115 @@
     }
 
     /* ═══════════════════════════════
+       LIGI / SEZONY
+    ═══════════════════════════════ */
+    .seasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .season-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .season-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.9rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .season-game-logo {
+      width: 28px; height: 28px;
+      flex-shrink: 0;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+
+    .season-game-name {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+
+    .season-body { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 1rem; flex: 1; }
+
+    /* Current league block */
+    .season-current { display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .season-block-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .season-league-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .season-running {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    .season-running span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Divider */
+    .season-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* Next league block */
+    .season-next { display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .season-next-name {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .season-countdown {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .season-countdown.tba {
+      font-size: 0.8rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .season-next-date {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    /* ═══════════════════════════════
        MERCH
     ═══════════════════════════════ */
     .merch-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 5.5rem 2rem; text-align: center; }
@@ -851,6 +960,7 @@
   <ul class="nav-links">
     <li><a href="#subathon">Subathon</a></li>
     <li><a href="#filmy">Filmy</a></li>
+    <li><a href="#sezony">Sezony</a></li>
     <li><a href="#omnie">O mnie</a></li>
     <li><a href="#merch">Merch</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
@@ -1172,6 +1282,17 @@
     </section>
   </div>
 
+  <!-- LIGI / SEZONY -->
+  <div class="section-wrap">
+    <section id="sezony">
+      <p class="s-label">Aktualnie trwa</p>
+      <h2 class="s-title">Ligi &amp; Sezony</h2>
+      <div class="seasons-grid" id="seasonsGrid">
+        <!-- karty generowane przez JS na podstawie SEASONS_DATA poniżej -->
+      </div>
+    </section>
+  </div>
+
   <!-- O MNIE -->
   <div class="section-wrap">
     <section id="omnie">
@@ -1274,6 +1395,162 @@
   /* ── STATYSTYKI — zaktualizuj ręcznie gdy wartości się zmienią ── */
   document.getElementById('proof-twitch').textContent = '21,3 tys.';
   document.getElementById('proof-yt').textContent     = '24,9 tys.';
+
+  /* ══════════════════════════════════════════════════════════════
+     LIGI & SEZONY — edytuj tę sekcję ręcznie
+     
+     currentStart : 'YYYY-MM-DD' — data startu obecnej ligi
+     nextDate     : 'YYYY-MM-DD' — data kolejnej ligi (lub null jeśli nieznana)
+     
+     Przykład daty: '2025-04-15'
+  ══════════════════════════════════════════════════════════════ */
+  const SEASONS_DATA = [
+    {
+      game:         'Diablo IV',
+      logo:         '/img/logos/d4.webp',
+      accentColor:  '#c0392b',
+      current: {
+        name:         'Sezon Rzezi',
+        startDate:    '2025-04-28',
+      },
+      next: {
+        name:         'Pan Nienawiści',
+        date:         '2025-04-28',          // null = TBA, lub np. '2025-09-15'
+      }
+    },
+    {
+      game:         'Path of Exile 2',
+      logo:         '/img/logos/poe2.webp',
+      accentColor:  '#d4a800',
+      current: {
+        name:         'The Fate of the Vaal 0.4',
+        startDate:    '2025-12-12',
+      },
+      next: {
+        name:         'Early Access 0.5',
+        date:         null,
+      }
+    },
+    {
+      game:         'Path of Exile',
+      logo:         '/img/logos/poe.webp',
+      accentColor:  '#e07800',
+      current: {
+        name:         'Mirage 3.28',
+        startDate:    '2026-03-06',
+      },
+      next: {
+        name:         '3.29',
+        date:         null,
+      }
+    },
+    {
+      game:         'Last Epoch',
+      logo:         '/img/logos/le.webp',
+      accentColor:  '#9b6ddb',
+      current: {
+        name:         'Cykl 4',
+        startDate:    '2025-02-20',
+      },
+      next: {
+        name:         'Cykl 5',
+        date:         null,
+      }
+    },
+  ];
+
+  /* ── Helpers ── */
+  function daysSince(dateStr) {
+    const start = new Date(dateStr);
+    start.setHours(0, 0, 0, 0);
+    const now   = new Date();
+    now.setHours(0, 0, 0, 0);
+    return Math.floor((now - start) / 86400000);
+  }
+
+  function formatCountdown(dateStr) {
+    const target = new Date(dateStr);
+    target.setHours(0, 0, 0, 0);
+    const now    = new Date();
+    now.setHours(0, 0, 0, 0);
+    const diff   = target - now;
+    if (diff <= 0) return null; // już wystartowała
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    return { d, h, m };
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  /* ── Render ── */
+  function renderSeasons() {
+    const grid = document.getElementById('seasonsGrid');
+    if (!grid) return;
+
+    grid.innerHTML = SEASONS_DATA.map(s => {
+      const days = daysSince(s.current.startDate);
+
+      let nextBlock = '';
+      if (s.next.date) {
+        const cd = formatCountdown(s.next.date);
+        if (cd) {
+          nextBlock = `
+            <div class="season-next-name">${s.next.name}</div>
+            <div class="season-countdown" id="cd-${s.game.replace(/\s/g,'')}"
+                 data-target="${s.next.date}">
+              ${cd.d}d ${cd.h}h ${cd.m}m
+            </div>
+            <div class="season-next-date">${formatDate(s.next.date)}</div>`;
+        } else {
+          nextBlock = `
+            <div class="season-next-name">${s.next.name}</div>
+            <div class="season-countdown" style="color:var(--muted);font-family:'Outfit',sans-serif;font-size:0.8rem;">
+              Już wystartowała!
+            </div>`;
+        }
+      } else {
+        nextBlock = `
+          <div class="season-next-name">${s.next.name}</div>
+          <div class="season-countdown tba">Data nieznana</div>`;
+      }
+
+      return `
+        <div class="season-card">
+          <div class="season-card-header">
+            <img class="season-game-logo" src="${s.logo}" alt="${s.game}" />
+            <span class="season-game-name">${s.game}</span>
+          </div>
+          <div class="season-body">
+            <div class="season-current">
+              <div class="season-block-label">Obecna liga</div>
+              <div class="season-league-name" style="color:${s.accentColor}">${s.current.name}</div>
+              <div class="season-running">
+                Trwa od ${formatDate(s.current.startDate)} — <span>${days} dni</span>
+              </div>
+            </div>
+            <hr class="season-divider" />
+            <div class="season-next">
+              <div class="season-block-label">Następna liga</div>
+              ${nextBlock}
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+
+    /* live countdown tick — aktualizuje co minutę */
+    setInterval(() => {
+      document.querySelectorAll('.season-countdown[data-target]').forEach(el => {
+        const cd = formatCountdown(el.dataset.target);
+        if (cd) el.textContent = `${cd.d}d ${cd.h}h ${cd.m}m`;
+      });
+    }, 60000);
+  }
+
+  renderSeasons();
 
   /* ── TWITCH LIVE CHECK ── */
   /* DecAPI zwraca "kondyss is offline" gdy offline, lub czas trwania streamu gdy live */

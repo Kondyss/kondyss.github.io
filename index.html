@@ -16,7 +16,7 @@
       --accent-dim:    #7f1d1d;
       --accent-glow:   rgba(185, 28, 28, 0.16);
       --bg:            #090808;
-      --bg2:           #100c0c;a
+      --bg2:           #100c0c;
       --bg3:           #181010;
       --nav-bg:        rgba(9, 8, 8, 0.95);
       --text:          #f0ecea;
@@ -1262,45 +1262,9 @@
       }));
   });
 
-  /* ── AUTO-UPDATING STATS ── */
-  /*
-    Twitch followers — DecAPI.me (darmowe, bez klucza)
-    YouTube subscribers — scraper via youtube-stats API (przybliżone, bez klucza)
-  */
-  function fmt(n) {
-    if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace('.0', '') + ' mln';
-    if (n >= 1_000)     return (n / 1_000).toFixed(1).replace('.0', '') + ' tys.';
-    return String(n);
-  }
-
-  function setEl(id, val) {
-    const el = document.getElementById(id); if (el) el.textContent = val;
-  }
-
-  async function fetchTwitchFollowers() {
-    try {
-      const r = await fetch('https://decapi.me/twitch/followers/kondyss');
-      const t = await r.text();
-      const n = parseInt(t.trim().replace(/\D/g, ''), 10);
-      return isNaN(n) ? null : n;
-    } catch { return null; }
-  }
-
-  async function fetchYTSubs() {
-    /* Używamy publicznego endpointu Mixerno/SocialCounts — przybliżone wartości, bez klucza API */
-    try {
-      const r = await fetch('https://mixerno.space/api/youtube-channel-counter/user/UCF5pBNOIwBvSm4PFuIIGUEA', { headers: { Accept: 'application/json' } });
-      const d = await r.json();
-      const n = parseInt(d?.counts?.[0]?.count, 10);
-      return isNaN(n) ? null : n;
-    } catch { return null; }
-  }
-
-  (async () => {
-    const [tw, yt] = await Promise.all([fetchTwitchFollowers(), fetchYTSubs()]);
-    setEl('proof-twitch', tw !== null ? fmt(tw) : '—');
-    setEl('proof-yt',     yt !== null ? fmt(yt) : '—');
-  })();
+  /* ── STATYSTYKI — zaktualizuj ręcznie gdy wartości się zmienią ── */
+  document.getElementById('proof-twitch').textContent = '21,3 tys.';
+  document.getElementById('proof-yt').textContent     = '24,9 tys.';
 
 </script>
 

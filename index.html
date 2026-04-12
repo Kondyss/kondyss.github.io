@@ -16,7 +16,7 @@
       --accent-dim:    #7f1d1d;
       --accent-glow:   rgba(185, 28, 28, 0.16);
       --bg:            #090808;
-      --bg2:           #100c0c;
+      --bg2:           #100c0c;a
       --bg3:           #181010;
       --nav-bg:        rgba(9, 8, 8, 0.95);
       --text:          #f0ecea;
@@ -339,7 +339,7 @@
 
     .hero h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.8rem, 6vw, 6.5rem);
+      font-size: clamp(2.6rem, 4vw, 4.2rem);
       letter-spacing: 0.08em;
       line-height: 0.95;
       color: var(--text);
@@ -1008,21 +1008,21 @@
         Zmień godziny na swoje. Ustaw class="active" na dniach gdy streamujesz.
       -->
       <div class="schedule-grid">
-        <div class="schedule-day">
+        <div class="schedule-day active">
           <div class="schedule-day-name">Pon</div>
-          <div class="schedule-day-off">—</div>
+          <div class="schedule-day-time">16:00</div>
         </div>
         <div class="schedule-day active">
           <div class="schedule-day-name">Wt</div>
-          <div class="schedule-day-time">20:00</div>
+          <div class="schedule-day-time">16:00</div>
         </div>
         <div class="schedule-day active">
           <div class="schedule-day-name">Śr</div>
-          <div class="schedule-day-time">20:00</div>
+          <div class="schedule-day-time">16:00</div>
         </div>
         <div class="schedule-day active">
           <div class="schedule-day-name">Czw</div>
-          <div class="schedule-day-time">20:00</div>
+          <div class="schedule-day-time">16:00</div>
         </div>
         <div class="schedule-day">
           <div class="schedule-day-name">Pt</div>
@@ -1030,11 +1030,11 @@
         </div>
         <div class="schedule-day active">
           <div class="schedule-day-name">Sob</div>
-          <div class="schedule-day-time">18:00</div>
+          <div class="schedule-day-time">10:00</div>
         </div>
         <div class="schedule-day active">
           <div class="schedule-day-name">Nd</div>
-          <div class="schedule-day-time">18:00</div>
+          <div class="schedule-day-time">10:00</div>
         </div>
       </div>
       <p class="schedule-note">* Godziny orientacyjne — śledź Twitcha i Discorda po potwierdzenia.</p>
@@ -1192,52 +1192,6 @@
         </div>
       </div>
 
-      <!-- Platform stats — separate row below text -->
-      <div class="platform-stats-row">
-
-        <div class="platform-block">
-          <div class="platform-block-header">
-            <span class="platform-dot dot-yt"></span>
-            YouTube
-          </div>
-          <div class="stat-items">
-            <div class="stat-item">
-              <span class="stat-item-label">Subscribers</span>
-              <span class="stat-item-value" id="yt-subs">—</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-item-label">Videos</span>
-              <span class="stat-item-value" id="yt-videos">—</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-item-label">Views</span>
-              <span class="stat-item-value" id="yt-views">—</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="platform-block">
-          <div class="platform-block-header">
-            <span class="platform-dot dot-twitch"></span>
-            Twitch
-          </div>
-          <div class="stat-items">
-            <div class="stat-item">
-              <span class="stat-item-label">Followers</span>
-              <span class="stat-item-value" id="twitch-followers">—</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-item-label">Monthly Unique Viewers</span>
-              <span class="stat-item-value" id="twitch-viewers">—</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-item-label">Monthly Minutes Watched</span>
-              <span class="stat-item-value" id="twitch-minutes">—</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </section>
   </div>
 
@@ -1266,14 +1220,6 @@
         <div class="contact-card">
           <p class="contact-label">Discord</p>
           <a href="https://discord.gg/kondyss" target="_blank" style="color: #5865f2;">discord.gg/kondyss</a>
-        </div>
-        <div class="contact-card">
-          <p class="contact-label">Twitch</p>
-          <a href="https://twitch.tv/kondyss" target="_blank">twitch.tv/kondyss</a>
-        </div>
-        <div class="contact-card">
-          <p class="contact-label">YouTube</p>
-          <a href="https://youtube.com/@kondyss" target="_blank">youtube.com/@kondyss</a>
         </div>
         <div class="contact-card">
           <p class="contact-label">Instagram</p>
@@ -1318,23 +1264,17 @@
 
   /* ── AUTO-UPDATING STATS ── */
   /*
-    TWITCH  — followers: darmowe przez DecAPI (bez klucza)
-    YOUTUBE — wymaga klucza z https://console.cloud.google.com/
-              → włącz "YouTube Data API v3" → Credentials → API Key
-              Wklej klucz i Channel ID poniżej.
+    Twitch followers — DecAPI.me (darmowe, bez klucza)
+    YouTube subscribers — scraper via youtube-stats API (przybliżone, bez klucza)
   */
-  const YOUTUBE_API_KEY    = 'TWOJ_KLUCZ_YOUTUBE_API';
-  const YOUTUBE_CHANNEL_ID = 'TWOJE_CHANNEL_ID';
-
   function fmt(n) {
     if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace('.0', '') + ' mln';
     if (n >= 1_000)     return (n / 1_000).toFixed(1).replace('.0', '') + ' tys.';
     return String(n);
   }
 
-  function setEl(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value;
+  function setEl(id, val) {
+    const el = document.getElementById(id); if (el) el.textContent = val;
   }
 
   async function fetchTwitchFollowers() {
@@ -1342,30 +1282,26 @@
       const r = await fetch('https://decapi.me/twitch/followers/kondyss');
       const t = await r.text();
       const n = parseInt(t.trim().replace(/\D/g, ''), 10);
-      return isNaN(n) ? '—' : fmt(n);
-    } catch { return '—'; }
+      return isNaN(n) ? null : n;
+    } catch { return null; }
   }
 
-  async function fetchYT() {
-    if (!YOUTUBE_API_KEY || YOUTUBE_API_KEY === 'TWOJ_KLUCZ_YOUTUBE_API') {
-      return { subs: '—' };
-    }
+  async function fetchYTSubs() {
+    /* Używamy publicznego endpointu Mixerno/SocialCounts — przybliżone wartości, bez klucza API */
     try {
-      const r = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${YOUTUBE_CHANNEL_ID}&key=${YOUTUBE_API_KEY}`);
+      const r = await fetch('https://mixerno.space/api/youtube-channel-counter/user/UCF5pBNOIwBvSm4PFuIIGUEA', { headers: { Accept: 'application/json' } });
       const d = await r.json();
-      const s = d?.items?.[0]?.statistics;
-      if (!s) return { subs: '—' };
-      return { subs: fmt(parseInt(s.subscriberCount, 10)) };
-    } catch { return { subs: '—' }; }
+      const n = parseInt(d?.counts?.[0]?.count, 10);
+      return isNaN(n) ? null : n;
+    } catch { return null; }
   }
 
   (async () => {
-    const [followers, yt] = await Promise.all([fetchTwitchFollowers(), fetchYT()]);
-
-    /* Social proof bar */
-    setEl('proof-twitch', followers);
-    setEl('proof-yt', yt.subs);
+    const [tw, yt] = await Promise.all([fetchTwitchFollowers(), fetchYTSubs()]);
+    setEl('proof-twitch', tw !== null ? fmt(tw) : '—');
+    setEl('proof-yt',     yt !== null ? fmt(yt) : '—');
   })();
+
 </script>
 
 </body>

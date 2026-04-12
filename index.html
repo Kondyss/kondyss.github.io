@@ -339,27 +339,81 @@
 
     .hero h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 5vw, 5.5rem);
-      letter-spacing: 0.06em;
-      line-height: 1;
+      font-size: clamp(3.8rem, 6vw, 6.5rem);
+      letter-spacing: 0.08em;
+      line-height: 0.95;
       color: var(--text);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 20px rgba(185,28,28,0.35);
     }
 
     .hero-tagline {
-      font-size: 0.95rem;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      margin-bottom: 1.4rem;
+      font-size: 0.88rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
     }
 
     .hero-bio {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
-      line-height: 1.8;
-      max-width: 340px;
-      margin-bottom: 1.8rem;
+      line-height: 1.7;
+      max-width: 320px;
+      margin-bottom: 1.4rem;
     }
+
+    /* Social proof bar — under hero */
+    .social-proof-bar {
+      display: flex;
+      align-items: stretch;
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.9rem 1.6rem;
+      flex: 1;
+      border-right: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.18s;
+    }
+
+    .proof-item:last-child { border-right: none; }
+    .proof-item:hover { background: var(--bg3); }
+
+    .proof-platform-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .proof-platform-dot.yt     { background: #ff0000; }
+    .proof-platform-dot.twitch { background: #9146ff; }
+    .proof-platform-dot.discord { background: #5865f2; }
+
+    .proof-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1;
+    }
+
+    .proof-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .proof-text { display: flex; flex-direction: column; gap: 0.2rem; }
 
     .hero-right {
       position: relative;
@@ -557,6 +611,122 @@
     .about-lang { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
     .about-col p { color: var(--muted); font-size: 1.05rem; line-height: 1.9; margin-bottom: 1.8rem; }
 
+    /* Platform stat blocks */
+    .platform-stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .platform-block {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+    }
+
+    .platform-block-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .platform-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-yt     { background: #ff0000; }
+    .dot-twitch { background: #9146ff; }
+
+    .stat-items { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      flex: 1;
+      min-width: 80px;
+    }
+
+    .stat-item-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .stat-item-value {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--accent);
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    /* ═══════════════════════════════
+       HARMONOGRAM
+    ═══════════════════════════════ */
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+    }
+
+    .schedule-day {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.8rem 0.5rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+
+    .schedule-day.active {
+      border-color: var(--border-hover);
+      background: var(--bg3);
+    }
+
+    .schedule-day.active .schedule-day-name { color: var(--accent); }
+
+    .schedule-day-name {
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .schedule-day-time {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .schedule-day-off {
+      font-size: 0.7rem;
+      color: var(--muted);
+      opacity: 0.5;
+    }
+
+    .schedule-note {
+      margin-top: 0.8rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
     /* ═══════════════════════════════
        MERCH
     ═══════════════════════════════ */
@@ -647,8 +817,12 @@
       .hero-right { padding: 1.5rem; }
       .about-split { grid-template-columns: 1fr; }
       .about-col + .about-col { border-left: none; border-top: 1px solid var(--border); }
+      .platform-stats-row { grid-template-columns: 1fr; }
       .event-card { flex-direction: column; align-items: flex-start; padding: 1.4rem; }
       .video-grid { grid-template-columns: 1fr 1fr; }
+      .social-proof-bar { flex-wrap: wrap; }
+      .proof-item { flex: 1 1 40%; min-width: 120px; border-bottom: 1px solid var(--border); }
+      .schedule-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
     @media (max-width: 480px) {
@@ -671,6 +845,7 @@
     <li><a href="#omnie">O mnie</a></li>
     <li><a href="#merch">Merch</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="https://discord.gg/kondyss" target="_blank" style="color: #5865f2;">Discord</a></li>
   </ul>
 
   <!-- visible only on mobile/tablet -->
@@ -797,6 +972,73 @@
         </iframe>
       </div>
     </div>
+  </div>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="social-proof-bar">
+    <a href="https://twitch.tv/kondyss" target="_blank" class="proof-item">
+      <span class="proof-platform-dot twitch"></span>
+      <div class="proof-text">
+        <span class="proof-label">Twitch followers</span>
+        <span class="proof-value" id="proof-twitch">—</span>
+      </div>
+    </a>
+    <a href="https://youtube.com/@kondyss" target="_blank" class="proof-item">
+      <span class="proof-platform-dot yt"></span>
+      <div class="proof-text">
+        <span class="proof-label">YouTube subscribers</span>
+        <span class="proof-value" id="proof-yt">—</span>
+      </div>
+    </a>
+    <a href="https://discord.gg/kondyss" target="_blank" class="proof-item">
+      <span class="proof-platform-dot discord"></span>
+      <div class="proof-text">
+        <span class="proof-label">Discord</span>
+        <span class="proof-value">Dołącz →</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- HARMONOGRAM -->
+  <div class="section-wrap">
+    <section id="harmonogram">
+      <p class="s-label">Kiedy gram</p>
+      <h2 class="s-title">Harmonogram</h2>
+      <!--
+        Zmień godziny na swoje. Ustaw class="active" na dniach gdy streamujesz.
+      -->
+      <div class="schedule-grid">
+        <div class="schedule-day">
+          <div class="schedule-day-name">Pon</div>
+          <div class="schedule-day-off">—</div>
+        </div>
+        <div class="schedule-day active">
+          <div class="schedule-day-name">Wt</div>
+          <div class="schedule-day-time">20:00</div>
+        </div>
+        <div class="schedule-day active">
+          <div class="schedule-day-name">Śr</div>
+          <div class="schedule-day-time">20:00</div>
+        </div>
+        <div class="schedule-day active">
+          <div class="schedule-day-name">Czw</div>
+          <div class="schedule-day-time">20:00</div>
+        </div>
+        <div class="schedule-day">
+          <div class="schedule-day-name">Pt</div>
+          <div class="schedule-day-off">—</div>
+        </div>
+        <div class="schedule-day active">
+          <div class="schedule-day-name">Sob</div>
+          <div class="schedule-day-time">18:00</div>
+        </div>
+        <div class="schedule-day active">
+          <div class="schedule-day-name">Nd</div>
+          <div class="schedule-day-time">18:00</div>
+        </div>
+      </div>
+      <p class="schedule-note">* Godziny orientacyjne — śledź Twitcha i Discorda po potwierdzenia.</p>
+    </section>
   </div>
 
   <!-- Subathon -->
@@ -950,6 +1192,52 @@
         </div>
       </div>
 
+      <!-- Platform stats — separate row below text -->
+      <div class="platform-stats-row">
+
+        <div class="platform-block">
+          <div class="platform-block-header">
+            <span class="platform-dot dot-yt"></span>
+            YouTube
+          </div>
+          <div class="stat-items">
+            <div class="stat-item">
+              <span class="stat-item-label">Subscribers</span>
+              <span class="stat-item-value" id="yt-subs">—</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-item-label">Videos</span>
+              <span class="stat-item-value" id="yt-videos">—</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-item-label">Views</span>
+              <span class="stat-item-value" id="yt-views">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="platform-block">
+          <div class="platform-block-header">
+            <span class="platform-dot dot-twitch"></span>
+            Twitch
+          </div>
+          <div class="stat-items">
+            <div class="stat-item">
+              <span class="stat-item-label">Followers</span>
+              <span class="stat-item-value" id="twitch-followers">—</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-item-label">Monthly Unique Viewers</span>
+              <span class="stat-item-value" id="twitch-viewers">—</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-item-label">Monthly Minutes Watched</span>
+              <span class="stat-item-value" id="twitch-minutes">—</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
   </div>
 
@@ -973,7 +1261,11 @@
       <div class="contact-grid">
         <div class="contact-card">
           <p class="contact-label">E-mail biznesowy</p>
-          <span style="color: var(--accent); font-size: 0.92rem;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98f3f7f6ecf9f3ecb6f3f7f6fce1ebebd8fff5f9f1f4b6fbf7f5">[email&#160;protected]</a></span>
+          <span style="color: var(--accent); font-size: 0.92rem;">kontakt.kondyss@gmail.com</span>
+        </div>
+        <div class="contact-card">
+          <p class="contact-label">Discord</p>
+          <a href="https://discord.gg/kondyss" target="_blank" style="color: #5865f2;">discord.gg/kondyss</a>
         </div>
         <div class="contact-card">
           <p class="contact-label">Twitch</p>
@@ -1023,6 +1315,58 @@
         document.getElementById('mainWrap').classList.remove('games-open');
       }));
   });
+
+  /* ── AUTO-UPDATING STATS ── */
+  /*
+    TWITCH  — followers: darmowe przez DecAPI (bez klucza)
+    YOUTUBE — wymaga klucza z https://console.cloud.google.com/
+              → włącz "YouTube Data API v3" → Credentials → API Key
+              Wklej klucz i Channel ID poniżej.
+  */
+  const YOUTUBE_API_KEY    = 'TWOJ_KLUCZ_YOUTUBE_API';
+  const YOUTUBE_CHANNEL_ID = 'TWOJE_CHANNEL_ID';
+
+  function fmt(n) {
+    if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace('.0', '') + ' mln';
+    if (n >= 1_000)     return (n / 1_000).toFixed(1).replace('.0', '') + ' tys.';
+    return String(n);
+  }
+
+  function setEl(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+  async function fetchTwitchFollowers() {
+    try {
+      const r = await fetch('https://decapi.me/twitch/followers/kondyss');
+      const t = await r.text();
+      const n = parseInt(t.trim().replace(/\D/g, ''), 10);
+      return isNaN(n) ? '—' : fmt(n);
+    } catch { return '—'; }
+  }
+
+  async function fetchYT() {
+    if (!YOUTUBE_API_KEY || YOUTUBE_API_KEY === 'TWOJ_KLUCZ_YOUTUBE_API') {
+      return { subs: '—' };
+    }
+    try {
+      const r = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${YOUTUBE_CHANNEL_ID}&key=${YOUTUBE_API_KEY}`);
+      const d = await r.json();
+      const s = d?.items?.[0]?.statistics;
+      if (!s) return { subs: '—' };
+      return { subs: fmt(parseInt(s.subscriberCount, 10)) };
+    } catch { return { subs: '—' }; }
+  }
+
+  (async () => {
+    const [followers, yt] = await Promise.all([fetchTwitchFollowers(), fetchYT()]);
+
+    /* Social proof bar */
+    setEl('proof-twitch', followers);
+    setEl('proof-yt', yt.subs);
+  })();
 </script>
+
 </body>
 </html>

@@ -557,69 +557,6 @@
     .about-lang { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
     .about-col p { color: var(--muted); font-size: 1.05rem; line-height: 1.9; margin-bottom: 1.8rem; }
 
-    /* Platform stat blocks */
-    .platform-stats-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.2rem;
-    }
-
-    .platform-block {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.2rem;
-    }
-
-    .platform-block-header {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.8rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .platform-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .dot-yt     { background: #ff0000; }
-    .dot-twitch { background: #9146ff; }
-
-    .stat-items { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-      flex: 1;
-      min-width: 80px;
-    }
-
-    .stat-item-label {
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .stat-item-value {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--accent);
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: 0.04em;
-    }
-
     /* ═══════════════════════════════
        MERCH
     ═══════════════════════════════ */
@@ -710,7 +647,6 @@
       .hero-right { padding: 1.5rem; }
       .about-split { grid-template-columns: 1fr; }
       .about-col + .about-col { border-left: none; border-top: 1px solid var(--border); }
-      .platform-stats-row { grid-template-columns: 1fr; }
       .event-card { flex-direction: column; align-items: flex-start; padding: 1.4rem; }
       .video-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -1014,52 +950,6 @@
         </div>
       </div>
 
-      <!-- Platform stats — separate row below text -->
-      <div class="platform-stats-row">
-
-        <div class="platform-block">
-          <div class="platform-block-header">
-            <span class="platform-dot dot-yt"></span>
-            YouTube
-          </div>
-          <div class="stat-items">
-            <div class="stat-item">
-              <span class="stat-item-label">Subscribers</span>
-              <span class="stat-item-value" id="yt-subs">—</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-item-label">Videos</span>
-              <span class="stat-item-value" id="yt-videos">—</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-item-label">Views</span>
-              <span class="stat-item-value" id="yt-views">—</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="platform-block">
-          <div class="platform-block-header">
-            <span class="platform-dot dot-twitch"></span>
-            Twitch
-          </div>
-          <div class="stat-items">
-            <div class="stat-item">
-              <span class="stat-item-label">Followers</span>
-              <span class="stat-item-value" id="twitch-followers">—</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-item-label">Monthly Unique Viewers</span>
-              <span class="stat-item-value" id="twitch-viewers">—</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-item-label">Monthly Minutes Watched</span>
-              <span class="stat-item-value" id="twitch-minutes">—</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </section>
   </div>
 
@@ -1083,7 +973,7 @@
       <div class="contact-grid">
         <div class="contact-card">
           <p class="contact-label">E-mail biznesowy</p>
-          <span style="color: var(--accent); font-size: 0.92rem;">kontakt.kondyss@gmail.com</span>
+          <span style="color: var(--accent); font-size: 0.92rem;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98f3f7f6ecf9f3ecb6f3f7f6fce1ebebd8fff5f9f1f4b6fbf7f5">[email&#160;protected]</a></span>
         </div>
         <div class="contact-card">
           <p class="contact-label">Twitch</p>
@@ -1107,7 +997,7 @@
 
 </div><!-- /main-wrap -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   /* ── MOBILE GAME BAR TOGGLE ── */
   function toggleGames() {
     const bar  = document.getElementById('mobileGameBar');
@@ -1133,71 +1023,6 @@
         document.getElementById('mainWrap').classList.remove('games-open');
       }));
   });
-
-  /* ── AUTO-UPDATING STATS ── */
-  /*
-    TWITCH  — followers: darmowe przez DecAPI (bez klucza)
-    TWITCH  — viewers/minutes: wymaga klucza Twitch API (Client ID + token)
-               → https://dev.twitch.tv/console  → utwórz aplikację → Client ID
-               Wklej poniżej.
-    YOUTUBE — wymaga klucza z https://console.cloud.google.com/
-              → włącz "YouTube Data API v3" → Credentials → API Key
-              Wklej klucz i Channel ID poniżej.
-  */
-  const YOUTUBE_API_KEY    = 'TWOJ_KLUCZ_YOUTUBE_API';
-  const YOUTUBE_CHANNEL_ID = 'TWOJE_CHANNEL_ID';
-
-  function fmt(n) {
-    if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace('.0', '') + ' mln';
-    if (n >= 1_000)     return (n / 1_000).toFixed(1).replace('.0', '') + ' tys.';
-    return String(n);
-  }
-
-  function setIds(ids, value) {
-    ids.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = value; });
-  }
-
-  async function fetchTwitchFollowers() {
-    try {
-      const r = await fetch('https://decapi.me/twitch/followers/kondyss');
-      const t = await r.text();
-      const n = parseInt(t.trim().replace(/\D/g, ''), 10);
-      return isNaN(n) ? '—' : fmt(n);
-    } catch { return '—'; }
-  }
-
-  async function fetchYT() {
-    if (!YOUTUBE_API_KEY || YOUTUBE_API_KEY === 'TWOJ_KLUCZ_YOUTUBE_API') {
-      return { subs: '—', videos: '—', views: '—' };
-    }
-    try {
-      const r = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${YOUTUBE_CHANNEL_ID}&key=${YOUTUBE_API_KEY}`);
-      const d = await r.json();
-      const s = d?.items?.[0]?.statistics;
-      if (!s) return { subs: '—', videos: '—', views: '—' };
-      return {
-        subs:   fmt(parseInt(s.subscriberCount, 10)),
-        videos: fmt(parseInt(s.videoCount, 10)),
-        views:  fmt(parseInt(s.viewCount, 10)),
-      };
-    } catch { return { subs: '—', videos: '—', views: '—' }; }
-  }
-
-  (async () => {
-    const [followers, yt] = await Promise.all([fetchTwitchFollowers(), fetchYT()]);
-
-    /* YouTube */
-    setIds(['yt-subs'],    yt.subs);
-    setIds(['yt-videos'],  yt.videos);
-    setIds(['yt-views'],   yt.views);
-
-    /* Twitch followers (free) */
-    setIds(['twitch-followers'], followers);
-
-    setIds(['twitch-viewers'],  '—');
-    setIds(['twitch-minutes'],  '—');
-  })();
 </script>
-
 </body>
 </html>

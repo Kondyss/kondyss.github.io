@@ -207,6 +207,15 @@
       overflow: hidden;
     }
 
+    /* Gdy offline — lewa połowa rozciąga się na całą szerokość */
+    .hero--offline {
+      grid-template-columns: 1fr;
+    }
+
+    .hero--offline .hero-right { display: none; }
+
+    .hero--offline .hero-left { border-right: none; }
+
     .hero::before {
       content: '';
       position: absolute;
@@ -1265,6 +1274,18 @@
   /* ── STATYSTYKI — zaktualizuj ręcznie gdy wartości się zmienią ── */
   document.getElementById('proof-twitch').textContent = '21,3 tys.';
   document.getElementById('proof-yt').textContent     = '24,9 tys.';
+
+  /* ── TWITCH LIVE CHECK ── */
+  /* DecAPI zwraca "kondyss is offline" gdy offline, lub czas trwania streamu gdy live */
+  (async () => {
+    try {
+      const r = await fetch('https://decapi.me/twitch/uptime/kondyss');
+      const t = (await r.text()).trim().toLowerCase();
+      if (t.includes('offline')) {
+        document.querySelector('.hero').classList.add('hero--offline');
+      }
+    } catch { /* brak odpowiedzi = zostaw domyślny widok */ }
+  })();
 
 </script>
 

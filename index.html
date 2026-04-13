@@ -108,6 +108,58 @@
 
     .games-toggle-btn.active { color: var(--accent); border-color: var(--accent); }
 
+
+    /* Main nav burger — visible when nav-links overflow */
+    .nav-menu-btn {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .nav-menu-btn:hover { color: var(--text); border-color: var(--accent); }
+    .nav-menu-btn.active { color: var(--text); border-color: var(--accent); }
+
+    /* Dropdown nav panel */
+    .nav-dropdown {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      z-index: 290;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      padding: 0.5rem 0;
+    }
+    .nav-dropdown.open { display: flex; }
+    .nav-dropdown a {
+      display: block;
+      padding: 0.7rem 1.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.18s, background 0.18s;
+    }
+    .nav-dropdown a:last-child { border-bottom: none; }
+    .nav-dropdown a:hover { color: var(--text); background: var(--bg3); }
+
     /* hamburger icon */
     .toggle-icon { font-size: 0.9rem; }
 
@@ -423,6 +475,44 @@
     }
 
     .proof-text { display: flex; flex-direction: column; gap: 0.2rem; }
+
+
+    .hero-card-cta {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 6px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+
+    .hero-btn-yt {
+      background: rgba(255,0,0,0.12);
+      border: 1px solid rgba(255,0,0,0.3);
+      color: #ff4444;
+    }
+    .hero-btn-yt:hover { background: rgba(255,0,0,0.22); border-color: rgba(255,0,0,0.6); }
+
+    .hero-btn-twitch {
+      background: rgba(145,70,255,0.12);
+      border: 1px solid rgba(145,70,255,0.3);
+      color: #a97fff;
+    }
+    .hero-btn-twitch:hover { background: rgba(145,70,255,0.22); border-color: rgba(145,70,255,0.6); }
 
     .hero-right {
       position: relative;
@@ -741,8 +831,8 @@
     ═══════════════════════════════ */
     .seasons-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.75rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
     }
 
     .season-card {
@@ -757,20 +847,20 @@
     .season-card-header {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.65rem 0.85rem;
+      gap: 0.6rem;
+      padding: 0.85rem 1.1rem;
       border-bottom: 1px solid var(--border);
     }
 
     .season-game-logo {
-      width: 22px; height: 22px;
+      width: 28px; height: 28px;
       flex-shrink: 0;
-      border-radius: 3px;
+      border-radius: 4px;
       object-fit: contain;
     }
 
     .season-game-name {
-      font-size: 0.7rem;
+      font-size: 0.82rem;
       font-weight: 500;
       letter-spacing: 0.04em;
       color: var(--text);
@@ -779,13 +869,13 @@
       text-overflow: ellipsis;
     }
 
-    .season-body { padding: 0.75rem 0.85rem; display: flex; flex-direction: column; gap: 0.65rem; flex: 1; }
+    .season-body { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.8rem; flex: 1; }
 
     /* Current league block */
     .season-current { display: flex; flex-direction: column; gap: 0.2rem; }
 
     .season-block-label {
-      font-size: 0.54rem;
+      font-size: 0.62rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--muted);
@@ -793,16 +883,16 @@
 
     .season-league-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.35rem;
       letter-spacing: 0.05em;
       color: var(--text);
       line-height: 1;
     }
 
     .season-running {
-      font-size: 0.67rem;
+      font-size: 0.78rem;
       color: var(--muted);
-      margin-top: 0.1rem;
+      margin-top: 0.15rem;
       line-height: 1.4;
     }
 
@@ -822,21 +912,21 @@
     .season-next { display: flex; flex-direction: column; gap: 0.2rem; }
 
     .season-next-name {
-      font-size: 0.78rem;
+      font-size: 0.88rem;
       font-weight: 500;
       color: var(--muted);
     }
 
     .season-countdown {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       letter-spacing: 0.05em;
       color: var(--accent);
       line-height: 1;
     }
 
     .season-countdown.tba {
-      font-size: 0.72rem;
+      font-size: 0.82rem;
       font-family: 'Outfit', sans-serif;
       font-weight: 400;
       letter-spacing: 0.1em;
@@ -844,18 +934,13 @@
     }
 
     .season-next-date {
-      font-size: 0.64rem;
+      font-size: 0.74rem;
       color: var(--muted);
       margin-top: 0.1rem;
     }
 
-    /* Tablet — 2 kolumny */
-    @media (max-width: 960px) {
-      .seasons-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
     /* Mobile — 1 kolumna */
-    @media (max-width: 480px) {
+    @media (max-width: 560px) {
       .seasons-grid { grid-template-columns: 1fr; }
     }
 
@@ -946,7 +1031,45 @@
     @media (max-width: 720px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem 2rem; }
-      .hero-right { padding: 1.5rem; }
+  
+    .hero-card-cta {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 6px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+
+    .hero-btn-yt {
+      background: rgba(255,0,0,0.12);
+      border: 1px solid rgba(255,0,0,0.3);
+      color: #ff4444;
+    }
+    .hero-btn-yt:hover { background: rgba(255,0,0,0.22); border-color: rgba(255,0,0,0.6); }
+
+    .hero-btn-twitch {
+      background: rgba(145,70,255,0.12);
+      border: 1px solid rgba(145,70,255,0.3);
+      color: #a97fff;
+    }
+    .hero-btn-twitch:hover { background: rgba(145,70,255,0.22); border-color: rgba(145,70,255,0.6); }
+
+    .hero-right { padding: 1.5rem; }
       .about-split { grid-template-columns: 1fr; }
       .about-col + .about-col { border-left: none; border-top: 1px solid var(--border); }
       .platform-stats-row { grid-template-columns: 1fr; }
@@ -957,11 +1080,15 @@
       .schedule-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .nav-menu-btn { display: flex; }
+    }
+
     @media (max-width: 480px) {
       .top-nav { padding: 0 1rem; }
       section { padding: 3rem 1rem; }
       .video-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -981,11 +1108,27 @@
     <li><a href="https://discord.gg/kondyss" target="_blank" style="color: #5865f2;">Discord</a></li>
   </ul>
 
+  <!-- Nav burger — mobile only -->
+  <button class="nav-menu-btn" id="navMenuBtn" aria-expanded="false" aria-label="Menu">
+    ☰ Menu
+  </button>
+
   <!-- visible only on mobile/tablet -->
   <button class="games-toggle-btn" id="gamesToggleBtn" aria-expanded="false" aria-label="Nawigacja gier">
     <span class="toggle-icon">⊞</span> Gry
   </button>
 </nav>
+
+<!-- ── NAV DROPDOWN (burger menu) ── -->
+<div class="nav-dropdown" id="navDropdown" role="navigation">
+  <a href="#subathon" class="nav-dd-link">Subathon</a>
+  <a href="#filmy" class="nav-dd-link">Filmy</a>
+  <a href="#sezony" class="nav-dd-link">Sezony</a>
+  <a href="#omnie" class="nav-dd-link">O mnie</a>
+  <a href="#merch" class="nav-dd-link">Merch</a>
+  <a href="#kontakt" class="nav-dd-link">Kontakt</a>
+  <a href="https://discord.gg/kondyss" target="_blank" style="color:#5865f2;">Discord</a>
+</div>
 
 <!-- ── MOBILE GAME BAR (below nav, hidden by default) ── -->
 <div class="mobile-game-bar" id="mobileGameBar" role="navigation" aria-label="Wybierz grę">
@@ -1088,6 +1231,16 @@
           <p class="hero-bio">
             Streamer, YouTuber, Model, Filantrop, Miłośnik Pizzy
           </p>
+          <div class="hero-card-cta">
+            <a href="https://youtube.com/@kondyss" target="_blank" class="hero-btn hero-btn-yt">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+              YouTube
+            </a>
+            <a href="https://twitch.tv/kondyss" target="_blank" class="hero-btn hero-btn-twitch">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.6 6H10V11.4H11.6V6ZM15.9 6H14.3V11.4H15.9V6ZM4.8 0L1.2 3.6V20.4H6V24L9.6 20.4H12L22.8 9.6V0H4.8ZM21.2 8.8L18.4 11.6H16L13.6 14V11.6H10.8V1.6H21.2V8.8Z"/></svg>
+              Twitch
+            </a>
+          </div>
         </div>
       </div>
 
@@ -1359,7 +1512,7 @@
       <div class="contact-grid">
         <div class="contact-card">
           <p class="contact-label">E-mail biznesowy</p>
-          <span style="color: var(--accent); font-size: 0.92rem;">kontakt.kondyss@gmail.com</span>
+          <span style="color: var(--accent); font-size: 0.92rem;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0dbdfdec4d1dbc49edbdfded4c9c3c3f0d7ddd1d9dc9ed3dfdd">[email&#160;protected]</a></span>
         </div>
         <div class="contact-card">
           <p class="contact-label">Discord</p>
@@ -1379,7 +1532,7 @@
 
 </div><!-- /main-wrap -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   /* ── MOBILE GAME BAR TOGGLE ── */
   function toggleGames() {
     const bar  = document.getElementById('mobileGameBar');
@@ -1392,7 +1545,23 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    /* toggle button */
+    /* Nav burger */
+    const navMenuBtn  = document.getElementById('navMenuBtn');
+    const navDropdown = document.getElementById('navDropdown');
+    if (navMenuBtn && navDropdown) {
+      navMenuBtn.addEventListener('click', () => {
+        const open = navDropdown.classList.toggle('open');
+        navMenuBtn.classList.toggle('active', open);
+        navMenuBtn.setAttribute('aria-expanded', open);
+      });
+      navDropdown.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        navDropdown.classList.remove('open');
+        navMenuBtn.classList.remove('active');
+        navMenuBtn.setAttribute('aria-expanded', false);
+      }));
+    }
+
+    /* Games toggle button */
     document.getElementById('gamesToggleBtn')
       .addEventListener('click', toggleGames);
 
@@ -1595,7 +1764,6 @@
   renderSeasons();
 
   /* ── TWITCH LIVE CHECK ── */
-  /* DecAPI zwraca "kondyss is offline" gdy offline, lub czas trwania streamu gdy live */
   (async () => {
     try {
       const r = await fetch('https://decapi.me/twitch/uptime/kondyss');
@@ -1605,8 +1773,6 @@
       }
     } catch { /* brak odpowiedzi = zostaw domyślny widok */ }
   })();
-
 </script>
-
 </body>
 </html>

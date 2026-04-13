@@ -5,250 +5,366 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="/kaptur32x32.png" />
   <link rel="apple-touch-icon" href="/kaptur32x32.png" />
-  <title> Kondyss »Diablo IV«</title>
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>Kondyss »Diablo IV«</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --accent:      #b91c1c;
-      --accent-dim:  #7f1d1d;
-      --accent-glow: rgba(185, 28, 28, 0.16);
+      --accent:      #c0392b;
+      --accent-glow: rgba(192, 57, 43, 0.15);
       --bg:          #090808;
       --bg2:         #100c0c;
       --bg3:         #181010;
       --text:        #f0ecea;
       --muted:       #7a6565;
       --border:      rgba(255,255,255,0.06);
-      --border-acc:  rgba(185,28,28,0.45);
-      --game-color:  #b91c1c;
+      --border-acc:  rgba(192,57,43,0.45);
     }
 
     html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.7; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
+    /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 3rem;
-      height: 58px;
-      background: rgba(9,8,8,0.88);
-      backdrop-filter: blur(16px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 58px;
+      background: rgba(9,8,8,0.92); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-
     .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.12em; color: var(--accent); text-decoration: none; }
-    .nav-back  { color: var(--muted); text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-back  { color: var(--muted); text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
     .nav-back:hover { color: var(--text); }
 
+    /* ── PAGE HERO ── */
     .page-hero {
       padding-top: 58px;
-      min-height: 38vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      min-height: 28vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center;
-      background:
-        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(80,10,10,0.3) 0%, transparent 70%),
-        var(--bg);
+      background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(140,20,10,0.45) 0%, transparent 70%), var(--bg);
       border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
     }
 
-    .top-stripe { width: 100%; height: 3px; background: linear-gradient(90deg, #7c1d1d, #2d0808); margin-bottom: 2.5rem; }
-
-    .page-hero .eyebrow { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
-
-    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 9vw, 6rem); letter-spacing: 0.08em; line-height: 1; }
-
-    .page-hero .sub { color: var(--muted); margin-top: 0.8rem; font-size: 0.9rem; padding-bottom: 3rem; }
-
-    .content { max-width: 960px; margin: 0 auto; padding: 4rem 2rem 6rem; }
-
-    .s-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
-    .s-title  { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: 0.06em; color: var(--text); margin-bottom: 1.5rem; line-height: 1; }
-
-    /* VIDEO LINKS */
-    .link-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 3.5rem; }
-
-    .link-item {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.4rem;
-      text-decoration: none;
-      color: var(--text);
-      transition: border-color 0.2s, background 0.2s;
+    /* D4 red top stripe */
+    .page-hero::before {
+      content: '';
+      position: absolute; top: 58px; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #5a0e0e, #c0392b, #5a0e0e);
     }
 
-    .link-item:hover { border-color: var(--border-acc); background: var(--bg3); }
-
-    .link-icon {
-      width: 36px; height: 36px;
-      border-radius: 6px;
-      background: var(--accent-glow);
-      border: 1px solid var(--border-acc);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 0.8rem;
-      color: var(--accent);
-      font-weight: 600;
+    .page-hero .eyebrow {
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.7rem; margin-top: 2rem;
     }
 
-    .link-info { flex: 1; }
-    .link-title { font-weight: 500; font-size: 0.95rem; }
-    .link-desc  { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
-    .link-arrow { color: var(--muted); font-size: 0.9rem; transition: transform 0.2s, color 0.2s; }
-    .link-item:hover .link-arrow { color: var(--accent); transform: translateX(3px); }
+    .page-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 9vw, 6rem); letter-spacing: 0.08em; line-height: 1;
+      padding-bottom: 2.5rem;
+    }
 
-    /* PLANNER GRID */
-    .planner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 3.5rem; }
+    /* ── CONTENT ── */
+    .content { max-width: 1060px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+    .section-block { margin-bottom: 4.5rem; }
 
+    .s-label { font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+    .s-title  { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: 0.06em; color: var(--text); margin-bottom: 1.6rem; line-height: 1; }
+
+    /* ── VIDEO CARD (shared) ── */
+    .video-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+      overflow: hidden; text-decoration: none; color: var(--text);
+      display: flex; flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .video-card:hover { border-color: var(--border-acc); transform: translateY(-2px); }
+
+    .video-thumb {
+      position: relative; width: 100%; aspect-ratio: 16/9;
+      background: #0d0909; overflow: hidden;
+    }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+    .video-card:hover .video-thumb img { transform: scale(1.03); }
+
+    .play-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; background: rgba(0,0,0,0.32); transition: opacity 0.2s;
+    }
+    .video-card:hover .play-overlay { opacity: 1; }
+
+    .play-circle {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .play-circle::after {
+      content: ''; width: 0; height: 0;
+      border-top: 9px solid transparent; border-bottom: 9px solid transparent;
+      border-left: 16px solid #fff; margin-left: 3px;
+    }
+
+    .video-info { padding: 0.8rem 1rem; font-size: 0.86rem; line-height: 1.4; }
+    .video-tag  { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.2rem; }
+
+    /* ── FEATURED (single centred) ── */
+    .featured-wrap { display: flex; justify-content: center; }
+    .featured-wrap .video-card { max-width: 580px; width: 100%; }
+
+    /* ── CLASS GRID 4×2 ── */
+    .class-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.9rem;
+    }
+
+    /* ── PLANNER CARD ── */
     .planner-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.4rem;
-      text-decoration: none;
-      color: var(--text);
-      transition: border-color 0.2s;
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.2rem; text-decoration: none; color: var(--text);
+      display: flex; flex-direction: column; gap: 0.3rem;
+      transition: border-color 0.2s, transform 0.2s;
+      height: 100%;
+    }
+    .planner-card:hover { border-color: var(--border-acc); transform: translateY(-2px); }
+
+    .planner-logo {
+      width: 34px; height: 34px; flex-shrink: 0; margin-bottom: 0.45rem;
+      background: var(--accent-glow); border: 1px solid var(--border-acc);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.52rem; font-weight: 700; letter-spacing: 0.06em; color: var(--accent);
+    }
+    .planner-tag  { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .planner-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.04em; line-height: 1.1; }
+    .planner-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+    .planner-arrow { font-size: 0.75rem; color: var(--accent); margin-top: auto; padding-top: 0.6rem; }
+
+    /* ── SEASON GRID 4 columns ── */
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.9rem;
     }
 
-    .planner-card:hover { border-color: var(--border-acc); }
-    .planner-card-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
-    .planner-card h4 { font-weight: 500; font-size: 1rem; margin-bottom: 0.3rem; }
-    .planner-card p  { font-size: 0.82rem; color: var(--muted); }
-
-    /* OUTDATED WARNING */
+    /* ── OUTDATED BANNER ── */
     .outdated-banner {
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-      background: rgba(185, 140, 0, 0.07);
-      border: 1px solid rgba(185, 140, 0, 0.3);
-      border-radius: 10px;
-      padding: 1.4rem 1.6rem;
-      margin-top: 4rem;
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      background: rgba(185,140,0,0.07); border: 1px solid rgba(185,140,0,0.3);
+      border-radius: 10px; padding: 1.4rem 1.6rem; margin-top: 4rem;
     }
-
-    .outdated-icon {
-      font-size: 1.4rem;
-      flex-shrink: 0;
-      line-height: 1;
-      margin-top: 0.1rem;
-    }
-
-    .outdated-banner h4 {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #d4a017;
-      margin-bottom: 0.3rem;
-    }
-
-    .outdated-banner p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
-    .outdated-banner a { color: #d4a017; text-decoration: underline; text-underline-offset: 3px; }
+    .outdated-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1; margin-top: 0.1rem; }
+    .outdated-banner h4 { font-weight: 600; font-size: 0.9rem; color: #d4a017; margin-bottom: 0.3rem; }
+    .outdated-banner p  { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+    .outdated-banner a  { color: #d4a017; text-decoration: underline; text-underline-offset: 3px; }
 
     footer { border-top: 1px solid var(--border); text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); }
 
-    @media (max-width: 768px) { nav { padding: 0 1.2rem; } .content { padding: 3rem 1.2rem 4rem; } }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .class-grid  { grid-template-columns: repeat(2, 1fr); }
+      .season-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      nav { padding: 0 1rem; }
+      .content { padding: 2.5rem 1rem 4rem; }
+      .class-grid  { grid-template-columns: 1fr; }
+      .season-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
 <nav>
   <a href="/" class="nav-logo">Kondyss</a>
-  <a href="/#gry" class="nav-back">← Gry</a>
+  <a href="/" class="nav-back">← Strona główna</a>
 </nav>
 
 <div class="page-hero">
-  <div class="top-stripe"></div>
   <p class="eyebrow">aRPG · Poradniki i Buildy</p>
   <h1>Diablo IV</h1>
-  <p class="sub">Buildy sezonowe i poradniki do każdego sezonu Diablo IV.</p>
 </div>
 
 <div class="content">
 
-  <!-- FILMY YOUTUBE -->
-  <p class="s-label">YouTube</p>
-  <h2 class="s-title">Filmy i Poradniki</h2>
-  <div class="link-list">
+  <!-- ══════════════════════════════════════════════
+       MÓJ STARTER
+       Zamień STARTER_VIDEO_ID na ID z YouTube URL
+       ══════════════════════════════════════════════ -->
+  <div class="section-block">
+    <p class="s-label">Na start</p>
+    <h2 class="s-title">Mój Starter</h2>
 
-    <!-- Dodaj tutaj linki do swoich filmów. Skopiuj blok poniżej dla każdego filmu. -->
-    <a href="LINK_DO_FILMU" target="_blank" rel="noopener" class="link-item">
-      <div class="link-icon">YT</div>
-      <div class="link-info">
-        <div class="link-title">Tytuł Twojego Filmu</div>
-        <div class="link-desc">Krótki opis lub sezon / liga</div>
-      </div>
-      <span class="link-arrow">→</span>
-    </a>
-
-    <a href="LINK_DO_FILMU" target="_blank" rel="noopener" class="link-item">
-      <div class="link-icon">YT</div>
-      <div class="link-info">
-        <div class="link-title">Tytuł Twojego Filmu</div>
-        <div class="link-desc">Krótki opis lub sezon / liga</div>
-      </div>
-      <span class="link-arrow">→</span>
-    </a>
-
-    <a href="LINK_DO_FILMU" target="_blank" rel="noopener" class="link-item">
-      <div class="link-icon">YT</div>
-      <div class="link-info">
-        <div class="link-title">Tytuł Twojego Filmu</div>
-        <div class="link-desc">Krótki opis lub sezon / liga</div>
-      </div>
-      <span class="link-arrow">→</span>
-    </a>
-
+    <div class="featured-wrap">
+      <a href="https://www.youtube.com/watch?v=GblycTb9uVM" target="_blank" rel="noopener" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/GblycTb9uVM/hqdefault.jpg" alt="Mój Starter — Diablo IV" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Diablo IV · Starter</div>
+          Tytuł starterowego poradnika
+        </div>
+      </a>
+    </div>
   </div>
 
-  <!-- PLANERY MAXROLL -->
-  <p class="s-label">Maxroll.gg</p>
-  <h2 class="s-title">Planery Buildów</h2>
-  <div class="planner-grid">
+  <!-- ══════════════════════════════════════════════
+       KONFIGURACJE POSTACI  (4×2)
+       ── WIERSZ 1 (filmy): Paladyn | Barbarzyńca | Spirytysta | Czarodziejka
+       ── WIERSZ 2 (planery Maxroll): Nekromanta | Łotr | Druid | Czarnoksiężnik
+       Zamień VIDEO_ID_xxx i MAXROLL_URL_xxx na właściwe linki.
+       ══════════════════════════════════════════════ -->
+  <div class="section-block">
+    <p class="s-label">Buildy</p>
+    <h2 class="s-title">Konfiguracje Postaci</h2>
 
-    <!-- Dodaj tutaj linki do swoich planerów na Maxroll. -->
-    <a href="LINK_MAXROLL" target="_blank" rel="noopener" class="planner-card">
-      <p class="planner-card-label">Build · Liga XX</p>
-      <h4>Nazwa Buildu</h4>
-      <p>Krótki opis — klasa, styl gry, przeznaczenie.</p>
-    </a>
+    <div class="class-grid">
 
-    <a href="LINK_MAXROLL" target="_blank" rel="noopener" class="planner-card">
-      <p class="planner-card-label">Build · Liga XX</p>
-      <h4>Nazwa Buildu</h4>
-      <p>Krótki opis — klasa, styl gry, przeznaczenie.</p>
-    </a>
+      <!-- Paladyn — YouTube -->
+      <a href="https://www.youtube.com/watch?v=GblycTb9uVM" target="_blank" rel="noopener" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/GblycTb9uVM/hqdefault.jpg" alt="Paladyn" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Paladyn</div>
+          Tytuł poradnika
+        </div>
+      </a>
 
-    <a href="LINK_MAXROLL" target="_blank" rel="noopener" class="planner-card">
-      <p class="planner-card-label">Build · Liga XX</p>
-      <h4>Nazwa Buildu</h4>
-      <p>Krótki opis — klasa, styl gry, przeznaczenie.</p>
-    </a>
+      <!-- Barbarzyńca — YouTube -->
+      <a href="https://https://www.youtube.com/watch?v=-jruqKAJQRk" target="_blank" rel="noopener" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/-jruqKAJQRk/hqdefault.jpg" alt="Barbarzyńca" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Barbarzyńca</div>
+          Tytuł poradnika
+        </div>
+      </a>
 
+      <!-- Spirytysta — YouTube -->
+      <a href="https://www.youtube.com/watch?v=iWMS-XhTfZ4" target="_blank" rel="noopener" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/iWMS-XhTfZ4/hqdefault.jpg" alt="Spirytysta" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Spirytysta</div>
+          Tytuł poradnika
+        </div>
+      </a>
+
+      <!-- Czarodziejka — YouTube -->
+      <a href="https://www.youtube.com/watch?v=uNpUpT0m3XU" target="_blank" rel="noopener" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/uNpUpT0m3XU/hqdefault.jpg" alt="Czarodziejka" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Czarodziejka</div>
+          Tytuł poradnika
+        </div>
+      </a>
+
+      <!-- Nekromanta — Maxroll -->
+      <a href="https://maxroll.gg/d4/planner/cr75c0ro#3" target="_blank" rel="noopener" class="planner-card">
+        <div class="planner-logo">MR</div>
+        <div class="planner-tag">Nekromanta · Maxroll</div>
+        <div class="planner-name">Endgame - Fala Krwi</div>
+        <div class="planner-desc">Krótki opis — styl gry, przeznaczenie.</div>
+        <div class="planner-arrow">→ Otwórz planer</div>
+      </a>
+
+      <!-- Łotr — Maxroll -->
+      <a href="https://maxroll.gg/d4/planner/novi0n41#3" target="_blank" rel="noopener" class="planner-card">
+        <div class="planner-logo">MR</div>
+        <div class="planner-tag">Łotr · Maxroll</div>
+        <div class="planner-name">Endgame - Death Trap</div>
+        <div class="planner-arrow">→ Otwórz planer</div>
+      </a>
+
+      <!-- Druid — Maxroll -->
+      <a href="https://maxroll.gg/d4/planner/yr6gt0oc#1" target="_blank" rel="noopener" class="planner-card">
+        <div class="planner-logo">MR</div>
+        <div class="planner-tag">Druid · Maxroll</div>
+        <div class="planner-name">Pulverize</div>
+        <div class="planner-arrow">→ Otwórz planer</div>
+      </a>
+
+      <!-- Czarnoksiężnik — Maxroll -->
+      <a href="https://maxroll.gg/d4/planner" target="_blank" rel="noopener" class="planner-card">
+        <div class="planner-logo">MR</div>
+        <div class="planner-tag">Czarnoksiężnik · Maxroll</div>
+        <div class="planner-name">Otchłań..? Nie wiem jeszcze</div>
+        <div class="planner-arrow">Jeszcze nie ma</div>
+      </a>
+
+    </div>
   </div>
 
-  <!-- OUTDATED WARNING -->
+  <!-- ══════════════════════════════════════════════
+       SEZON RZEZI  (4 filmy)
+       Zamień VIDEO_ID_S1..S4 na ID z YouTube URL
+       ══════════════════════════════════════════════ -->
+  <div class="section-block">
+    <p class="s-label">Sezon</p>
+    <h2 class="s-title">Sezon Rzezi</h2>
+
+    <div class="season-grid">
+
+      <a href="https://www.youtube.com/watch?v=wWmnMPivYs4" target="_blank" rel="noopener" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/wWmnMPivYs4/hqdefault.jpg" alt="Sezon Rzezi 1" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Diablo IV · Sezon Rzezi</div>
+           Tak zaczynam Sezon 12! - Jak levelować w Diablo 4 Sezon Rzezi 
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=8kkpqaPAp0w" target="_blank" rel="noopener" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/8kkpqaPAp0w/hqdefault.jpg" alt="Sezon Rzezi 2" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Diablo IV · Sezon Rzezi</div>
+           OBDUCYT, LEGENDARKI I NAWET MITYKI! - Jak farmię w Sezonie 12 w Diablo 4 
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=rgS1qOelGMc" target="_blank" rel="noopener" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/rgS1qOelGMc/hqdefault.jpg" alt="Sezon Rzezi 3" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Diablo IV · Sezon Rzezi</div>
+           Dzięki Temu Hełmowi Będziesz Farmić Szybciej! + Paladyn pod Wymach, którym farmię 
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=dz22CVkDBJ0" target="_blank" rel="noopener" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/dz22CVkDBJ0/hqdefault.jpg" alt="Sezon Rzezi 4" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Diablo IV · Sezon Rzezi</div>
+           Polecane buildy na Start Sezonu Rzezi! - Sezon 12 w Diablo 4 
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ══ NIEAKTUALNE PORADNIKI ══════════════════════════════════ -->
   <div class="outdated-banner">
     <div class="outdated-icon">⚠️</div>
     <div>
@@ -256,16 +372,13 @@
       <p>
         Gry aRPG zmieniają się szybko — nowa zawartość, patche, niespodziewane zmiany mechanik czy naprawy bugów.
         Jeśli zauważysz że coś tu nie gra, daj mi znać!
-        Napisz na odpowiednim kanale na Discord albo złap mnie na transmisji na żywo  — chętnie zaktualizuję poradnik przed kolejną ligą.
+        Napisz na odpowiednim kanale na <a href="https://discord.gg/kondyss" target="_blank">Discordzie</a> albo złap mnie na transmisji na żywo — chętnie zaktualizuję poradnik przed kolejną ligą.
       </p>
     </div>
   </div>
-
 </div>
-
 <footer>
   <p>© 2026 Kondyss &nbsp;·&nbsp; <a href="/" style="color: var(--muted); text-decoration: none;">Strona główna</a></p>
 </footer>
-
 </body>
 </html>

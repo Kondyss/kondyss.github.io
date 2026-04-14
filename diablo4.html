@@ -129,23 +129,38 @@
     /* ── PLANNER CARD ── */
     .planner-card {
       background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
-      padding: 1.2rem; text-decoration: none; color: var(--text);
-      display: flex; flex-direction: column; gap: 0.3rem;
+      overflow: hidden; text-decoration: none; color: var(--text);
+      display: flex; flex-direction: column;
       transition: border-color 0.2s, transform 0.2s;
-      height: 100%;
     }
     .planner-card:hover { border-color: var(--border-acc); transform: translateY(-2px); }
 
-    .planner-logo {
-      width: 34px; height: 34px; flex-shrink: 0; margin-bottom: 0.45rem;
-      background: var(--accent-glow); border: 1px solid var(--border-acc);
-      border-radius: 6px; display: flex; align-items: center; justify-content: center;
-      font-size: 0.52rem; font-weight: 700; letter-spacing: 0.06em; color: var(--accent);
+    /* Banner 16:9 — identyczne proporcje jak miniatura wideo */
+    .planner-thumb {
+      width: 100%; aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--bg3) 0%, rgba(192,57,43,0.10) 100%);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
+
+    .planner-thumb-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; letter-spacing: 0.2em;
+      color: rgba(192,57,43,0.35);
+      user-select: none;
+    }
+
+    .planner-body {
+      padding: 0.8rem 1rem;
+      display: flex; flex-direction: column; gap: 0.25rem;
+      flex: 1;
+    }
+
     .planner-tag  { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
     .planner-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.04em; line-height: 1.1; }
     .planner-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
-    .planner-arrow { font-size: 0.75rem; color: var(--accent); margin-top: auto; padding-top: 0.6rem; }
+    .planner-arrow { font-size: 0.75rem; color: var(--accent); margin-top: auto; padding-top: 0.4rem; }
 
     /* ── OUTDATED BANNER ── */
     .outdated-banner {
@@ -275,10 +290,14 @@
 
       <!-- Czarnoksiężnik — Maxroll -->
       <a href="https://maxroll.gg/d4/planner" target="_blank" rel="noopener" class="planner-card">
-        <div class="planner-logo">MR</div>
-        <div class="planner-tag">Czarnoksiężnik · Maxroll</div>
-        <div class="planner-name">Otchłań..? Nie wiem jeszcze</div>
-        <div class="planner-arrow">Jeszcze nie ma</div>
+        <div class="planner-thumb">
+          <div class="planner-thumb-logo">MAXROLL</div>
+        </div>
+        <div class="planner-body">
+          <div class="planner-tag">Czarnoksiężnik · Maxroll</div>
+          <div class="planner-name">Otchłań..? Nie wiem jeszcze</div>
+          <div class="planner-arrow">Jeszcze nie ma</div>
+        </div>
       </a>
 
       <!-- Paladyn — YouTube -->
@@ -343,26 +362,38 @@
 
       <!-- Nekromanta — Maxroll -->
       <a href="https://maxroll.gg/d4/planner/cr75c0ro#3" target="_blank" rel="noopener" class="planner-card">
-        <div class="planner-logo">MR</div>
-        <div class="planner-tag">Nekromanta · Maxroll</div>
-        <div class="planner-name">Endgame - Fala Krwi</div>
-        <div class="planner-arrow">→ Otwórz planer</div>
+        <div class="planner-thumb">
+          <div class="planner-thumb-logo">MAXROLL</div>
+        </div>
+        <div class="planner-body">
+          <div class="planner-tag">Nekromanta · Maxroll</div>
+          <div class="planner-name">Endgame - Fala Krwi</div>
+          <div class="planner-arrow">→ Otwórz planer</div>
+        </div>
       </a>
 
       <!-- Łotr — Maxroll -->
       <a href="https://maxroll.gg/d4/planner/novi0n41#3" target="_blank" rel="noopener" class="planner-card">
-        <div class="planner-logo">MR</div>
-        <div class="planner-tag">Łotr · Maxroll</div>
-        <div class="planner-name">Endgame - Death Trap</div>
-        <div class="planner-arrow">→ Otwórz planer</div>
+        <div class="planner-thumb">
+          <div class="planner-thumb-logo">MAXROLL</div>
+        </div>
+        <div class="planner-body">
+          <div class="planner-tag">Łotr · Maxroll</div>
+          <div class="planner-name">Endgame - Death Trap</div>
+          <div class="planner-arrow">→ Otwórz planer</div>
+        </div>
       </a>
 
       <!-- Druid — Maxroll -->
       <a href="https://maxroll.gg/d4/planner/yr6gt0oc#1" target="_blank" rel="noopener" class="planner-card">
-        <div class="planner-logo">MR</div>
-        <div class="planner-tag">Druid · Maxroll</div>
-        <div class="planner-name">Pulverize</div>
-        <div class="planner-arrow">→ Otwórz planer</div>
+        <div class="planner-thumb">
+          <div class="planner-thumb-logo">MAXROLL</div>
+        </div>
+        <div class="planner-body">
+          <div class="planner-tag">Druid · Maxroll</div>
+          <div class="planner-name">Pulverize</div>
+          <div class="planner-arrow">→ Otwórz planer</div>
+        </div>
       </a>
     </div>
   </div>

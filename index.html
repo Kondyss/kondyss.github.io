@@ -1731,41 +1731,20 @@
 
   renderSeasons();
 
-  /* ── OSTATNIE FILMY — YouTube RSS (bez klucza API) ── */
-  /*
-    Channel ID: UCQHb6jgWsW0IGBwynQah1vg
-  */
-  (function () {
-    const CHANNEL_ID = 'UCQHb6jgWsW0IGBwynQah1vg';
-    const COUNT      = 8;
-    const FEED_URL   = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+  /* ── OSTATNIE FILMY — z /videos.json (generowanego przez GitHub Actions) ── */
+  (async () => {
+    const grid = document.getElementById('videoGrid');
+    if (!grid) return;
+    try {
+      const r     = await fetch('/videos.json');
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const videos = await r.json();
+      if (!videos.length) throw new Error('empty');
 
-    /* Dwa niezależne CORS-proxy jako fallback */
-    const PROXIES = [
-      'https://corsproxy.io/?' + encodeURIComponent(FEED_URL),
-      'https://allorigins.win/raw?url=' + encodeURIComponent(FEED_URL),
-    ];
-
-    function parseXML(xmlText) {
-      const doc     = new DOMParser().parseFromString(xmlText, 'application/xml');
-      const entries = Array.from(doc.querySelectorAll('entry')).slice(0, COUNT);
-      return entries.map(e => {
-        /* <id>yt:video:VIDEOID</id> */
-        const rawId   = e.querySelector('id')?.textContent ?? '';
-        const videoId = rawId.replace('yt:video:', '');
-        const title   = e.querySelector('title')?.textContent ?? '';
-        return { videoId, title };
-      }).filter(v => v.videoId);
-    }
-
-    function renderCards(videos) {
-      const grid = document.getElementById('videoGrid');
-      if (!grid) return;
       grid.innerHTML = videos.map(v => `
-        <a href="https://www.youtube.com/watch?v=${v.videoId}" target="_blank" rel="noopener" class="video-card">
+        <a href="${v.url}" target="_blank" rel="noopener" class="video-card">
           <div class="video-thumb">
-            <img src="https://img.youtube.com/vi/${v.videoId}/hqdefault.jpg"
-                 alt="${v.title.replace(/"/g, '&quot;')}" loading="lazy" />
+            <img src="${v.thumb}" alt="${v.title.replace(/"/g,'&quot;')}" loading="lazy" />
             <div class="video-play-overlay"><div class="play-circle"></div></div>
           </div>
           <div class="video-info">
@@ -1773,36 +1752,15 @@
             ${v.title}
           </div>
         </a>`).join('');
-    }
-
-    function renderError() {
-      const grid = document.getElementById('videoGrid');
-      if (!grid) return;
+    } catch(e) {
+      console.warn('[YT] Nie udało się załadować videos.json:', e.message);
       grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem 1rem;color:var(--muted);font-size:0.88rem;">'
         + 'Nie udało się załadować filmów. '
         + '<a href="https://youtube.com/@kondyss" target="_blank" style="color:var(--accent);text-decoration:none;">'
         + 'Zobacz kanał na YouTube →</a></div>';
     }
-
-    async function tryProxy(url) {
-      const r = await fetch(url, { signal: AbortSignal.timeout(6000) });
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      const text = await r.text();
-      if (!text.includes('<entry>')) throw new Error('no entries');
-      return text;
-    }
-
-    (async () => {
-      for (const proxy of PROXIES) {
-        try {
-          const xml    = await tryProxy(proxy);
-          const videos = parseXML(xml);
-          if (videos.length) { renderCards(videos); return; }
-        } catch { /* try next */ }
-      }
-      renderError();
-    })();
   })();
+
 
   /* ── TWITCH LIVE CHECK ── */
   (async () => {

@@ -655,6 +655,26 @@
       margin-bottom: 0.2rem;
     }
 
+    /* ── SKELETON LOADING ── */
+    .skeleton-thumb {
+      width: 100%; aspect-ratio: 16/9;
+      background: linear-gradient(90deg, var(--bg3) 25%, var(--bg2) 50%, var(--bg3) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+    }
+    .skeleton-line {
+      background: linear-gradient(90deg, var(--bg3) 25%, var(--bg2) 50%, var(--bg3) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 4px;
+      display: block;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .video-skeleton { pointer-events: none; }
+
     /* ═══════════════════════════════
        EVENTS
     ═══════════════════════════════ */
@@ -1344,108 +1364,32 @@
     </section>
   </div>
 
-  <!-- POPULARNE FILMY -->
+  <!-- OSTATNIE FILMY -->
   <div class="section-wrap">
     <section id="filmy">
       <p class="s-label">YouTube</p>
-      <h2 class="s-title">Popularne filmy</h2>
-      <!--
-        JAK DODAĆ FILM:
-        1. ID z URL youtube.com/watch?v=ID
-        2. Wklej ID w href i src miniaturki (hqdefault.jpg)
-        3. Skopiuj blok <a class="video-card"> dla kolejnych filmów
-      -->
-      <div class="video-grid">
+      <h2 class="s-title">Ostatnie filmy</h2>
 
-        <a href="https://www.youtube.com/watch?v=7zzdEqq4oOY" target="_blank" rel="noopener" class="video-card">
-          <div class="video-thumb">
-            <img src="https://img.youtube.com/vi/7zzdEqq4oOY/hqdefault.jpg" alt="Film 1" loading="lazy" />
-            <div class="video-play-overlay"><div class="play-circle"></div></div>
-          </div>
-          <div class="video-info">
-            <div class="video-game-tag">Diablo IV</div>
-            Zwiedzamy Skovos! - Jak wygląda nowy akt w Diablo 4 Lord of Hatred | Reakcja
-          </div>
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=w-9nhk3Eato" target="_blank" rel="noopener" class="video-card">
-          <div class="video-thumb">
-            <img src="https://img.youtube.com/vi/w-9nhk3Eato/hqdefault.jpg" alt="Film 2" loading="lazy" />
-            <div class="video-play-overlay"><div class="play-circle"></div></div>
-          </div>
-          <div class="video-info">
-            <div class="video-game-tag">Diablo IV</div>
-            NOWY TRAILER Z MEFISTO! | Reakcja
-          </div>
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=GblycTb9uVM" target="_blank" rel="noopener" class="video-card">
-          <div class="video-thumb">
-            <img src="https://img.youtube.com/vi/GblycTb9uVM/hqdefault.jpg" alt="Film 3" loading="lazy" />
-            <div class="video-play-overlay"><div class="play-circle"></div></div>
-          </div>
-          <div class="video-info">
-            <div class="video-game-tag">Diablo IV</div>
-            Mój Starter na Sezon Rzezi - Skrzydła Arbitra【Poradnik "Od Zera" | Diablo 4】
-          </div>
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=m7YNFohbGYs" target="_blank" rel="noopener" class="video-card">
-          <div class="video-thumb">
-            <img src="https://img.youtube.com/vi/m7YNFohbGYs/hqdefault.jpg" alt="Film 4" loading="lazy" />
-            <div class="video-play-overlay"><div class="play-circle"></div></div>
-          </div>
-          <div class="video-info">
-            <div class="video-game-tag">Diablo II: Resurrected</div>
-            JEDYNY PORADNIK JAKI POTRZEBUJESZ NA START WARLOCKA! - Diablo 2 Reign of the Warlock
-          </div>
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=aHAH_Y0FdHU" target="_blank" rel="noopener" class="video-card">
-          <div class="video-thumb">
-            <img src="https://img.youtube.com/vi/aHAH_Y0FdHU/hqdefault.jpg" alt="Film 5" loading="lazy" />
-            <div class="video-play-overlay"><div class="play-circle"></div></div>
-          </div>
-          <div class="video-info">
-            <div class="video-game-tag">Path of Exile 2</div>
-            Kusze na kampanii TO JAK GRA NA KODACH! | Jak przejść kampanię w PoE 2 bez problemu dowolną klasą
-          </div>
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=4pYOjynphsI" target="_blank" rel="noopener" class="video-card">
-          <div class="video-thumb">
-            <img src="https://img.youtube.com/vi/4pYOjynphsI/hqdefault.jpg" alt="Film 6" loading="lazy" />
-            <div class="video-play-overlay"><div class="play-circle"></div></div>
-          </div>
-          <div class="video-info">
-            <div class="video-game-tag">Path of Exile 2</div>
-            To NAJLEPSZY BUILD JAKIM GRAŁEM! - Endgame Whirling Assault Titan
-          </div>
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=_BJkZ_8Xkik" target="_blank" rel="noopener" class="video-card">
-          <div class="video-thumb">
-            <img src="https://img.youtube.com/vi/_BJkZ_8Xkik/hqdefault.jpg" alt="Film 7" loading="lazy" />
-            <div class="video-play-overlay"><div class="play-circle"></div></div>
-          </div>
-          <div class="video-info">
-            <div class="video-game-tag">Last Epoch</div>
-             Nie Musisz Levelować Młotkami! - Jak zacząć sezon Last Epoch Warpath Void Knightem 
-          </div>
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=v8DJk7nyPR0" target="_blank" rel="noopener" class="video-card">
-          <div class="video-thumb">
-            <img src="https://img.youtube.com/vi/v8DJk7nyPR0/hqdefault.jpg" alt="Film 8" loading="lazy" />
-            <div class="video-play-overlay"><div class="play-circle"></div></div>
-          </div>
-          <div class="video-info">
-            <div class="video-game-tag">Path of Exile 2</div>
-             JAK ZACZĄĆ W PATH OF EXILE 2? - Poradnik Dla Nowych Graczy 
-          </div>
-        </a>
-
+      <!-- szkielet ładowania -->
+      <div class="video-grid" id="videoGrid">
+        <div class="video-card video-skeleton" aria-hidden="true">
+          <div class="video-thumb skeleton-thumb"></div>
+          <div class="video-info"><div class="skeleton-line" style="width:60%;height:0.6rem;margin-bottom:0.4rem;"></div><div class="skeleton-line" style="width:90%;height:0.8rem;"></div></div>
+        </div>
+        <div class="video-card video-skeleton" aria-hidden="true">
+          <div class="video-thumb skeleton-thumb"></div>
+          <div class="video-info"><div class="skeleton-line" style="width:60%;height:0.6rem;margin-bottom:0.4rem;"></div><div class="skeleton-line" style="width:90%;height:0.8rem;"></div></div>
+        </div>
+        <div class="video-card video-skeleton" aria-hidden="true">
+          <div class="video-thumb skeleton-thumb"></div>
+          <div class="video-info"><div class="skeleton-line" style="width:60%;height:0.6rem;margin-bottom:0.4rem;"></div><div class="skeleton-line" style="width:90%;height:0.8rem;"></div></div>
+        </div>
+        <div class="video-card video-skeleton" aria-hidden="true">
+          <div class="video-thumb skeleton-thumb"></div>
+          <div class="video-info"><div class="skeleton-line" style="width:60%;height:0.6rem;margin-bottom:0.4rem;"></div><div class="skeleton-line" style="width:90%;height:0.8rem;"></div></div>
+        </div>
       </div>
+
     </section>
   </div>
 
@@ -1763,7 +1707,71 @@
 
   renderSeasons();
 
-  /* ── TWITCH LIVE CHECK ── */
+  /* ── OSTATNIE FILMY — YouTube RSS (bez klucza API) ── */
+  /*
+    Używa publicznego feedu RSS YouTube + darmowego proxy rss2json.com
+    Żadne dane wrażliwe nie są potrzebne — feed RSS jest publiczny.
+
+    Channel ID: UCQHb6jgWsW0IGBwynQah1vg (kondyss)
+    Jeśli ID się zmieni, zaktualizuj YT_CHANNEL_ID poniżej.
+  */
+  const YT_CHANNEL_ID = 'UCQHb6jgWsW0IGBwynQah1vg';
+  const YT_FEED_COUNT  = 8;
+
+  function extractVideoId(link) {
+    const m = link.match(/[?&]v=([^&#]+)/);
+    return m ? m[1] : null;
+  }
+
+  function buildVideoCard(item) {
+    const videoId = extractVideoId(item.link);
+    const thumb   = videoId
+      ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+      : (item.thumbnail || '');
+    const title   = item.title || '';
+    const href    = item.link  || '#';
+
+    return `
+      <a href="${href}" target="_blank" rel="noopener" class="video-card">
+        <div class="video-thumb">
+          <img src="${thumb}" alt="${title.replace(/"/g,'')}" loading="lazy" />
+          <div class="video-play-overlay"><div class="play-circle"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-game-tag">YouTube</div>
+          ${title}
+        </div>
+      </a>`;
+  }
+
+  (async () => {
+    const grid = document.getElementById('videoGrid');
+    if (!grid) return;
+
+    const feedUrl  = `https://www.youtube.com/feeds/videos.xml?channel_id=${YT_CHANNEL_ID}`;
+    const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&count=${YT_FEED_COUNT}`;
+
+    try {
+      const r    = await fetch(proxyUrl);
+      const data = await r.json();
+
+      if (data.status !== 'ok' || !data.items?.length) throw new Error('bad response');
+
+      const items = data.items.slice(0, YT_FEED_COUNT);
+      grid.innerHTML = items.map(buildVideoCard).join('');
+    } catch {
+      /* Fallback — pokaż link do kanału jeśli fetch się nie powiedzie */
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--muted);font-size:0.9rem;">
+          Nie udało się załadować filmów.
+          <a href="https://youtube.com/@kondyss" target="_blank"
+             style="color:var(--accent);text-decoration:none;margin-left:0.4rem;">
+            Zobacz kanał na YouTube →
+          </a>
+        </div>`;
+    }
+  })();
+
   (async () => {
     try {
       const r = await fetch('https://decapi.me/twitch/uptime/kondyss');

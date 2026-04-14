@@ -48,19 +48,15 @@
       border-bottom: 1px solid var(--border);
       position: relative; overflow: hidden;
     }
-
-    /* D4 red top stripe */
     .page-hero::before {
       content: '';
       position: absolute; top: 58px; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, #5a0e0e, #c0392b, #5a0e0e);
     }
-
     .page-hero .eyebrow {
       font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
       color: var(--accent); margin-bottom: 0.7rem; margin-top: 2rem;
     }
-
     .page-hero h1 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(3rem, 9vw, 6rem); letter-spacing: 0.08em; line-height: 1;
@@ -74,7 +70,7 @@
     .s-label { font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
     .s-title  { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: 0.06em; color: var(--text); margin-bottom: 1.6rem; line-height: 1; }
 
-    /* ── VIDEO CARD (shared) ── */
+    /* ── VIDEO CARD ── */
     .video-card {
       background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
       overflow: hidden; text-decoration: none; color: var(--text);
@@ -115,10 +111,18 @@
     .featured-wrap { display: flex; justify-content: center; }
     .featured-wrap .video-card { max-width: 580px; width: 100%; }
 
-    /* ── CLASS GRID 4×2 ── */
-    .class-grid {
+    /* ── GRIDS ── */
+    /* 3 kolumny — poradniki, polecane postacie */
+    .grid-3 {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+    }
+
+    /* 3 kolumny — pozostałe postacie (5 kart = 3+2, druga linia wyśrodkowana) */
+    .grid-3-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.9rem;
     }
 
@@ -143,13 +147,6 @@
     .planner-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
     .planner-arrow { font-size: 0.75rem; color: var(--accent); margin-top: auto; padding-top: 0.6rem; }
 
-    /* ── SEASON GRID 4 columns ── */
-    .season-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.9rem;
-    }
-
     /* ── OUTDATED BANNER ── */
     .outdated-banner {
       display: flex; gap: 1.2rem; align-items: flex-start;
@@ -165,14 +162,24 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      .class-grid  { grid-template-columns: repeat(2, 1fr); }
-      .season-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-3     { grid-template-columns: repeat(2, 1fr); }
+      .grid-3-wrap { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Wyśrodkuj ostatni kafelek gdy jest sam w wierszu (2 kolumny) */
+    @media (max-width: 960px) and (min-width: 561px) {
+      .grid-3 > *:last-child:nth-child(odd),
+      .grid-3-wrap > *:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc((100% - 0.9rem) / 2);
+      }
     }
     @media (max-width: 560px) {
       nav { padding: 0 1rem; }
       .content { padding: 2.5rem 1rem 4rem; }
-      .class-grid  { grid-template-columns: 1fr; }
-      .season-grid { grid-template-columns: 1fr; }
+      .grid-3     { grid-template-columns: 1fr; }
+      .grid-3-wrap { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -192,7 +199,6 @@
 
   <!-- ══════════════════════════════════════════════
        MÓJ STARTER
-       Zamień STARTER_VIDEO_ID na ID z YouTube URL
        ══════════════════════════════════════════════ -->
   <div class="section-block">
     <p class="s-label">Na start</p>
@@ -206,23 +212,74 @@
         </div>
         <div class="video-info">
           <div class="video-tag">Diablo IV · Starter</div>
-          Tytuł starterowego poradnika
+          Mój Starter na Sezon Rzezi - Skrzydła Arbitra【Poradnik "Od Zera" | Diablo 4】
         </div>
       </a>
     </div>
   </div>
 
   <!-- ══════════════════════════════════════════════
-       KONFIGURACJE POSTACI  (4×2)
-       ── WIERSZ 1 (filmy): Paladyn | Barbarzyńca | Spirytysta | Czarodziejka
-       ── WIERSZ 2 (planery Maxroll): Nekromanta | Łotr | Druid | Czarnoksiężnik
-       Zamień VIDEO_ID_xxx i MAXROLL_URL_xxx na właściwe linki.
+       NAJWAŻNIEJSZE PORADNIKI  (3 filmy z opisem nad miniaturką)
+       Zamień VIDEO_ID_xxx na ID z YouTube URL
+       ══════════════════════════════════════════════ -->
+  <div class="section-block">
+    <p class="s-label">Wiedza</p>
+    <h2 class="s-title">Najważniejsze Poradniki</h2>
+
+    <div class="grid-3">
+
+      <a href="https://www.youtube.com/watch?v=8rNE0qWWI9E" target="_blank" rel="noopener" class="video-card">
+        <div class="video-info">
+          <div class="video-tag">Diablo IV · Poradnik</div>
+           Co wiemy o Sezonie 12 w Diablo 4 
+        </div>
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/VIDEO_ID_OPIS/hqdefault.jpg" alt="Opis sezonu" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=wWmnMPivYs4" target="_blank" rel="noopener" class="video-card">
+        <div class="video-info">
+          <div class="video-tag">Diablo IV · Poradnik</div>
+          Jak levelować w Diablo 4 Sezon Rzezi
+        </div>
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/wWmnMPivYs4/hqdefault.jpg" alt="Jak levelować" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=8kkpqaPAp0w" target="_blank" rel="noopener" class="video-card">
+        <div class="video-info">
+          <div class="video-tag">Diablo IV · Poradnik</div>
+          Jak farmię w Sezonie 12 w Diablo 4
+        </div>
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/8kkpqaPAp0w/hqdefault.jpg" alt="Poradnik farmienia" loading="lazy" />
+          <div class="play-overlay"><div class="play-circle"></div></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       BUILDY — POLECANE POSTACIE
        ══════════════════════════════════════════════ -->
   <div class="section-block">
     <p class="s-label">Buildy</p>
-    <h2 class="s-title">Konfiguracje Postaci</h2>
+    <h2 class="s-title">Polecane Postacie</h2>
 
-    <div class="class-grid">
+    <div class="grid-3">
+
+      <!-- Czarnoksiężnik — Maxroll -->
+      <a href="https://maxroll.gg/d4/planner" target="_blank" rel="noopener" class="planner-card">
+        <div class="planner-logo">MR</div>
+        <div class="planner-tag">Czarnoksiężnik · Maxroll</div>
+        <div class="planner-name">Otchłań..? Nie wiem jeszcze</div>
+        <div class="planner-arrow">Jeszcze nie ma</div>
+      </a>
 
       <!-- Paladyn — YouTube -->
       <a href="https://www.youtube.com/watch?v=GblycTb9uVM" target="_blank" rel="noopener" class="video-card">
@@ -232,12 +289,12 @@
         </div>
         <div class="video-info">
           <div class="video-tag">Paladyn</div>
-           Skrzydła Arbitra
+          Skrzydła Arbitra
         </div>
       </a>
 
       <!-- Barbarzyńca — YouTube -->
-      <a href="https://https://www.youtube.com/watch?v=-jruqKAJQRk" target="_blank" rel="noopener" class="video-card">
+      <a href="https://www.youtube.com/watch?v=-jruqKAJQRk" target="_blank" rel="noopener" class="video-card">
         <div class="video-thumb">
           <img src="https://img.youtube.com/vi/-jruqKAJQRk/hqdefault.jpg" alt="Barbarzyńca" loading="lazy" />
           <div class="play-overlay"><div class="play-circle"></div></div>
@@ -248,6 +305,18 @@
         </div>
       </a>
 
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       BUILDY
+       ══════════════════════════════════════════════ -->
+  <div class="section-block">
+    <p class="s-label">Buildy</p>
+    <h2 class="s-title">Pozostałe Postacie</h2>
+
+    <div class="grid-3-wrap">
+
       <!-- Spirytysta — YouTube -->
       <a href="https://www.youtube.com/watch?v=iWMS-XhTfZ4" target="_blank" rel="noopener" class="video-card">
         <div class="video-thumb">
@@ -256,7 +325,7 @@
         </div>
         <div class="video-info">
           <div class="video-tag">Spirytysta</div>
-           Miażdżący Cios
+          Miażdżący Cios
         </div>
       </a>
 
@@ -268,7 +337,7 @@
         </div>
         <div class="video-info">
           <div class="video-tag">Czarodziejka</div>
-           Iskierka - Iskrząca Energia
+          Iskierka - Iskrząca Energia
         </div>
       </a>
 
@@ -294,71 +363,6 @@
         <div class="planner-tag">Druid · Maxroll</div>
         <div class="planner-name">Pulverize</div>
         <div class="planner-arrow">→ Otwórz planer</div>
-      </a>
-
-      <!-- Czarnoksiężnik — Maxroll -->
-      <a href="https://maxroll.gg/d4/planner" target="_blank" rel="noopener" class="planner-card">
-        <div class="planner-logo">MR</div>
-        <div class="planner-tag">Czarnoksiężnik · Maxroll</div>
-        <div class="planner-name">Otchłań..? Nie wiem jeszcze</div>
-        <div class="planner-arrow">Jeszcze nie ma</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════════
-       SEZON RZEZI  (4 filmy)
-       Zamień VIDEO_ID_S1..S4 na ID z YouTube URL
-       ══════════════════════════════════════════════ -->
-  <div class="section-block">
-    <p class="s-label">Sezon</p>
-    <h2 class="s-title">Sezon Rzezi</h2>
-
-    <div class="season-grid">
-
-      <a href="https://www.youtube.com/watch?v=wWmnMPivYs4" target="_blank" rel="noopener" class="video-card">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/wWmnMPivYs4/hqdefault.jpg" alt="Sezon Rzezi 1" loading="lazy" />
-          <div class="play-overlay"><div class="play-circle"></div></div>
-        </div>
-        <div class="video-info">
-          <div class="video-tag">Diablo IV · Sezon Rzezi</div>
-           Tak zaczynam Sezon 12! - Jak levelować w Diablo 4 Sezon Rzezi 
-        </div>
-      </a>
-
-      <a href="https://www.youtube.com/watch?v=8kkpqaPAp0w" target="_blank" rel="noopener" class="video-card">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/8kkpqaPAp0w/hqdefault.jpg" alt="Sezon Rzezi 2" loading="lazy" />
-          <div class="play-overlay"><div class="play-circle"></div></div>
-        </div>
-        <div class="video-info">
-          <div class="video-tag">Diablo IV · Sezon Rzezi</div>
-           OBDUCYT, LEGENDARKI I NAWET MITYKI! - Jak farmię w Sezonie 12 w Diablo 4 
-        </div>
-      </a>
-
-      <a href="https://www.youtube.com/watch?v=rgS1qOelGMc" target="_blank" rel="noopener" class="video-card">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/rgS1qOelGMc/hqdefault.jpg" alt="Sezon Rzezi 3" loading="lazy" />
-          <div class="play-overlay"><div class="play-circle"></div></div>
-        </div>
-        <div class="video-info">
-          <div class="video-tag">Diablo IV · Sezon Rzezi</div>
-           Dzięki Temu Hełmowi Będziesz Farmić Szybciej! + Paladyn pod Wymach, którym farmię 
-        </div>
-      </a>
-
-      <a href="https://www.youtube.com/watch?v=dz22CVkDBJ0" target="_blank" rel="noopener" class="video-card">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/dz22CVkDBJ0/hqdefault.jpg" alt="Sezon Rzezi 4" loading="lazy" />
-          <div class="play-overlay"><div class="play-circle"></div></div>
-        </div>
-        <div class="video-info">
-          <div class="video-tag">Diablo IV · Sezon Rzezi</div>
-           Polecane buildy na Start Sezonu Rzezi! - Sezon 12 w Diablo 4 
-        </div>
       </a>
     </div>
   </div>

@@ -84,6 +84,17 @@
 
     .nav-links a:hover { color: var(--text); }
 
+    /* Subathon — wyróżniony link w nawigacji */
+    .nav-subathon {
+      color: var(--accent) !important;
+      text-shadow: 0 0 10px rgba(185,28,28,0.7), 0 0 22px rgba(185,28,28,0.35);
+    }
+    .nav-subathon:hover {
+      color: #e85555 !important;
+      text-shadow: 0 0 14px rgba(185,28,28,0.9), 0 0 30px rgba(185,28,28,0.5);
+    }
+    .nav-dd-subathon { color: var(--accent) !important; }
+
     /* Mobile games toggle button — only visible on narrow screens */
     .games-toggle-btn {
       display: none;
@@ -1135,7 +1146,7 @@
   <a href="#" class="nav-logo">Kondyss</a>
 
   <ul class="nav-links">
-    <li><a href="#subathon">Subathon</a></li>
+    <li><a href="/subathon.html" class="nav-subathon">Subathon</a></li>
     <li><a href="#filmy">Filmy</a></li>
     <li><a href="#sezony">Sezony</a></li>
     <li><a href="#omnie">O mnie</a></li>
@@ -1157,7 +1168,7 @@
 
 <!-- ── NAV DROPDOWN (burger menu) ── -->
 <div class="nav-dropdown" id="navDropdown" role="navigation">
-  <a href="#subathon" class="nav-dd-link">Subathon</a>
+  <a href="/subathon.html" class="nav-dd-link nav-dd-subathon">Subathon</a>
   <a href="#filmy" class="nav-dd-link">Filmy</a>
   <a href="#sezony" class="nav-dd-link">Sezony</a>
   <a href="#omnie" class="nav-dd-link">O mnie</a>
@@ -1369,7 +1380,7 @@
         <div class="event-card-body">
           <h3>Subathon Nienawiści</h3>
           <p>Wszystko co musisz wiedzieć o nadchodzącym Subathonie, który rozpocznie się 28 kwietnia wraz z premierą Diablo 4 Lord of Hatred! 
-            Kliknij aby zobaczyć zasady, harmonogram, cele ,nagrody i jak możesz wesprzeć event.</p>
+            Kliknij aby zobaczyć zasady, cele oraz pozostałe informacje o wydarzeniu!</p>
         </div>
         <div class="event-img">
           <img src="/img/logos/mefisto.png" alt="Mefisto" />

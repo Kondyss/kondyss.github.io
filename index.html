@@ -711,23 +711,20 @@
     .event-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
     .event-card p  { color: var(--muted); font-size: 0.88rem; max-width: 480px; }
 
-    /* Mefisto image panel — flush right, no padding, fills height */
+    /* Mefisto image panel — fills card height, width set by image ratio */
     .event-img {
       flex-shrink: 0;
-      width: 600px;
-      position: relative;
-      overflow: hidden;
       align-self: stretch;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
     }
 
     .event-img img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: right top;
+      width: auto;
       display: block;
+      object-fit: unset;
     }
 
     /* ═══════════════════════════════

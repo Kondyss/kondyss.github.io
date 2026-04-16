@@ -673,6 +673,53 @@
       margin-bottom: 0.2rem;
     }
 
+    /* ── SUBATHON COUNTDOWN ── */
+    .subathon-countdown {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.4rem;
+      flex-wrap: nowrap;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(185,28,28,0.4);
+      border-radius: 8px;
+      padding: 0.5rem 0.9rem;
+      min-width: 62px;
+      flex-shrink: 0;
+    }
+
+    .countdown-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--accent);
+      text-shadow: 0 0 14px rgba(185,28,28,0.7), 0 0 30px rgba(185,28,28,0.3);
+    }
+
+    .countdown-label {
+      font-size: 0.52rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .countdown-sep {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: rgba(185,28,28,0.5);
+      line-height: 1;
+      flex-shrink: 0;
+      margin-bottom: 1rem;
+    }
+
     /* ═══════════════════════════════
        EVENTS
     ═══════════════════════════════ */
@@ -1395,8 +1442,7 @@
       <a href="/subathon.html" class="event-card">
         <div class="event-card-body">
           <h3>Subathon Nienawiści</h3>
-          <p>Wszystko co musisz wiedzieć o nadchodzącym Subathonie, który rozpocznie się 28 kwietnia wraz z premierą Diablo 4 Lord of Hatred! 
-            Kliknij aby zobaczyć zasady, cele oraz pozostałe informacje o wydarzeniu!</p>
+          <p>Nie przegap <strong>największego wydarzenia w historii kanału</strong>! Kliknij aby zobaczyć zasady, cele oraz co czeka na Ciebie z tej okazji.</p>
           <div class="subathon-countdown" id="subathonCountdown">
             <div class="countdown-unit"><span class="countdown-num" id="cd-d">--</span><span class="countdown-label">Dni</span></div>
             <div class="countdown-sep">:</div>

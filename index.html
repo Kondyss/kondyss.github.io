@@ -1312,7 +1312,7 @@
 <div class="main-wrap" id="mainWrap">
 
   <!-- HERO -->
-  <div class="hero">
+  <div class="hero hero--offline">
     <div class="hero-left">
 
       <!-- Animated background: two portrait-ratio columns, 3 sets each for seamless loop -->
@@ -1943,10 +1943,12 @@
     try {
       const r = await fetch('https://decapi.me/twitch/uptime/kondyss');
       const t = (await r.text()).trim().toLowerCase();
-      if (t.includes('offline')) {
-        document.querySelector('.hero').classList.add('hero--offline');
+      if (!t.includes('offline')) {
+        /* Jest live — pokaż player, usuń klasę offline */
+        document.querySelector('.hero').classList.remove('hero--offline');
       }
-    } catch { /* brak odpowiedzi = zostaw domyślny widok */ }
+      /* Offline lub błąd — klasa hero--offline już jest w HTML, nic nie rób */
+    } catch { /* błąd sieci = zostaw pełny widok (offline) */ }
   })();
 </script>
 </body>

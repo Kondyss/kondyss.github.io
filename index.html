@@ -23,7 +23,7 @@
       --muted:         #7a6565;
       --border:        rgba(255,255,255,0.06);
       --border-hover:  rgba(185,28,28,0.45);
-      --sidebar-w:     190px;
+      --sidebar-w:     360px;
       --nav-h:         58px;
     }
 
@@ -193,8 +193,8 @@
     }
 
     .sidebar-heading {
-      padding: 1rem 1.1rem 0.7rem;
-      font-size: 0.6rem;
+      padding: 1.2rem 1.6rem 1rem;
+      font-size: 0.72rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--muted);
@@ -205,14 +205,14 @@
     .game-nav-item {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 0.85rem 1.1rem;
+      gap: 1.1rem;
+      padding: 1.3rem 1.6rem;
       text-decoration: none;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 1.05rem;
       font-weight: 400;
       border-bottom: 1px solid var(--border);
-      border-left: 3px solid transparent;
+      border-left: 4px solid transparent;
       transition: all 0.18s;
       flex-shrink: 0;
     }
@@ -839,6 +839,13 @@
     .schedule-day.active {
       border-color: var(--border-hover);
       background: var(--bg3);
+      cursor: pointer;
+    }
+
+    .schedule-day.active:hover {
+      border-color: var(--accent);
+      background: var(--bg3);
+      box-shadow: 0 0 16px rgba(185,28,28,0.45), 0 0 40px rgba(185,28,28,0.18);
     }
 
     .schedule-day.active .schedule-day-name { color: var(--accent); }
@@ -887,6 +894,15 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, transform 0.18s, box-shadow 0.2s;
+    }
+
+    .season-card:hover {
+      border-color: rgba(185,28,28,0.7);
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(185,28,28,0.35), 0 0 50px rgba(185,28,28,0.14);
     }
 
     .season-card-header {
@@ -1234,7 +1250,7 @@
 <div class="main-wrap" id="mainWrap">
 
   <!-- HERO -->
-  <div class="hero hero--offline">
+  <div class="hero">
     <div class="hero-left">
 
       <!-- Animated background: two portrait-ratio columns, 3 sets each for seamless loop -->
@@ -1338,34 +1354,34 @@
         Zmień godziny na swoje. Ustaw class="active" na dniach gdy streamujesz.
       -->
       <div class="schedule-grid">
-        <div class="schedule-day active">
+        <a href="https://twitch.tv/kondyss" target="_blank" rel="noopener" class="schedule-day active" style="text-decoration:none;display:block;">
           <div class="schedule-day-name">Pon</div>
           <div class="schedule-day-time">16:00</div>
-        </div>
-        <div class="schedule-day active">
+        </a>
+        <a href="https://twitch.tv/kondyss" target="_blank" rel="noopener" class="schedule-day active" style="text-decoration:none;display:block;">
           <div class="schedule-day-name">Wt</div>
           <div class="schedule-day-time">16:00</div>
-        </div>
-        <div class="schedule-day active">
+        </a>
+        <a href="https://twitch.tv/kondyss" target="_blank" rel="noopener" class="schedule-day active" style="text-decoration:none;display:block;">
           <div class="schedule-day-name">Śr</div>
           <div class="schedule-day-time">16:00</div>
-        </div>
-        <div class="schedule-day active">
+        </a>
+        <a href="https://twitch.tv/kondyss" target="_blank" rel="noopener" class="schedule-day active" style="text-decoration:none;display:block;">
           <div class="schedule-day-name">Czw</div>
           <div class="schedule-day-time">16:00</div>
-        </div>
+        </a>
         <div class="schedule-day">
           <div class="schedule-day-name">Pt</div>
           <div class="schedule-day-off">—</div>
         </div>
-        <div class="schedule-day active">
+        <a href="https://twitch.tv/kondyss" target="_blank" rel="noopener" class="schedule-day active" style="text-decoration:none;display:block;">
           <div class="schedule-day-name">Sob</div>
           <div class="schedule-day-time">10:00</div>
-        </div>
-        <div class="schedule-day active">
+        </a>
+        <a href="https://twitch.tv/kondyss" target="_blank" rel="noopener" class="schedule-day active" style="text-decoration:none;display:block;">
           <div class="schedule-day-name">Nd</div>
           <div class="schedule-day-time">10:00</div>
-        </div>
+        </a>
       </div>
       <p class="schedule-note">* Godziny orientacyjne — śledź Twitcha i Discorda po potwierdzenia.</p>
     </section>
@@ -1381,11 +1397,33 @@
           <h3>Subathon Nienawiści</h3>
           <p>Wszystko co musisz wiedzieć o nadchodzącym Subathonie, który rozpocznie się 28 kwietnia wraz z premierą Diablo 4 Lord of Hatred! 
             Kliknij aby zobaczyć zasady, cele oraz pozostałe informacje o wydarzeniu!</p>
+          <div class="subathon-countdown" id="subathonCountdown">
+            <div class="countdown-unit"><span class="countdown-num" id="cd-d">--</span><span class="countdown-label">Dni</span></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit"><span class="countdown-num" id="cd-h">--</span><span class="countdown-label">Godz</span></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit"><span class="countdown-num" id="cd-m">--</span><span class="countdown-label">Min</span></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit"><span class="countdown-num" id="cd-s">--</span><span class="countdown-label">Sek</span></div>
+          </div>
         </div>
         <div class="event-img">
           <img src="/img/logos/mefisto.png" alt="Mefisto" />
         </div>
       </a>
+    </section>
+  </div>
+
+
+  <!-- MERCH -->
+  <div class="section-wrap">
+    <section id="merch">
+      <p class="s-label">Sklep</p>
+      <h2 class="s-title">Merch</h2>
+      <div class="merch-box">
+        <h3>Coming Soon</h3>
+        <p>Sklep wkrótce dostępny!</p>
+      </div>
     </section>
   </div>
 
@@ -1458,7 +1496,7 @@
   <!-- LIGI / SEZONY -->
   <div class="section-wrap">
     <section id="sezony">
-      <p class="s-label">Aktualnie trwa</p>
+      <p class="s-label">Obecnie trwające</p>
       <h2 class="s-title">Ligi &amp; Sezony</h2>
       <div class="seasons-grid" id="seasonsGrid">
         <!-- karty generowane przez JS na podstawie SEASONS_DATA poniżej -->
@@ -1498,17 +1536,6 @@
     </section>
   </div>
 
-  <!-- MERCH -->
-  <div class="section-wrap">
-    <section id="merch">
-      <p class="s-label">Sklep</p>
-      <h2 class="s-title">Merch</h2>
-      <div class="merch-box">
-        <h3>Coming Soon</h3>
-        <p>Sklep wkrótce dostępny!</p>
-      </div>
-    </section>
-  </div>
 
   <!-- KONTAKT -->
   <div class="section-wrap">
@@ -1603,6 +1630,7 @@
       game:         'Diablo IV',
       logo:         '/img/logos/d4.webp',
       accentColor:  '#c0392b',
+      url:          '/diablo4.html',
       current: {
         name:         'Sezon Rzezi 2.6',
         startDate:    '2026-03-11',
@@ -1616,6 +1644,7 @@
       game:         'Path of Exile 2',
       logo:         '/img/logos/poe2.webp',
       accentColor:  '#d4a800',
+      url:          '/poe2.html',
       current: {
         name:         'Fate of the Vaal 0.4',
         startDate:    '2025-12-12',
@@ -1629,6 +1658,7 @@
       game:         'Path of Exile',
       logo:         '/img/logos/poe.webp',
       accentColor:  '#e07800',
+      url:          '/poe.html',
       current: {
         name:         'Mirage 3.28',
         startDate:    '2026-03-06',
@@ -1642,6 +1672,7 @@
       game:         'Last Epoch',
       logo:         '/img/logos/le.webp',
       accentColor:  '#9b6ddb',
+      url:          '/lastepoch.html',
       current: {
         name:         'Cykl 4',
         startDate:    '2026-03-26',
@@ -1735,7 +1766,7 @@
       }
 
       return `
-        <div class="season-card">
+        <a href="${s.url}" class="season-card">
           <div class="season-card-header">
             <img class="season-game-logo" src="${s.logo}" alt="${s.game}" />
             <span class="season-game-name">${s.game}</span>
@@ -1754,7 +1785,7 @@
               ${nextBlock}
             </div>
           </div>
-        </div>`;
+        </a>`;
     }).join('');
 
     /* live countdown tick — co sekundę */
@@ -1769,6 +1800,7 @@
 
   renderSeasons();
 
+  /* ── OSTATNIE FILMY — z /videos.json (generowanego przez GitHub Actions) ── */
   (async () => {
     const grid = document.getElementById('videoGrid');
     if (!grid) return;
@@ -1798,17 +1830,42 @@
     }
   })();
 
+  /* ── SUBATHON COUNTDOWN — 28 kwietnia 2025, 05:00 ── */
+  (function () {
+    const TARGET = new Date('2025-04-28T05:00:00');
+    const ids = { d: 'cd-d', h: 'cd-h', m: 'cd-m', s: 'cd-s' };
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const diff = TARGET - Date.now();
+      const el = document.getElementById('subathonCountdown');
+      if (!el) return;
+      if (diff <= 0) {
+        el.innerHTML = '<span style="font-family:\'Bebas Neue\',sans-serif;font-size:1.6rem;color:var(--accent);letter-spacing:0.08em;">START! 🔥</span>';
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const mn = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      ['d','h','m','s'].forEach((k, i) => {
+        const el2 = document.getElementById(ids[k]);
+        if (el2) el2.textContent = pad([d,h,mn,s][i]);
+      });
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
   /* ── TWITCH LIVE CHECK ── */
   (async () => {
     try {
       const r = await fetch('https://decapi.me/twitch/uptime/kondyss');
       const t = (await r.text()).trim().toLowerCase();
-      if (!t.includes('offline')) {
-        /* Jest live — usuń klasę offline, pokaż player 50/50 */
-        document.querySelector('.hero').classList.remove('hero--offline');
+      if (t.includes('offline')) {
+        document.querySelector('.hero').classList.add('hero--offline');
       }
-      /* Jeśli offline — klasa już jest domyślnie, nic nie rób */
-    } catch { /* błąd = zostaw domyślny widok offline */ }
+    } catch { /* brak odpowiedzi = zostaw domyślny widok */ }
   })();
 </script>
 </body>

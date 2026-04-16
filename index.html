@@ -1234,7 +1234,7 @@
 <div class="main-wrap" id="mainWrap">
 
   <!-- HERO -->
-  <div class="hero">
+  <div class="hero hero--offline">
     <div class="hero-left">
 
       <!-- Animated background: two portrait-ratio columns, 3 sets each for seamless loop -->
@@ -1769,7 +1769,6 @@
 
   renderSeasons();
 
-  /* ── OSTATNIE FILMY — z /videos.json (generowanego przez GitHub Actions) ── */
   (async () => {
     const grid = document.getElementById('videoGrid');
     if (!grid) return;
@@ -1804,10 +1803,12 @@
     try {
       const r = await fetch('https://decapi.me/twitch/uptime/kondyss');
       const t = (await r.text()).trim().toLowerCase();
-      if (t.includes('offline')) {
-        document.querySelector('.hero').classList.add('hero--offline');
+      if (!t.includes('offline')) {
+        /* Jest live — usuń klasę offline, pokaż player 50/50 */
+        document.querySelector('.hero').classList.remove('hero--offline');
       }
-    } catch { /* brak odpowiedzi = zostaw domyślny widok */ }
+      /* Jeśli offline — klasa już jest domyślnie, nic nie rób */
+    } catch { /* błąd = zostaw domyślny widok offline */ }
   })();
 </script>
 </body>

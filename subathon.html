@@ -44,7 +44,7 @@
       justify-content: space-between;
       padding: 0 3rem;
       height: 58px;
-      background: rgba(8, 8, 16, 0.85);
+      background: rgba(9, 8, 8, 0.95);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
@@ -132,6 +132,80 @@
       line-height: 1;
     }
 
+    /* ── COUNTDOWN ── */
+    .sub-countdown-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 3.5rem;
+      padding: 2rem;
+      background: var(--bg2);
+      border: 1px solid var(--border-acc);
+      border-radius: 12px;
+      box-shadow: 0 0 24px rgba(185,28,28,0.12);
+    }
+
+    .sub-countdown-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .sub-countdown-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .subathon-countdown {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(185,28,28,0.4);
+      border-radius: 8px;
+      padding: 0.5rem 0.9rem;
+      min-width: 62px;
+      flex-shrink: 0;
+    }
+
+    .countdown-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--accent);
+      text-shadow: 0 0 14px rgba(185,28,28,0.7), 0 0 30px rgba(185,28,28,0.3);
+    }
+
+    .countdown-label {
+      font-size: 0.52rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .countdown-sep {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: rgba(185,28,28,0.5);
+      line-height: 1;
+      flex-shrink: 0;
+      margin-bottom: 1rem;
+    }
+
     /* ── INFO BLOCK ── */
     .info-block {
       background: var(--bg2);
@@ -147,20 +221,22 @@
       line-height: 1.9;
     }
 
-    /* ── DATE BADGE ── */
-    .date-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      background: var(--accent-glow);
+    /* ── TWITCH PLAYER ── */
+    .twitch-embed-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 10px;
+      overflow: hidden;
       border: 1px solid var(--border-acc);
-      border-radius: 8px;
-      padding: 0.7rem 1.2rem;
       margin-bottom: 3.5rem;
-      font-size: 0.9rem;
-      color: var(--accent);
-      font-weight: 500;
+      box-shadow: 0 0 24px rgba(185,28,28,0.12);
+    }
+
+    .twitch-embed-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
     }
 
     /* ── RULES LIST ── */
@@ -179,6 +255,14 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.1rem 1.4rem;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+
+    .rule-item:hover {
+      border-color: var(--border-acc);
+      background: var(--bg3);
+      box-shadow: 0 0 14px rgba(185,28,28,0.18);
     }
 
     .rule-num {
@@ -269,6 +353,8 @@
     @media (max-width: 768px) {
       nav { padding: 0 1.2rem; }
       .content { padding: 3rem 1.2rem 4rem; }
+      .countdown-unit { min-width: 50px; padding: 0.4rem 0.6rem; }
+      .countdown-num { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -276,17 +362,31 @@
 
 <nav>
   <a href="/" class="nav-logo">Kondyss</a>
-  <a href="/#events" class="nav-back">← Strona Główna</a>
+  <a href="/" class="nav-back">← Strona Główna</a>
 </nav>
 
 <!-- HERO -->
 <div class="page-hero">
   <h1>SUBATHON</h1>
-  <!-- Zmień datę / dodaj datę gdy zostanie ogłoszona -->
   <p class="sub">Subathon Nienawiści rozpoczyna się 28 kwietnia!</p>
 </div>
 
 <div class="content">
+
+  <!-- LICZNIK -->
+  <div class="sub-countdown-wrap">
+    <span class="sub-countdown-label">Odliczanie do startu</span>
+    <p class="sub-countdown-title">Wtorek, 28 Kwietnia 2026 · Start nie wiem kiedy, ale licznik fajny</p>
+    <div class="subathon-countdown" id="subathonCountdown">
+      <div class="countdown-unit"><span class="countdown-num" id="scd-d">--</span><span class="countdown-label">Dni</span></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="scd-h">--</span><span class="countdown-label">Godz</span></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="scd-m">--</span><span class="countdown-label">Min</span></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="scd-s">--</span><span class="countdown-label">Sek</span></div>
+    </div>
+  </div>
 
   <!-- O EVENCIE -->
   <p class="s-label">O evencie</p>
@@ -294,18 +394,18 @@
   <div class="info-block">
     <p>
       Subathon to wyjątkowe wydarzenie na streamie, w którym czas trwania streamu
-      zależy bezpośrednio od Was! Każda subskrypcja i dotacja dodaje czas do zegara. 
+      zależy bezpośrednio od Was! Każda subskrypcja i dotacja dodaje czas do zegara.
       Zaczynając od 16 godzin na liczniku, transmisja będzie trwać tak długo jak tylko zdecydujecie!
       Im więcej wsparcia, tym dłużej gramy razem.
     </p>
   </div>
 
-  <!-- DATA -->
-  <div class="date-badge">
-    📅 &nbsp; Wtorek, 28 Kwietnia 2026 - start o 05:00 (CET)
-     <a href="https://twitch.tv/kondyss" target="_blank" class="back-btn">Dołącz na Twitch →</a>
-              Twitch
-    </a>
+  <!-- PLAYER TWITCH — zawsze osadzony -->
+  <div class="twitch-embed-wrap">
+    <iframe
+      src="https://player.twitch.tv/?channel=kondyss&parent=kondyss.pl&autoplay=false&muted=false"
+      allowfullscreen>
+    </iframe>
   </div>
 
   <!-- ZASADY -->
@@ -322,8 +422,8 @@
     <div class="rule-item">
       <span class="rule-num">02</span>
       <p class="rule-text">
-        <strong>LIMIT?</strong> - Subathon NIE POSIADA LIMITU CZASU! Oznacza to, że przy ciągłym wsparciu transmisja bęzie trwała teoretycznie w nieskończoność.
-        Oznacza to również, że może osiąnąć bardzo niezdrowy czas trwania. Jeśli transmisja przeciągnie się powyżej 24h będę robić nocne przerwy na spanie w których licznik będzie zatrzymywany,
+        <strong>LIMIT?</strong> - Subathon NIE POSIADA LIMITU CZASU! Oznacza to, że przy ciągłym wsparciu transmisja będzie trwała teoretycznie w nieskończoność.
+        Oznacza to również, że może osiągnąć bardzo niezdrowy czas trwania. Jeśli transmisja przeciągnie się powyżej 24h będę robić nocne przerwy na spanie w których licznik będzie zatrzymywany,
         a na ekranie będzie lecieć powtórka z zeszłego dnia. Pamiętajcie, że cały kanał prowadzę w pojedynkę, więc po prostu czasami będę potrzebować wstać od komputera! Możecie spodziewać się mnie online
         od 8:00 do 24:00 i przerwę na spanie (o ile w ogóle się wydarzy) około 0:00-8:00.
       </p>
@@ -355,7 +455,7 @@
     </div>
   </div>
 
- <p class="s-label">Nagrody dla Was</p>
+  <p class="s-label">Nagrody dla Was</p>
   <h2 class="s-title">SUB GOALS</h2>
   <div class="rules-list">
     <div class="rule-item">
@@ -373,61 +473,61 @@
     <div class="rule-item">
       <span class="rule-num">100 SUB</span>
       <p class="rule-text">
-        <strong>Bitsy i donacje</strong> - do uzupełnienia
+        <strong>Zjem Cebule</strong> - Może dwie
       </p>
     </div>
     <div class="rule-item">
       <span class="rule-num">200 SUB</span>
       <p class="rule-text">
-        <strong>Koniec streamu</strong> - do uzupełnienia
+        <strong>Zjem Cebule</strong> - Może trzy
       </p>
     </div>
     <div class="rule-item">
       <span class="rule-num">300 SUB</span>
       <p class="rule-text">
-        <strong>Koniec streamu</strong> - do uzupełnienia
+        <strong>KZjem Cebule</strong> - Cztery Cebule
       </p>
     </div>
     <div class="rule-item">
       <span class="rule-num">450 SUB</span>
       <p class="rule-text">
-        <strong>Prawdziwy Barbarzyńca</strong> - Golę brodę i maluję twarz w barwach Barbarzyńcy z Diablo 2 ( Ta niebieska kreska na pół twarzy)
+        <strong>Prawdziwy Barbarzyńca</strong> - Golę brodę i maluję twarz w barwach Barbarzyńcy z Diablo 2 (ta niebieska kreska na pół twarzy)
       </p>
     </div>
     <div class="rule-item">
       <span class="rule-num">600 SUB</span>
       <p class="rule-text">
-        <strong>Koniec streamu</strong> - do uzupełnienia
+        <strong>Cebula</strong> - Czat zjada cebule
       </p>
     </div>
     <div class="rule-item">
       <span class="rule-num">800 SUB</span>
       <p class="rule-text">
-        <strong>Koniec streamu</strong> - do uzupełnienia
+        <strong>a</strong> - do uzupełnienia
       </p>
     </div>
     <div class="rule-item">
       <span class="rule-num">1000 SUB</span>
       <p class="rule-text">
-        <strong>Koniec streamu</strong> - Reagowanie na ukryte filmy z mojego YouTube'a
+        <strong>b</strong> - Reagowanie na ukryte filmy z mojego YouTube'a
       </p>
     </div>
     <div class="rule-item">
       <span class="rule-num">1250 SUB</span>
       <p class="rule-text">
-        <strong>Koniec streamu</strong> - IRL Stream (Po Subathonie)
+        <strong>c</strong> - IRL Stream (Po Subathonie)
       </p>
     </div>
     <div class="rule-item">
       <span class="rule-num">1500 SUB</span>
       <p class="rule-text">
-        <strong>Koniec streamu</strong> - Nowy Tatuaż wybierany z widzami
+        <strong>Tatuaż</strong> - Nowy Tatuaż wybierany z widzami
       </p>
     </div>
     <div class="rule-item">
       <span class="rule-num">2000 SUB</span>
       <p class="rule-text">
-        <strong>Koniec streamu</strong> - do uzupełnienia
+        <strong>Stream z bratem</strong> - Brat jako gość specjalny na kanale
       </p>
     </div>
   </div>
@@ -440,5 +540,37 @@
   <p>© 2026 Kondyss &nbsp;·&nbsp; <a href="/" style="color: var(--muted); text-decoration: none;">Wróć na stronę główną</a></p>
 </footer>
 
+<script>
+  /* ── COUNTDOWN — 28 kwietnia 2026, 05:00 ── */
+  (function () {
+    const TARGET = new Date('2026-04-28T05:00:00');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const diff = TARGET - Date.now();
+      const el   = document.getElementById('subathonCountdown');
+      if (!el) return;
+
+      if (diff <= 0) {
+        el.innerHTML = '<span style="font-family:\'Bebas Neue\',sans-serif;font-size:1.6rem;color:var(--accent);letter-spacing:0.08em;">START! 🔥</span>';
+        return;
+      }
+
+      const d  = Math.floor(diff / 86400000);
+      const h  = Math.floor((diff % 86400000) / 3600000);
+      const mn = Math.floor((diff % 3600000) / 60000);
+      const s  = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('scd-d').textContent = pad(d);
+      document.getElementById('scd-h').textContent = pad(h);
+      document.getElementById('scd-m').textContent = pad(mn);
+      document.getElementById('scd-s').textContent = pad(s);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
 </body>
 </html>

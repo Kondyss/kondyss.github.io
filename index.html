@@ -108,10 +108,6 @@
       color: #e85555 !important;
       text-shadow: 0 0 14px rgba(185,28,28,0.9), 0 0 30px rgba(185,28,28,0.5);
     }
-    /* Podkreślenie dla nav-subathon gdy aktywny */
-    .nav-subathon.nav-active::after {
-      background: var(--accent);
-    }
     .nav-dd-subathon { color: var(--accent) !important; }
 
     /* Mobile games toggle button — only visible on narrow screens */
@@ -135,9 +131,7 @@
     }
 
     .games-toggle-btn:hover { color: var(--text); border-color: var(--accent); }
-
     .games-toggle-btn.active { color: var(--accent); border-color: var(--accent); }
-
 
     /* Main nav burger — visible when nav-links overflow */
     .nav-menu-btn {
@@ -257,20 +251,17 @@
     }
 
     .game-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 6px; }
-
     .logo-d4, .logo-poe2, .logo-poe, .logo-le { background: transparent; }
 
     /* ═══════════════════════════════
        MOBILE GAME NAV BAR
-       appears below top-nav when toggled
     ═══════════════════════════════ */
     .mobile-game-bar {
-      display: none; /* hidden on desktop */
+      display: none;
     }
 
     /* ═══════════════════════════════
        MAIN CONTENT WRAPPER
-       shifted right on desktop
     ═══════════════════════════════ */
     .main-wrap {
       margin-left: var(--sidebar-w);
@@ -295,7 +286,6 @@
     }
 
     .hero--offline .hero-right { display: none; }
-
     .hero--offline .hero-left { border-right: none; }
 
     .hero::before {
@@ -341,20 +331,17 @@
       pointer-events: none;
     }
 
-    /* Static clip container — does NOT animate */
     .hero-bg-col {
       flex: 1;
       overflow: hidden;
     }
 
-    /* Inner strip — this is what animates */
     .hero-bg-col-inner {
       display: flex;
       flex-direction: column;
       width: 100%;
     }
 
-    /* col-up / col-down classes go on the INNER strip */
     .col-up   { animation: scrollUp   110s linear infinite; }
     .col-down { animation: scrollDown 110s linear infinite; }
 
@@ -368,7 +355,6 @@
       100% { transform: translateY(0); }
     }
 
-    /* Natural height — no forced aspect-ratio */
     .hero-bg-col-inner img {
       width: 100%;
       height: auto;
@@ -376,7 +362,6 @@
       flex-shrink: 0;
     }
 
-    /* Dark overlay — lighter since glass card handles text readability */
     .hero-left-overlay {
       position: absolute;
       inset: 0;
@@ -385,7 +370,6 @@
       pointer-events: none;
     }
 
-    /* All left-hero content sits above the overlay */
     .hero-left-content {
       position: relative;
       z-index: 2;
@@ -454,58 +438,6 @@
       max-width: 320px;
       margin-bottom: 1.4rem;
     }
-
-    /* Social proof bar — under hero */
-    .social-proof-bar {
-      display: flex;
-      align-items: stretch;
-      border-top: 1px solid var(--border);
-      background: var(--bg2);
-    }
-
-    .proof-item {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 0.9rem 1.6rem;
-      flex: 1;
-      border-right: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--text);
-      transition: background 0.18s;
-    }
-
-    .proof-item:last-child { border-right: none; }
-    .proof-item:hover { background: var(--bg3); }
-
-    .proof-platform-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .proof-platform-dot.yt     { background: #ff0000; }
-    .proof-platform-dot.twitch { background: #9146ff; }
-    .proof-platform-dot.discord { background: #5865f2; }
-
-    .proof-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      line-height: 1;
-    }
-
-    .proof-value {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.3rem;
-      color: var(--text);
-      letter-spacing: 0.04em;
-      line-height: 1;
-    }
-
-    .proof-text { display: flex; flex-direction: column; gap: 0.2rem; }
-
 
     .hero-card-cta {
       display: flex;
@@ -677,7 +609,6 @@
 
     .video-info { padding: 0.75rem 0.9rem; font-size: 0.83rem; line-height: 1.4; }
 
-
     @keyframes shimmer {
       0%   { background-position:  200% 0; }
       100% { background-position: -200% 0; }
@@ -788,7 +719,6 @@
     .event-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
     .event-card p  { color: var(--muted); font-size: 1rem; max-width: 480px; }
 
-    /* Mefisto image panel — fills card height, width set by image ratio */
     .event-img {
       flex-shrink: 0;
       align-self: stretch;
@@ -805,84 +735,183 @@
     }
 
     /* ═══════════════════════════════
-       O MNIE
+       O MNIE — nowy layout
     ═══════════════════════════════ */
-    .about-split {
+    .about-new {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      grid-template-columns: 5fr 7fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 2.5rem;
+    }
+
+    .about-text-card {
+      background: linear-gradient(160deg, #1c0a0a 0%, #120808 100%);
+      border: 1px solid rgba(185,28,28,0.35);
+      border-radius: 12px;
       overflow: hidden;
+      box-shadow: 0 0 30px rgba(185,28,28,0.08);
     }
 
-    .about-col { padding: 2.2rem; background: var(--bg2); }
-    .about-col + .about-col { border-left: 1px solid var(--border); }
-
-    .about-lang { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
-    .about-col p { color: var(--muted); font-size: 1.05rem; line-height: 1.9; margin-bottom: 1.8rem; }
-
-    /* Platform stat blocks */
-    .platform-stats-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.2rem;
+    .about-lang-block {
+      padding: 1.8rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
+    .about-lang-block:last-child { border-bottom: none; }
 
-    .platform-block {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.2rem;
-    }
-
-    .platform-block-header {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.62rem;
+    .about-lang-tag {
+      display: inline-block;
+      font-size: 0.6rem;
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.8rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--border);
+      color: var(--accent);
+      background: rgba(185,28,28,0.12);
+      border: 1px solid rgba(185,28,28,0.25);
+      border-radius: 999px;
+      padding: 0.22rem 0.7rem;
+      margin-bottom: 0.9rem;
     }
 
-    .platform-dot {
+    .about-lang-block p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.85;
+    }
+
+    /* Karuzela */
+    .carousel-side {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .carousel-viewport {
+      position: relative;
+      height: 360px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+    }
+
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .c-slide {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: width  0.55s cubic-bezier(0.4,0,0.2,1),
+                  height 0.55s cubic-bezier(0.4,0,0.2,1),
+                  transform 0.55s cubic-bezier(0.4,0,0.2,1),
+                  opacity 0.55s ease,
+                  filter  0.55s ease;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+    }
+
+    .c-slide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .cdot {
       width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+      border: none;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .cdot.active { background: var(--accent); transform: scale(1.35); }
+
+    .carousel-arrows {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .c-arrow {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: var(--bg2);
+      color: var(--text);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+      line-height: 1;
+    }
+    .c-arrow:hover { border-color: var(--border-hover); background: rgba(185,28,28,0.12); }
+
+    /* Social proof przeniesiony do dołu "O mnie" */
+    .about-proof-bar {
+      display: flex;
+      align-items: stretch;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--bg2);
+    }
+
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.9rem 1.6rem;
+      flex: 1;
+      border-right: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.18s;
+    }
+
+    .proof-item:last-child { border-right: none; }
+    .proof-item:hover { background: var(--bg3); }
+
+    .proof-platform-dot {
+      width: 8px; height: 8px;
       border-radius: 50%;
       flex-shrink: 0;
     }
 
-    .dot-yt     { background: #ff0000; }
-    .dot- { background: #9146ff; }
+    .proof-platform-dot.yt     { background: #ff0000; }
+    .proof-platform-dot.twitch { background: #9146ff; }
+    .proof-platform-dot.discord { background: #5865f2; }
 
-    .stat-items { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-      flex: 1;
-      min-width: 80px;
-    }
-
-    .stat-item-label {
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
+    .proof-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--muted);
+      line-height: 1;
     }
 
-    .stat-item-value {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--accent);
+    .proof-value {
       font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--text);
       letter-spacing: 0.04em;
+      line-height: 1;
     }
+
+    .proof-text { display: flex; flex-direction: column; gap: 0.2rem; }
 
     /* ═══════════════════════════════
        HARMONOGRAM
@@ -998,7 +1027,6 @@
 
     .season-body { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.8rem; flex: 1; }
 
-    /* Current league block */
     .season-current { display: flex; flex-direction: column; gap: 0.2rem; }
 
     .season-block-label {
@@ -1028,14 +1056,12 @@
       font-weight: 500;
     }
 
-    /* Divider */
     .season-divider {
       border: none;
       border-top: 1px solid var(--border);
       margin: 0;
     }
 
-    /* Next league block */
     .season-next { display: flex; flex-direction: column; gap: 0.2rem; }
 
     .season-next-name {
@@ -1066,13 +1092,12 @@
       margin-top: 0.1rem;
     }
 
-    /* Mobile — 1 kolumna */
     @media (max-width: 560px) {
       .seasons-grid { grid-template-columns: 1fr; }
     }
 
     /* ═══════════════════════════════
-       MERCH (zakomentowane — wróć gdy sklep gotowy)
+       MERCH
     ═══════════════════════════════ */
     .merch-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 5.5rem 2rem; text-align: center; }
     .merch-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; letter-spacing: 0.4em; color: var(--muted); }
@@ -1103,12 +1128,9 @@
       :root { --sidebar-w: 0px; }
 
       .game-sidebar { display: none; }
-
       .main-wrap { margin-left: 0; }
-
       .games-toggle-btn { display: flex; }
 
-      /* Horizontal game bar below nav */
       .mobile-game-bar {
         display: flex;
         position: fixed;
@@ -1120,12 +1142,10 @@
         overflow-x: auto;
         transform: translateY(-100%);
         transition: transform 0.25s ease;
-        /* hide scrollbar but allow scroll */
         scrollbar-width: none;
       }
 
       .mobile-game-bar::-webkit-scrollbar { display: none; }
-
       .mobile-game-bar.open { transform: translateY(0); }
 
       .mobile-game-bar a {
@@ -1144,69 +1164,28 @@
       }
 
       .mobile-game-bar a:hover { color: var(--text); background: var(--bg3); }
-
       .mobile-game-bar .game-logo { width: 22px; height: 22px; font-size: 0.45rem; }
 
-      /* Push content down when game bar is open */
       .main-wrap { transition: padding-top 0.25s ease; }
       .main-wrap.games-open { padding-top: calc(var(--nav-h) + 42px); }
 
       .hero { min-height: calc(100vh - var(--nav-h)); }
-    }
 
-    /* Mobile — stack hero */
-    @media (max-width: 720px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem 2rem; }
-
-    .hero-card-cta {
-      display: flex;
-      gap: 0.6rem;
-      margin-top: 0.4rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .hero-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.5rem 1.1rem;
-      border-radius: 6px;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.18s;
-    }
-
-    .hero-btn-yt {
-      background: rgba(255,0,0,0.12);
-      border: 1px solid rgba(255,0,0,0.3);
-      color: #ff4444;
-    }
-    .hero-btn-yt:hover { background: rgba(255,0,0,0.22); border-color: rgba(255,0,0,0.6); }
-
-    .hero-btn- {
-      background: rgba(145,70,255,0.12);
-      border: 1px solid rgba(145,70,255,0.3);
-      color: #a97fff;
-    }
-    .hero-btn-:hover { background: rgba(145,70,255,0.22); border-color: rgba(145,70,255,0.6); }
-
-    .hero-right { padding: 1.5rem; }
-      .about-split { grid-template-columns: 1fr; }
-      .about-col + .about-col { border-left: none; border-top: 1px solid var(--border); }
-      .platform-stats-row { grid-template-columns: 1fr; }
+      .about-new { grid-template-columns: 1fr; }
+      .carousel-viewport { height: 280px; }
+      .about-proof-bar { flex-wrap: wrap; }
+      .proof-item { flex: 1 1 40%; min-width: 120px; border-bottom: 1px solid var(--border); }
       .event-card { flex-direction: column; }
       .event-card-body { padding: 1.4rem; }
       .event-img { width: 100%; height: 160px; }
       .video-grid { grid-template-columns: 1fr 1fr; }
-      .social-proof-bar { flex-wrap: wrap; }
-      .proof-item { flex: 1 1 40%; min-width: 120px; border-bottom: 1px solid var(--border); }
       .schedule-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem 2rem; }
+      .hero-right { padding: 1.5rem; }
     }
 
     @media (max-width: 700px) {
@@ -1229,12 +1208,9 @@
 
   <ul class="nav-links">
     <li><a href="/subathon.html" class="nav-subathon" data-section="subathon">Subathon</a></li>
-    <!-- MERCH WYŁĄCZONY — odkomentuj gdy sklep gotowy
-    <li><a href="#merch" data-section="merch">Merch</a></li>
-    -->
+    <li><a href="#omnie" data-section="omnie">O mnie</a></li>
     <li><a href="#filmy" data-section="filmy">Filmy</a></li>
     <li><a href="#sezony" data-section="sezony">Kiedy Sezon</a></li>
-    <li><a href="#omnie" data-section="omnie">O mnie</a></li>
     <li><a href="#kontakt" data-section="kontakt">Kontakt</a></li>
     <li><a href="https://discord.gg/kondyss" target="_blank" style="color: #5865f2;">Discord</a></li>
   </ul>
@@ -1253,12 +1229,9 @@
 <!-- ── NAV DROPDOWN (burger menu) ── -->
 <div class="nav-dropdown" id="navDropdown" role="navigation">
   <a href="/subathon.html" class="nav-dd-link nav-dd-subathon">Subathon</a>
-  <!-- MERCH WYŁĄCZONY — odkomentuj gdy sklep gotowy
-  <a href="#merch" class="nav-dd-link">Merch</a>
-  -->
+  <a href="#omnie" class="nav-dd-link">O mnie</a>
   <a href="#filmy" class="nav-dd-link">Filmy</a>
   <a href="#sezony" class="nav-dd-link">Kiedy Sezon</a>
-  <a href="#omnie" class="nav-dd-link">O mnie</a>
   <a href="#kontakt" class="nav-dd-link">Kontakt</a>
   <a href="https://discord.gg/kondyss" target="_blank" style="color:#5865f2;">Discord</a>
 </div>
@@ -1390,31 +1363,6 @@
     </div>
   </div>
 
-  <!-- SOCIAL PROOF BAR -->
-  <div class="social-proof-bar">
-    <a href="https://twitch.tv/kondyss" target="_blank" class="proof-item">
-      <span class="proof-platform-dot twitch"></span>
-      <div class="proof-text">
-        <span class="proof-label">Twitch followers</span>
-        <span class="proof-value" id="proof-twitch">—</span>
-      </div>
-    </a>
-    <a href="https://youtube.com/@kondyss" target="_blank" class="proof-item">
-      <span class="proof-platform-dot yt"></span>
-      <div class="proof-text">
-        <span class="proof-label">YouTube subscribers</span>
-        <span class="proof-value" id="proof-yt">—</span>
-      </div>
-    </a>
-    <a href="https://discord.gg/kondyss" target="_blank" class="proof-item">
-      <span class="proof-platform-dot discord"></span>
-      <div class="proof-text">
-        <span class="proof-label">Discord</span>
-        <span class="proof-value">Dołącz →</span>
-      </div>
-    </a>
-  </div>
-
   <!-- HARMONOGRAM -->
   <div class="section-wrap">
     <section id="harmonogram">
@@ -1465,7 +1413,8 @@
       <a href="/subathon.html" class="event-card">
         <div class="event-card-body">
           <h3>Subathon Nienawiści</h3>
-          <p>Nie przegap <strong>największego wydarzenia w historii kanału</strong>! Kliknij aby zobaczyć zasady, cele oraz co czeka na Ciebie z tej okazji.</p>
+          <p>Nie przegap <strong>największego wydarzenia w historii kanału</strong>!
+          Kliknij aby zobaczyć zasady, cele oraz co czeka na Ciebie z tej okazji.</p>
           <div class="subathon-countdown" id="subathonCountdown">
             <div class="countdown-unit"><span class="countdown-num" id="cd-d">--</span><span class="countdown-label">Dni</span></div>
             <div class="countdown-sep">:</div>
@@ -1483,11 +1432,79 @@
     </section>
   </div>
 
+  <!-- O MNIE -->
+  <div class="section-wrap">
+    <section id="omnie">
+      <p class="s-label">Kim jestem</p>
+      <h2 class="s-title">O mnie</h2>
 
-  <!-- ══════════════════════════════════════════════
-       MERCH WYŁĄCZONY — odkomentuj sekcję poniżej gdy sklep gotowy,
-       oraz przywróć link "Merch" w nawigacji (nav-links i nav-dropdown)
-  ══════════════════════════════════════════════
+      <div class="about-new">
+
+        <!-- LEWA STRONA — tekst PL + ENG -->
+        <div class="about-text-card">
+          <div class="about-lang-block">
+            <span class="about-lang-tag">🇵🇱 PL</span>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+          </div>
+          <div class="about-lang-block">
+            <span class="about-lang-tag">🇬🇧 ENG</span>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+
+        <!-- PRAWA STRONA — karuzela partnerów -->
+        <div class="carousel-side">
+          <div class="carousel-viewport" id="partnerCarousel">
+            <div class="carousel-track" id="carouselTrack"></div>
+          </div>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <div class="carousel-arrows">
+            <button class="c-arrow" id="carouselPrev" aria-label="Poprzednie zdjęcie">&#8592;</button>
+            <button class="c-arrow" id="carouselNext" aria-label="Następne zdjęcie">&#8594;</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SOCIAL PROOF BAR — przeniesiony na dół sekcji O mnie -->
+      <div class="about-proof-bar">
+        <a href="https://twitch.tv/kondyss" target="_blank" class="proof-item">
+          <span class="proof-platform-dot twitch"></span>
+          <div class="proof-text">
+            <span class="proof-label">Twitch followers</span>
+            <span class="proof-value" id="proof-twitch">—</span>
+          </div>
+        </a>
+        <a href="https://youtube.com/@kondyss" target="_blank" class="proof-item">
+          <span class="proof-platform-dot yt"></span>
+          <div class="proof-text">
+            <span class="proof-label">YouTube subscribers</span>
+            <span class="proof-value" id="proof-yt">—</span>
+          </div>
+        </a>
+        <a href="https://discord.gg/kondyss" target="_blank" class="proof-item">
+          <span class="proof-platform-dot discord"></span>
+          <div class="proof-text">
+            <span class="proof-label">Discord</span>
+            <span class="proof-value" style="font-size:1rem;font-family:'Outfit',sans-serif;font-weight:500;">Dołącz →</span>
+          </div>
+        </a>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- MERCH -->
+  <!--
   <div class="section-wrap">
     <section id="merch">
       <p class="s-label">Sklep</p>
@@ -1534,34 +1551,6 @@
             <div style="height:0.75rem;width:88%;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:3px;"></div>
           </div>
         </div>
-        <div class="video-card video-skeleton" aria-hidden="true">
-          <div class="video-thumb" style="aspect-ratio:16/9;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;"></div>
-          <div class="video-info" style="display:flex;flex-direction:column;gap:0.4rem;">
-            <div style="height:0.55rem;width:55%;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:3px;"></div>
-            <div style="height:0.75rem;width:88%;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:3px;"></div>
-          </div>
-        </div>
-        <div class="video-card video-skeleton" aria-hidden="true">
-          <div class="video-thumb" style="aspect-ratio:16/9;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;"></div>
-          <div class="video-info" style="display:flex;flex-direction:column;gap:0.4rem;">
-            <div style="height:0.55rem;width:55%;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:3px;"></div>
-            <div style="height:0.75rem;width:88%;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:3px;"></div>
-          </div>
-        </div>
-        <div class="video-card video-skeleton" aria-hidden="true">
-          <div class="video-thumb" style="aspect-ratio:16/9;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;"></div>
-          <div class="video-info" style="display:flex;flex-direction:column;gap:0.4rem;">
-            <div style="height:0.55rem;width:55%;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:3px;"></div>
-            <div style="height:0.75rem;width:88%;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:3px;"></div>
-          </div>
-        </div>
-        <div class="video-card video-skeleton" aria-hidden="true">
-          <div class="video-thumb" style="aspect-ratio:16/9;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;"></div>
-          <div class="video-info" style="display:flex;flex-direction:column;gap:0.4rem;">
-            <div style="height:0.55rem;width:55%;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:3px;"></div>
-            <div style="height:0.75rem;width:88%;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:3px;"></div>
-          </div>
-        </div>
       </div>
     </section>
   </div>
@@ -1576,39 +1565,6 @@
       </div>
     </section>
   </div>
-
-  <!-- O MNIE -->
-  <div class="section-wrap">
-    <section id="omnie">
-      <p class="s-label">Kim jestem</p>
-      <h2 class="s-title">O mnie</h2>
-
-      <!-- Text columns -->
-      <div class="about-split">
-        <div class="about-col">
-          <p class="about-lang">🇵🇱 PL</p>
-          <p>
-            Cześć! Jestem Konrad - twórca na YouTube i Streamer na Twitchu.
-            Swoją przygodę z tworzeniem treści zacząłem w 2016 roku. Kończąc studia w 2023, zdobyłem tytuł Magistra Inżyniera i wraz z premierą Diablo IV uznałem, że spróbuję swoich sił jako pełnowymiarowy twórca.
-            W swoich materiałach skupiam się zarówno na prostych poradnikach dla początkujących jak i skomplikowanych taktykach dla największych wymiataczy!
-            Jeśli potrzebujesz cokolwiek z gier aRPG - będę w stanie Ci z tym pomóc! Przyjemna postać? Taktyka do farmienia? Ciekawe wyzwania? Znajdziesz tu wszystko!
-          </p>
-        </div>
-        <div class="about-col">
-          <p class="about-lang">🇬🇧 ENG</p>
-          <p>
-            Hi! I'm Konrad - YouTube creator and Twitch Streamer.
-            I started my journey in content creation in 2016. I Graduated in 2023 with a Master's Degree in Mechanical Engineering which coincided with the release of Diablo IV. 
-            I decided to try my hand at being a full-time influencer and here I am!
-            I focus on everything from simple guides for beginners to complex tactics for the most skilled players!
-            If you need anything related to ARPGs, I can help you out! A fun character? Farming strategies? Interesting challenges? You'll find it all here!
-          </p>
-        </div>
-      </div>
-
-    </section>
-  </div>
-
 
   <!-- KONTAKT -->
   <div class="section-wrap">
@@ -1687,12 +1643,12 @@
 
   /* ══════════════════════════════════════════════════════════════
      LIGI & SEZONY — edytuj tę sekcję ręcznie
-     
+
      currentStart : 'YYYY-MM-DD'       — data startu obecnej ligi
      nextDate     : 'YYYY-MM-DD HH:MM' — data i godzina kolejnej ligi
                     'YYYY-MM-DD'       — sama data (bez godziny)
                     null               — data nieznana (brak timera)
-     
+
      Przykłady:
        date: '2025-09-15'        → odlicza do północy 15 września
        date: '2025-09-15 20:00'  → odlicza do 20:00 dnia 15 września
@@ -1700,59 +1656,59 @@
   ══════════════════════════════════════════════════════════════ */
   const SEASONS_DATA = [
     {
-      game:         'Diablo IV',
-      logo:         '/img/logos/d4.webp',
-      accentColor:  '#c0392b',
-      url:          '/diablo4.html',
+      game:        'Diablo IV',
+      logo:        '/img/logos/d4.webp',
+      accentColor: '#c0392b',
+      url:         '/diablo4.html',
       current: {
-        name:         'Sezon Rzezi 2.6',
-        startDate:    '2026-03-11',
+        name:      'Sezon Rzezi 2.6',
+        startDate: '2026-03-11',
       },
       next: {
-        name:         'Pan Nienawiści 3.0',
-        date:         '2026-04-28 12:12',
+        name: 'Pan Nienawiści 3.0',
+        date: '2026-04-28 5:00',
       }
     },
     {
-      game:         'Path of Exile 2',
-      logo:         '/img/logos/poe2.webp',
-      accentColor:  '#d4a800',
-      url:          '/poe2.html',
+      game:        'Path of Exile 2',
+      logo:        '/img/logos/poe2.webp',
+      accentColor: '#d4a800',
+      url:         '/poe2.html',
       current: {
-        name:         'Fate of the Vaal 0.4',
-        startDate:    '2025-12-12',
+        name:      'Fate of the Vaal 0.4',
+        startDate: '2025-12-12',
       },
       next: {
-        name:         'Early Access 0.5',
-        date:         null,
+        name: 'Early Access 0.5',
+        date: null,
       }
     },
     {
-      game:         'Path of Exile',
-      logo:         '/img/logos/poe.webp',
-      accentColor:  '#e07800',
-      url:          '/poe.html',
+      game:        'Path of Exile',
+      logo:        '/img/logos/poe.webp',
+      accentColor: '#e07800',
+      url:         '/poe.html',
       current: {
-        name:         'Mirage 3.28',
-        startDate:    '2026-03-06',
+        name:      'Mirage 3.28',
+        startDate: '2026-03-06',
       },
       next: {
-        name:         'Liga 3.29',
-        date:         null,
+        name: 'Liga 3.29',
+        date: null,
       }
     },
     {
-      game:         'Last Epoch',
-      logo:         '/img/logos/le.webp',
-      accentColor:  '#9b6ddb',
-      url:          '/lastepoch.html',
+      game:        'Last Epoch',
+      logo:        '/img/logos/le.webp',
+      accentColor: '#9b6ddb',
+      url:         '/lastepoch.html',
       current: {
-        name:         'Cykl 4',
-        startDate:    '2026-03-26',
+        name:      'Cykl 4',
+        startDate: '2026-03-26',
       },
       next: {
-        name:         'Cykl 5',
-        date:         null,
+        name: 'Cykl 5',
+        date: null,
       }
     },
   ];
@@ -1761,7 +1717,7 @@
   function daysSince(dateStr) {
     const start = new Date(dateStr);
     start.setHours(0, 0, 0, 0);
-    const now   = new Date();
+    const now = new Date();
     now.setHours(0, 0, 0, 0);
     return Math.floor((now - start) / 86400000);
   }
@@ -1770,8 +1726,8 @@
     /* Obsługuje 'YYYY-MM-DD' i 'YYYY-MM-DD HH:MM' */
     if (dateStr.includes(' ')) {
       const [datePart, timePart] = dateStr.split(' ');
-      const [y, mo, d]  = datePart.split('-').map(Number);
-      const [h, m]      = timePart.split(':').map(Number);
+      const [y, mo, d] = datePart.split('-').map(Number);
+      const [h, m]     = timePart.split(':').map(Number);
       return new Date(y, mo - 1, d, h, m, 0);
     }
     const [y, mo, d] = dateStr.split('-').map(Number);
@@ -1878,7 +1834,7 @@
     const grid = document.getElementById('videoGrid');
     if (!grid) return;
     try {
-      const r     = await fetch('/videos.json');
+      const r = await fetch('/videos.json');
       if (!r.ok) throw new Error('HTTP ' + r.status);
       const videos = await r.json();
       if (!videos.length) throw new Error('empty');
@@ -1918,10 +1874,10 @@
         el.innerHTML = '<span style="font-family:\'Bebas Neue\',sans-serif;font-size:1.6rem;color:var(--accent);letter-spacing:0.08em;">START! 🔥</span>';
         return;
       }
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor((diff % 86400000) / 3600000);
+      const d  = Math.floor(diff / 86400000);
+      const h  = Math.floor((diff % 86400000) / 3600000);
       const mn = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
+      const s  = Math.floor((diff % 60000) / 1000);
       ['d','h','m','s'].forEach((k, i) => {
         const el2 = document.getElementById(ids[k]);
         if (el2) el2.textContent = pad([d,h,mn,s][i]);
@@ -1931,19 +1887,110 @@
     setInterval(tick, 1000);
   })();
 
+  /* ── KARUZELA PARTNERÓW — sekcja O mnie ── */
+  (function () {
+    /*
+      Podmień ścieżki na prawdziwe zdjęcia partnerów (kwadratowe 1:1, min. 300×300px).
+      Możesz dodać więcej niż 5 wpisów — karuzela obsługuje dowolną liczbę.
+    */
+    const PARTNER_IMGS = [
+      '/kaptur32x32.png',
+      '/kaptur32x32.png',
+      '/kaptur32x32.png',
+      '/kaptur32x32.png',
+      '/kaptur32x32.png',
+    ];
+
+    const N = PARTNER_IMGS.length;
+    let cur = 0;
+    let autoTimer;
+
+    const track  = document.getElementById('carouselTrack');
+    const dotsEl = document.getElementById('carouselDots');
+    if (!track || !dotsEl) return;
+
+    const slides = PARTNER_IMGS.map((src, i) => {
+      const el  = document.createElement('div');
+      el.className = 'c-slide';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Partner ' + (i + 1);
+      img.loading = 'lazy';
+      el.appendChild(img);
+      track.appendChild(el);
+      return el;
+    });
+
+    const dots = PARTNER_IMGS.map((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'cdot';
+      d.setAttribute('aria-label', 'Zdjęcie ' + (i + 1));
+      d.addEventListener('click', () => go(i));
+      dotsEl.appendChild(d);
+      return d;
+    });
+
+    function render() {
+      const vw    = document.getElementById('partnerCarousel').offsetWidth;
+      const cSize = Math.min(230, Math.round(vw * 0.52));
+      const sSize = Math.round(cSize * 0.58);
+      const gap   = 16;
+
+      slides.forEach((sl, i) => {
+        let pos = ((i - cur) % N + N) % N;
+        if (pos > N / 2) pos -= N;
+
+        let tx, size, opacity, blur, zi;
+
+        if (pos === 0) {
+          tx = 0; size = cSize; opacity = 1; blur = 0; zi = 10;
+        } else if (pos === 1 || pos === -(N - 1)) {
+          tx =  (cSize / 2 + sSize / 2 + gap); size = sSize; opacity = 0.55; blur = 3; zi = 5;
+        } else if (pos === -1 || pos === (N - 1)) {
+          tx = -(cSize / 2 + sSize / 2 + gap); size = sSize; opacity = 0.55; blur = 3; zi = 5;
+        } else {
+          tx = pos > 0 ? vw : -vw; size = sSize; opacity = 0; blur = 6; zi = 1;
+        }
+
+        sl.style.width     = size + 'px';
+        sl.style.height    = size + 'px';
+        sl.style.transform = 'translate(calc(-50% + ' + tx + 'px), -50%)';
+        sl.style.opacity   = opacity;
+        sl.style.filter    = blur ? 'blur(' + blur + 'px)' : 'none';
+        sl.style.zIndex    = zi;
+      });
+
+      dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+    }
+
+    function go(idx) {
+      cur = ((idx % N) + N) % N;
+      render();
+      resetAuto();
+    }
+
+    function resetAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => go(cur + 1), 5000);
+    }
+
+    document.getElementById('carouselPrev').addEventListener('click', () => go(cur - 1));
+    document.getElementById('carouselNext').addEventListener('click', () => go(cur + 1));
+
+    render();
+    resetAuto();
+    window.addEventListener('resize', render, { passive: true });
+  })();
+
   /* ── SCROLL SPY — podświetla aktywną sekcję w nawigacji ── */
   (function () {
-    /* Sekcje w kolejności na stronie.
-       'subathon' — specjalny: podświetla czerwony link Subathon gdy sekcja w widoku.
-       'kontakt'  — specjalny: aktywny też gdy jesteśmy na samym dole strony. */
-    const sections = ['subathon', 'filmy', 'sezony', 'omnie', 'kontakt'];
+    const sections = ['subathon', 'omnie', 'filmy', 'sezony', 'kontakt'];
     const navH = 58;
 
     function update() {
+      /* Jeśli użytkownik jest przy samym dole strony — aktywuj kontakt */
+      const atBottom = (window.innerHeight + Math.round(window.scrollY)) >= document.body.scrollHeight - 4;
       let current = '';
-
-      /* Jeśli dotarliśmy do samego dołu strony — zawsze podświetl Kontakt */
-      const atBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10;
       if (atBottom) {
         current = 'kontakt';
       } else {
@@ -1953,7 +2000,6 @@
           if (el.getBoundingClientRect().top <= navH + 40) current = id;
         }
       }
-
       document.querySelectorAll('.nav-links a[data-section]').forEach(a => {
         a.classList.toggle('nav-active', a.dataset.section === current);
       });
@@ -1963,6 +2009,7 @@
     update();
   })();
 
+  /* ── TWITCH LIVE CHECK ── */
   (async () => {
     try {
       const r = await fetch('https://decapi.me/twitch/uptime/kondyss');

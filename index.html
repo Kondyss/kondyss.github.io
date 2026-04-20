@@ -108,6 +108,10 @@
       color: #e85555 !important;
       text-shadow: 0 0 14px rgba(185,28,28,0.9), 0 0 30px rgba(185,28,28,0.5);
     }
+    /* Podkreślenie dla nav-subathon gdy aktywny */
+    .nav-subathon.nav-active::after {
+      background: var(--accent);
+    }
     .nav-dd-subathon { color: var(--accent) !important; }
 
     /* Mobile games toggle button — only visible on narrow screens */
@@ -1068,7 +1072,7 @@
     }
 
     /* ═══════════════════════════════
-       MERCH
+       MERCH (zakomentowane — wróć gdy sklep gotowy)
     ═══════════════════════════════ */
     .merch-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 5.5rem 2rem; text-align: center; }
     .merch-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; letter-spacing: 0.4em; color: var(--muted); }
@@ -1154,7 +1158,7 @@
     @media (max-width: 720px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem 2rem; }
-  
+
     .hero-card-cta {
       display: flex;
       gap: 0.6rem;
@@ -1224,8 +1228,10 @@
   <a href="#" class="nav-logo">Kondyss</a>
 
   <ul class="nav-links">
-    <li><a href="/subathon.html" class="nav-subathon">Subathon</a></li>
+    <li><a href="/subathon.html" class="nav-subathon" data-section="subathon">Subathon</a></li>
+    <!-- MERCH WYŁĄCZONY — odkomentuj gdy sklep gotowy
     <li><a href="#merch" data-section="merch">Merch</a></li>
+    -->
     <li><a href="#filmy" data-section="filmy">Filmy</a></li>
     <li><a href="#sezony" data-section="sezony">Kiedy Sezon</a></li>
     <li><a href="#omnie" data-section="omnie">O mnie</a></li>
@@ -1247,7 +1253,9 @@
 <!-- ── NAV DROPDOWN (burger menu) ── -->
 <div class="nav-dropdown" id="navDropdown" role="navigation">
   <a href="/subathon.html" class="nav-dd-link nav-dd-subathon">Subathon</a>
+  <!-- MERCH WYŁĄCZONY — odkomentuj gdy sklep gotowy
   <a href="#merch" class="nav-dd-link">Merch</a>
+  -->
   <a href="#filmy" class="nav-dd-link">Filmy</a>
   <a href="#sezony" class="nav-dd-link">Kiedy Sezon</a>
   <a href="#omnie" class="nav-dd-link">O mnie</a>
@@ -1476,7 +1484,10 @@
   </div>
 
 
-  <!-- MERCH -->
+  <!-- ══════════════════════════════════════════════
+       MERCH WYŁĄCZONY — odkomentuj sekcję poniżej gdy sklep gotowy,
+       oraz przywróć link "Merch" w nawigacji (nav-links i nav-dropdown)
+  ══════════════════════════════════════════════
   <div class="section-wrap">
     <section id="merch">
       <p class="s-label">Sklep</p>
@@ -1487,6 +1498,7 @@
       </div>
     </section>
   </div>
+  -->
 
   <!-- OSTATNIE FILMY -->
   <div class="section-wrap">
@@ -1606,7 +1618,7 @@
       <div class="contact-grid">
         <div class="contact-card">
           <p class="contact-label">E-mail biznesowy</p>
-          <span style="color: var(--accent); font-size: 0.92rem;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0dbdfdec4d1dbc49edbdfded4c9c3c3f0d7ddd1d9dc9ed3dfdd">[email&#160;protected]</a></span>
+          <span style="color: var(--accent); font-size: 0.92rem;">kontakt.kondyss@gmail.com</span>
         </div>
         <div class="contact-card">
           <p class="contact-label">Discord</p>
@@ -1626,7 +1638,7 @@
 
 </div><!-- /main-wrap -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   /* ── MOBILE GAME BAR TOGGLE ── */
   function toggleGames() {
     const bar  = document.getElementById('mobileGameBar');
@@ -1698,7 +1710,7 @@
       },
       next: {
         name:         'Pan Nienawiści 3.0',
-        date:         '2026-04-28 5:00',          // null = TBA, lub np. '2025-09-15'
+        date:         '2026-04-28 5:00',
       }
     },
     {
@@ -1918,18 +1930,30 @@
     tick();
     setInterval(tick, 1000);
   })();
+
   /* ── SCROLL SPY — podświetla aktywną sekcję w nawigacji ── */
   (function () {
-    const sections = ['merch', 'filmy', 'sezony', 'omnie', 'kontakt'];
+    /* Sekcje w kolejności na stronie.
+       'subathon' — specjalny: podświetla czerwony link Subathon gdy sekcja w widoku.
+       'kontakt'  — specjalny: aktywny też gdy jesteśmy na samym dole strony. */
+    const sections = ['subathon', 'filmy', 'sezony', 'omnie', 'kontakt'];
     const navH = 58;
 
     function update() {
       let current = '';
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        if (el.getBoundingClientRect().top <= navH + 40) current = id;
+
+      /* Jeśli dotarliśmy do samego dołu strony — zawsze podświetl Kontakt */
+      const atBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10;
+      if (atBottom) {
+        current = 'kontakt';
+      } else {
+        for (const id of sections) {
+          const el = document.getElementById(id);
+          if (!el) continue;
+          if (el.getBoundingClientRect().top <= navH + 40) current = id;
+        }
       }
+
       document.querySelectorAll('.nav-links a[data-section]').forEach(a => {
         a.classList.toggle('nav-active', a.dataset.section === current);
       });

@@ -788,11 +788,8 @@
 
     .carousel-viewport {
       position: relative;
-      height: 360px;
+      height: 460px;
       overflow: hidden;
-      border-radius: 12px;
-      background: var(--bg2);
-      border: 1px solid var(--border);
     }
 
     .carousel-track {
@@ -1172,7 +1169,7 @@
       .hero { min-height: calc(100vh - var(--nav-h)); }
 
       .about-new { grid-template-columns: 1fr; }
-      .carousel-viewport { height: 280px; }
+      .carousel-viewport { height: 340px; }
       .about-proof-bar { flex-wrap: wrap; }
       .proof-item { flex: 1 1 40%; min-width: 120px; border-bottom: 1px solid var(--border); }
       .event-card { flex-direction: column; }
@@ -1890,15 +1887,15 @@
   /* ── KARUZELA PARTNERÓW — sekcja O mnie ── */
   (function () {
     /*
-      Podmień ścieżki na prawdziwe zdjęcia partnerów (kwadratowe 1:1, min. 300×300px).
-      Możesz dodać więcej niż 5 wpisów — karuzela obsługuje dowolną liczbę.
+      Obrazki partnerów — wrzuć pliki do /img/karuzela/ i wpisz nazwy poniżej.
+      Możesz dodać lub usunąć wpisy — karuzela obsługuje dowolną liczbę obrazków.
     */
     const PARTNER_IMGS = [
-      '/kaptur32x32.png',
-      '/kaptur32x32.png',
-      '/kaptur32x32.png',
-      '/kaptur32x32.png',
-      '/kaptur32x32.png',
+      '/img/karuzela/partner1.png',
+      '/img/karuzela/partner2.png',
+      '/img/karuzela/partner3.png',
+      '/img/karuzela/partner4.png',
+      '/img/karuzela/partner5.png',
     ];
 
     const N = PARTNER_IMGS.length;
@@ -1932,8 +1929,8 @@
 
     function render() {
       const vw    = document.getElementById('partnerCarousel').offsetWidth;
-      const cSize = Math.min(230, Math.round(vw * 0.52));
-      const sSize = Math.round(cSize * 0.58);
+      const cSize = Math.min(380, Math.round(vw * 0.78));
+      const sSize = Math.round(cSize * 0.22);
       const gap   = 16;
 
       slides.forEach((sl, i) => {
@@ -1945,9 +1942,9 @@
         if (pos === 0) {
           tx = 0; size = cSize; opacity = 1; blur = 0; zi = 10;
         } else if (pos === 1 || pos === -(N - 1)) {
-          tx =  (cSize / 2 + sSize / 2 + gap); size = sSize; opacity = 0.55; blur = 3; zi = 5;
+          tx =  (cSize / 2 + sSize / 2 + gap); size = sSize; opacity = 0.35; blur = 2; zi = 5;
         } else if (pos === -1 || pos === (N - 1)) {
-          tx = -(cSize / 2 + sSize / 2 + gap); size = sSize; opacity = 0.55; blur = 3; zi = 5;
+          tx = -(cSize / 2 + sSize / 2 + gap); size = sSize; opacity = 0.35; blur = 2; zi = 5;
         } else {
           tx = pos > 0 ? vw : -vw; size = sSize; opacity = 0; blur = 6; zi = 1;
         }

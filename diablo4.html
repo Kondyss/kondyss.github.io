@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- ══ SEO ══════════════════════════════════════════════════ -->
   <meta name="description" content="Polskie poradniki do Diablo 4. Buildy postaci, newsy i taktyki farmienia." />
-  <meta name="keywords" content="Diablo 4, Diablo IV, build, poradnik, sezon, aRPG, Kondyss, Paladyn, Barbarzyńca, Nekromanta, Czarnoksiężnik, Druid, Spirytysta, Czarodziejka, Łotr" />
+  <meta name="keywords" content="Diablo 4, Diablo IV, build, poradnik, sezon, aRPG, Kondyss" />
   <meta name="author" content="Kondyss" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://kondyss.pl/diablo4.html" />
-
-  <!-- ══ Open Graph — Discord / Facebook / Messenger ══════════ -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Kondyss.pl" />
   <meta property="og:url" content="https://kondyss.pl/diablo4.html" />
@@ -19,13 +16,9 @@
   <meta property="og:image" content="https://kondyss.pl/img/og/diablo4.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Kondyss »Diablo IV«" />
   <meta property="og:locale" content="pl_PL" />
-
-  <!-- ══ Twitter Card ══════════════════════════════════════════ -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@kondyss" />
-  <meta name="twitter:creator" content="@kondyss" />
   <meta name="twitter:title" content="Kondyss »Diablo IV«" />
   <meta name="twitter:description" content="Polskie poradniki do Diablo 4. Buildy postaci, newsy i taktyki farmienia." />
   <meta name="twitter:image" content="https://kondyss.pl/img/og/diablo4.jpg" />
@@ -43,30 +36,118 @@
       --bg:          #090808;
       --bg2:         #100c0c;
       --bg3:         #181010;
+      --nav-bg:      rgba(9,8,8,0.95);
       --text:        #f0ecea;
       --muted:       #7a6565;
       --border:      rgba(255,255,255,0.06);
       --border-acc:  rgba(192,57,43,0.45);
+      --nav-h:       58px;
+      --sidebar-w:   230px;
     }
 
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.7; }
+    body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem; height: 58px;
-      background: rgba(9,8,8,0.92); backdrop-filter: blur(16px);
+      padding: 0 2rem; height: var(--nav-h);
+      background: var(--nav-bg); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.12em; color: var(--accent); text-decoration: none; }
     .nav-back  { color: var(--muted); text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
     .nav-back:hover { color: var(--text); }
 
+    /* ── GAMES TOGGLE BTN (mobile) ── */
+    .games-toggle-btn {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      border: 1px solid var(--border-acc);
+      color: var(--muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .games-toggle-btn:hover { color: var(--text); border-color: var(--accent); }
+    .games-toggle-btn.active { color: var(--accent); border-color: var(--accent); }
+
+    /* ── MOBILE GAME BAR ── */
+    .mobile-game-bar {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      z-index: 250;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      transform: translateY(-100%);
+      transition: transform 0.25s ease;
+      scrollbar-width: none;
+    }
+    .mobile-game-bar::-webkit-scrollbar { display: none; }
+    .mobile-game-bar.open { transform: translateY(0); }
+    .mobile-game-bar a {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.1rem;
+      text-decoration: none; color: var(--muted);
+      font-size: 0.8rem; font-weight: 400; white-space: nowrap;
+      border-right: 1px solid var(--border);
+      transition: all 0.18s; flex-shrink: 0;
+    }
+    .mobile-game-bar a:hover, .mobile-game-bar a.active { color: var(--text); background: var(--bg3); }
+    .mobile-game-bar .game-logo { width: 22px; height: 22px; }
+
+    /* ── GAME SIDEBAR ── */
+    .game-sidebar {
+      position: fixed;
+      top: var(--nav-h); left: 0; bottom: 0;
+      width: var(--sidebar-w);
+      z-index: 200;
+      background: var(--nav-bg);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      overflow-y: auto; overflow-x: hidden;
+    }
+    .sidebar-heading {
+      padding: 0.95rem 1.2rem 0.75rem;
+      font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); border-bottom: 1px solid var(--border); flex-shrink: 0;
+    }
+    .game-nav-item {
+      display: flex; align-items: center; gap: 0.85rem;
+      padding: 1.1rem 1.2rem;
+      text-decoration: none; color: var(--muted);
+      font-size: 0.9rem; font-weight: 400;
+      border-bottom: 1px solid var(--border);
+      border-left: 4px solid transparent;
+      transition: all 0.18s; flex-shrink: 0;
+    }
+    .game-nav-item:hover { color: var(--text); background: var(--bg3); border-left-color: var(--accent); }
+    .game-nav-item.active { color: var(--text); background: var(--bg3); border-left-color: var(--accent); }
+    .game-nav-item:last-child { border-bottom: none; }
+    .game-logo {
+      width: 34px; height: 34px; border-radius: 6px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .game-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 6px; }
+
+    /* ── PAGE WRAP (shifts right of sidebar) ── */
+    .page-wrap { margin-left: var(--sidebar-w); padding-top: var(--nav-h); transition: padding-top 0.25s ease; }
+    .page-wrap.games-open { padding-top: calc(var(--nav-h) + 42px); }
+
     /* ── PAGE HERO ── */
     .page-hero {
-      padding-top: 58px;
       min-height: 28vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center;
@@ -76,135 +157,49 @@
     }
     .page-hero::before {
       content: '';
-      position: absolute; top: 58px; left: 0; right: 0; height: 3px;
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, #5a0e0e, #c0392b, #5a0e0e);
     }
-    .page-hero .eyebrow {
-      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 0.7rem; margin-top: 2rem;
-    }
-    .page-hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 9vw, 6rem); letter-spacing: 0.08em; line-height: 1;
-      padding-bottom: 2.5rem;
-    }
+    .page-hero .eyebrow { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; margin-top: 2rem; }
+    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 9vw, 6rem); letter-spacing: 0.08em; line-height: 1; padding-bottom: 2.5rem; }
 
     /* ── CONTENT ── */
     .content { max-width: 1060px; margin: 0 auto; padding: 4rem 2rem 6rem; }
     .section-block { margin-bottom: 4.5rem; }
-
     .s-label { font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
     .s-title  { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: 0.06em; color: var(--text); margin-bottom: 1.6rem; line-height: 1; }
 
     /* ── VIDEO CARD ── */
-    .video-card {
-      background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
-      overflow: hidden; text-decoration: none; color: var(--text);
-      display: flex; flex-direction: column;
-      transition: border-color 0.2s, transform 0.2s;
-    }
+    .video-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: border-color 0.2s, transform 0.2s; }
     .video-card:hover { border-color: var(--border-acc); transform: translateY(-2px); }
-
-    .video-thumb {
-      position: relative; width: 100%; aspect-ratio: 16/9;
-      background: #0d0909; overflow: hidden;
-    }
+    .video-thumb { position: relative; width: 100%; aspect-ratio: 16/9; background: #0d0909; overflow: hidden; }
     .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
     .video-card:hover .video-thumb img { transform: scale(1.03); }
-
-    .play-overlay {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; background: rgba(0,0,0,0.32); transition: opacity 0.2s;
-    }
+    .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; background: rgba(0,0,0,0.32); transition: opacity 0.2s; }
     .video-card:hover .play-overlay { opacity: 1; }
-
-    .play-circle {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .play-circle::after {
-      content: ''; width: 0; height: 0;
-      border-top: 9px solid transparent; border-bottom: 9px solid transparent;
-      border-left: 16px solid #fff; margin-left: 3px;
-    }
-
+    .play-circle { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; }
+    .play-circle::after { content: ''; width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 16px solid #fff; margin-left: 3px; }
     .video-info { padding: 0.8rem 1rem; font-size: 0.86rem; line-height: 1.4; }
     .video-tag  { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.2rem; }
-
-    /* Podświetlony nagłówek poradnika */
-    .guide-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.55rem;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      text-shadow: 0 0 12px rgba(192,57,43,0.65), 0 0 28px rgba(192,57,43,0.28);
-      line-height: 1;
-      margin-top: 0.2rem;
-    }
-
-    /* ── FEATURED (single centred) ── */
-    .featured-wrap { display: flex; justify-content: center; }
-    .featured-wrap .video-card { max-width: 580px; width: 100%; }
+    .guide-headline { font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; letter-spacing: 0.08em; color: var(--accent); text-shadow: 0 0 12px rgba(192,57,43,0.65), 0 0 28px rgba(192,57,43,0.28); line-height: 1; margin-top: 0.2rem; }
 
     /* ── GRIDS ── */
-    /* 3 kolumny — poradniki, polecane postacie */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.9rem;
-    }
-
-    /* 3 kolumny — pozostałe postacie (5 kart = 3+2, druga linia wyśrodkowana) */
-    .grid-3-wrap {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.9rem;
-    }
+    .featured-wrap { display: flex; justify-content: center; }
+    .featured-wrap .video-card { max-width: 580px; width: 100%; }
+    .grid-3, .grid-3-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
 
     /* ── PLANNER CARD ── */
-    .planner-card {
-      background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
-      overflow: hidden; text-decoration: none; color: var(--text);
-      display: flex; flex-direction: column;
-      transition: border-color 0.2s, transform 0.2s;
-    }
+    .planner-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: border-color 0.2s, transform 0.2s; }
     .planner-card:hover { border-color: var(--border-acc); transform: translateY(-2px); }
-
-    /* Banner 16:9 — identyczne proporcje jak miniatura wideo */
-    .planner-thumb {
-      width: 100%; aspect-ratio: 16/9;
-      background: linear-gradient(135deg, var(--bg3) 0%, rgba(192,57,43,0.10) 100%);
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .planner-thumb-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem; letter-spacing: 0.2em;
-      color: rgba(192,57,43,0.35);
-      user-select: none;
-    }
-
-    .planner-body {
-      padding: 0.8rem 1rem;
-      display: flex; flex-direction: column; gap: 0.25rem;
-      flex: 1;
-    }
-
+    .planner-thumb { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, var(--bg3) 0%, rgba(192,57,43,0.10) 100%); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .planner-thumb-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.2em; color: rgba(192,57,43,0.35); user-select: none; }
+    .planner-body { padding: 0.8rem 1rem; display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
     .planner-tag  { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
     .planner-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.04em; line-height: 1.1; }
-    .planner-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
     .planner-arrow { font-size: 0.75rem; color: var(--accent); margin-top: auto; padding-top: 0.4rem; }
 
     /* ── OUTDATED BANNER ── */
-    .outdated-banner {
-      display: flex; gap: 1.2rem; align-items: flex-start;
-      background: rgba(185,140,0,0.07); border: 1px solid rgba(185,140,0,0.3);
-      border-radius: 10px; padding: 1.4rem 1.6rem; margin-top: 4rem;
-    }
+    .outdated-banner { display: flex; gap: 1.2rem; align-items: flex-start; background: rgba(185,140,0,0.07); border: 1px solid rgba(185,140,0,0.3); border-radius: 10px; padding: 1.4rem 1.6rem; margin-top: 4rem; }
     .outdated-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1; margin-top: 0.1rem; }
     .outdated-banner h4 { font-weight: 600; font-size: 0.9rem; color: #d4a017; margin-bottom: 0.3rem; }
     .outdated-banner p  { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
@@ -214,24 +209,21 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      .grid-3     { grid-template-columns: repeat(2, 1fr); }
-      .grid-3-wrap { grid-template-columns: repeat(2, 1fr); }
+      :root { --sidebar-w: 0px; }
+      .game-sidebar { display: none; }
+      .page-wrap { margin-left: 0; }
+      .games-toggle-btn { display: flex; }
+      .mobile-game-bar { display: flex; }
+      .grid-3, .grid-3-wrap { grid-template-columns: repeat(2, 1fr); }
     }
-
-    /* Wyśrodkuj ostatni kafelek gdy jest sam w wierszu (2 kolumny) */
     @media (max-width: 960px) and (min-width: 561px) {
       .grid-3 > *:last-child:nth-child(odd),
-      .grid-3-wrap > *:last-child:nth-child(odd) {
-        grid-column: 1 / -1;
-        justify-self: center;
-        width: calc((100% - 0.9rem) / 2);
-      }
+      .grid-3-wrap > *:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc((100% - 0.9rem) / 2); }
     }
     @media (max-width: 560px) {
       nav { padding: 0 1rem; }
       .content { padding: 2.5rem 1rem 4rem; }
-      .grid-3     { grid-template-columns: 1fr; }
-      .grid-3-wrap { grid-template-columns: 1fr; }
+      .grid-3, .grid-3-wrap { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -239,8 +231,55 @@
 
 <nav>
   <a href="/" class="nav-logo">Kondyss</a>
-  <a href="/" class="nav-back">← Strona główna</a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <button class="games-toggle-btn" id="gamesToggleBtn" aria-expanded="false" aria-label="Nawigacja gier">⊞ Gry</button>
+    <a href="/" class="nav-back">← Strona główna</a>
+  </div>
 </nav>
+
+<!-- MOBILE GAME BAR -->
+<div class="mobile-game-bar" id="mobileGameBar">
+  <a href="/diablo4.html" class="active">
+    <div class="game-logo"><img src="/img/logos/d4.webp" alt="Diablo IV" /></div>
+    Diablo IV
+  </a>
+  <a href="/poe2.html">
+    <div class="game-logo"><img src="/img/logos/poe2.webp" alt="Path of Exile 2" /></div>
+    Path of Exile 2
+  </a>
+  <a href="/poe.html">
+    <div class="game-logo"><img src="/img/logos/poe.webp" alt="Path of Exile" /></div>
+    Path of Exile
+  </a>
+  <a href="/lastepoch.html">
+    <div class="game-logo"><img src="/img/logos/le.webp" alt="Last Epoch" /></div>
+    Last Epoch
+  </a>
+</div>
+
+<!-- GAME SIDEBAR -->
+<aside class="game-sidebar">
+  <div class="sidebar-heading">Gry</div>
+  <a href="/diablo4.html" class="game-nav-item active">
+    <div class="game-logo"><img src="/img/logos/d4.webp" alt="Diablo IV" /></div>
+    Diablo IV
+  </a>
+  <a href="/poe2.html" class="game-nav-item">
+    <div class="game-logo"><img src="/img/logos/poe2.webp" alt="Path of Exile 2" /></div>
+    Path of Exile 2
+  </a>
+  <a href="/poe.html" class="game-nav-item">
+    <div class="game-logo"><img src="/img/logos/poe.webp" alt="Path of Exile" /></div>
+    Path of Exile
+  </a>
+  <a href="/lastepoch.html" class="game-nav-item">
+    <div class="game-logo"><img src="/img/logos/le.webp" alt="Last Epoch" /></div>
+    Last Epoch
+  </a>
+</aside>
+
+<!-- PAGE WRAP -->
+<div class="page-wrap" id="pageWrap">
 
 <div class="page-hero">
   <p class="eyebrow">aRPG · Poradniki i Buildy</p>
@@ -249,13 +288,9 @@
 
 <div class="content">
 
-  <!-- ══════════════════════════════════════════════
-       MÓJ STARTER
-       ══════════════════════════════════════════════ -->
   <div class="section-block">
     <p class="s-label">Na start</p>
     <h2 class="s-title">Mój Starter</h2>
-
     <div class="featured-wrap">
       <a href="https://www.youtube.com/watch?v=GblycTb9uVM" target="_blank" rel="noopener" class="video-card">
         <div class="video-thumb">
@@ -270,159 +305,99 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       NAJWAŻNIEJSZE PORADNIKI  (3 filmy z opisem nad miniaturką)
-       Zamień VIDEO_ID_xxx na ID z YouTube URL
-       ══════════════════════════════════════════════ -->
   <div class="section-block">
     <p class="s-label">Wiedza</p>
     <h2 class="s-title">Najważniejsze Poradniki</h2>
-
     <div class="grid-3">
-
       <a href="https://www.youtube.com/watch?v=8rNE0qWWI9E" target="_blank" rel="noopener" class="video-card">
-        <div class="video-info">
-          <div class="guide-headline">O Aktualizacji</div>
-        </div>
+        <div class="video-info"><div class="guide-headline">O Aktualizacji</div></div>
         <div class="video-thumb">
           <img src="https://img.youtube.com/vi/8rNE0qWWI9E/hqdefault.jpg" alt="O Aktualizacji" loading="lazy" />
           <div class="play-overlay"><div class="play-circle"></div></div>
         </div>
       </a>
-
       <a href="https://www.youtube.com/watch?v=wWmnMPivYs4" target="_blank" rel="noopener" class="video-card">
-        <div class="video-info">
-          <div class="guide-headline">Na Start Sezonu</div>
-        </div>
+        <div class="video-info"><div class="guide-headline">Na Start Sezonu</div></div>
         <div class="video-thumb">
           <img src="https://img.youtube.com/vi/wWmnMPivYs4/hqdefault.jpg" alt="Na Start Sezonu" loading="lazy" />
           <div class="play-overlay"><div class="play-circle"></div></div>
         </div>
       </a>
-
       <a href="https://www.youtube.com/watch?v=8kkpqaPAp0w" target="_blank" rel="noopener" class="video-card">
-        <div class="video-info">
-          <div class="guide-headline">Taktyka Farmienia</div>
-        </div>
+        <div class="video-info"><div class="guide-headline">Taktyka Farmienia</div></div>
         <div class="video-thumb">
           <img src="https://img.youtube.com/vi/8kkpqaPAp0w/hqdefault.jpg" alt="Taktyka Farmienia" loading="lazy" />
           <div class="play-overlay"><div class="play-circle"></div></div>
         </div>
       </a>
-
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       BUILDY — POLECANE POSTACIE
-       ══════════════════════════════════════════════ -->
   <div class="section-block">
     <p class="s-label">Buildy</p>
     <h2 class="s-title">Polecane Postacie</h2>
-
     <div class="grid-3">
-
-      <!-- Czarnoksiężnik — Maxroll -->
       <a href="https://maxroll.gg/d4/planner" target="_blank" rel="noopener" class="planner-card">
-        <div class="planner-thumb">
-          <div class="planner-thumb-logo">MAXROLL</div>
-        </div>
+        <div class="planner-thumb"><div class="planner-thumb-logo">MAXROLL</div></div>
         <div class="planner-body">
           <div class="planner-tag">Czarnoksiężnik · Maxroll</div>
           <div class="planner-name">Otchłań..? Nie wiem jeszcze</div>
           <div class="planner-arrow">Jeszcze nie ma</div>
         </div>
       </a>
-
-      <!-- Paladyn — YouTube -->
       <a href="https://www.youtube.com/watch?v=GblycTb9uVM" target="_blank" rel="noopener" class="video-card">
         <div class="video-thumb">
           <img src="https://img.youtube.com/vi/GblycTb9uVM/hqdefault.jpg" alt="Paladyn" loading="lazy" />
           <div class="play-overlay"><div class="play-circle"></div></div>
         </div>
-        <div class="video-info">
-          <div class="video-tag">Paladyn</div>
-          Skrzydła Arbitra
-        </div>
+        <div class="video-info"><div class="video-tag">Paladyn</div>Skrzydła Arbitra</div>
       </a>
-
-      <!-- Barbarzyńca — YouTube -->
       <a href="https://www.youtube.com/watch?v=-jruqKAJQRk" target="_blank" rel="noopener" class="video-card">
         <div class="video-thumb">
           <img src="https://img.youtube.com/vi/-jruqKAJQRk/hqdefault.jpg" alt="Barbarzyńca" loading="lazy" />
           <div class="play-overlay"><div class="play-circle"></div></div>
         </div>
-        <div class="video-info">
-          <div class="video-tag">Barbarzyńca</div>
-          Trąba Powietrzna
-        </div>
+        <div class="video-info"><div class="video-tag">Barbarzyńca</div>Trąba Powietrzna</div>
       </a>
-
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       BUILDY
-       ══════════════════════════════════════════════ -->
   <div class="section-block">
     <p class="s-label">Buildy</p>
     <h2 class="s-title">Pozostałe Postacie</h2>
-
     <div class="grid-3-wrap">
-
-      <!-- Spirytysta — YouTube -->
       <a href="https://www.youtube.com/watch?v=iWMS-XhTfZ4" target="_blank" rel="noopener" class="video-card">
         <div class="video-thumb">
           <img src="https://img.youtube.com/vi/iWMS-XhTfZ4/hqdefault.jpg" alt="Spirytysta" loading="lazy" />
           <div class="play-overlay"><div class="play-circle"></div></div>
         </div>
-        <div class="video-info">
-          <div class="video-tag">Spirytysta</div>
-          Miażdżący Cios
-        </div>
+        <div class="video-info"><div class="video-tag">Spirytysta</div>Miażdżący Cios</div>
       </a>
-
-      <!-- Czarodziejka — YouTube -->
       <a href="https://www.youtube.com/watch?v=uNpUpT0m3XU" target="_blank" rel="noopener" class="video-card">
         <div class="video-thumb">
           <img src="https://img.youtube.com/vi/uNpUpT0m3XU/hqdefault.jpg" alt="Czarodziejka" loading="lazy" />
           <div class="play-overlay"><div class="play-circle"></div></div>
         </div>
-        <div class="video-info">
-          <div class="video-tag">Czarodziejka</div>
-          Iskierka - Iskrząca Energia
-        </div>
+        <div class="video-info"><div class="video-tag">Czarodziejka</div>Iskierka - Iskrząca Energia</div>
       </a>
-
-      <!-- Nekromanta — Maxroll -->
       <a href="https://maxroll.gg/d4/planner/cr75c0ro#3" target="_blank" rel="noopener" class="planner-card">
-        <div class="planner-thumb">
-          <div class="planner-thumb-logo">MAXROLL</div>
-        </div>
+        <div class="planner-thumb"><div class="planner-thumb-logo">MAXROLL</div></div>
         <div class="planner-body">
           <div class="planner-tag">Nekromanta · Maxroll</div>
           <div class="planner-name">Endgame - Fala Krwi</div>
           <div class="planner-arrow">→ Otwórz planer</div>
         </div>
       </a>
-
-      <!-- Łotr — Maxroll -->
       <a href="https://maxroll.gg/d4/planner/novi0n41#3" target="_blank" rel="noopener" class="planner-card">
-        <div class="planner-thumb">
-          <div class="planner-thumb-logo">MAXROLL</div>
-        </div>
+        <div class="planner-thumb"><div class="planner-thumb-logo">MAXROLL</div></div>
         <div class="planner-body">
           <div class="planner-tag">Łotr · Maxroll</div>
           <div class="planner-name">Endgame - Death Trap</div>
           <div class="planner-arrow">→ Otwórz planer</div>
         </div>
       </a>
-
-      <!-- Druid — Maxroll -->
       <a href="https://maxroll.gg/d4/planner/yr6gt0oc#1" target="_blank" rel="noopener" class="planner-card">
-        <div class="planner-thumb">
-          <div class="planner-thumb-logo">MAXROLL</div>
-        </div>
+        <div class="planner-thumb"><div class="planner-thumb-logo">MAXROLL</div></div>
         <div class="planner-body">
           <div class="planner-tag">Druid · Maxroll</div>
           <div class="planner-name">Pulverize</div>
@@ -432,19 +407,38 @@
     </div>
   </div>
 
-  <!-- ══ NIEAKTUALNE PORADNIKI ══════════════════════════════════ -->
   <div class="outdated-banner">
     <div class="outdated-icon">⚠️</div>
     <div>
       <h4>Nieaktualny poradnik?</h4>
-      <p>
-        Napisz na <a href="https://discord.gg/kondyss" target="_blank">Discordzie</a> albo złap mnie na <a href="https://www.twitch.tv/kondyss" target="_blank">Twitchu</a> i daj znać!
-      </p>
+      <p>Napisz na <a href="https://discord.gg/kondyss" target="_blank">Discordzie</a> albo złap mnie na <a href="https://www.twitch.tv/kondyss" target="_blank">Twitchu</a> i daj znać!</p>
     </div>
   </div>
 </div>
+
 <footer>
   <p>© 2026 Kondyss &nbsp;·&nbsp; <a href="/" style="color: var(--muted); text-decoration: none;">Strona główna</a></p>
 </footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+  const gamesToggleBtn = document.getElementById('gamesToggleBtn');
+  const mobileGameBar  = document.getElementById('mobileGameBar');
+  const pageWrap       = document.getElementById('pageWrap');
+
+  gamesToggleBtn.addEventListener('click', () => {
+    const open = mobileGameBar.classList.toggle('open');
+    gamesToggleBtn.classList.toggle('active', open);
+    gamesToggleBtn.setAttribute('aria-expanded', open);
+    pageWrap.classList.toggle('games-open', open);
+  });
+
+  mobileGameBar.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileGameBar.classList.remove('open');
+    gamesToggleBtn.classList.remove('active');
+    pageWrap.classList.remove('games-open');
+  }));
+</script>
 </body>
 </html>

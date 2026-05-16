@@ -1,5 +1,11 @@
 [
   {
+    "videoId": "j2ceaa3cFMo",
+    "title": "Tak Stworzysz NAJPOTĘŻNIEJSZE Przedmioty! | Poradnik od podstaw do Kostki Horadrimów",
+    "thumb": "https://img.youtube.com/vi/j2ceaa3cFMo/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=j2ceaa3cFMo"
+  },
+  {
     "videoId": "eMibxSAxcIs",
     "title": "Ten Druid dostał ogromne buffy w nowym patchu! | Ziemny Kolec Diablo 4 Lord of Hatred",
     "thumb": "https://img.youtube.com/vi/eMibxSAxcIs/hqdefault.jpg",
@@ -40,11 +46,5 @@
     "title": "4x Więcej Mityków i pozostałe SEKRETY farmienia w Sezonie Osądu! | Diablo 4 Lord of Hatred",
     "thumb": "https://img.youtube.com/vi/bAMAlmtUM2I/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=bAMAlmtUM2I"
-  },
-  {
-    "videoId": "aUEYSSFCkTg",
-    "title": "Na Tego Barbarzyńczę Czekałem Od Premiery! - Amok Barb Diablo 4 Lord of Hatred",
-    "thumb": "https://img.youtube.com/vi/aUEYSSFCkTg/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=aUEYSSFCkTg"
   }
 ]

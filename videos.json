@@ -1,5 +1,11 @@
 [
   {
+    "videoId": "gxTQhhVGrEY",
+    "title": "Spróbowałem Nowy Sezon w Diablo 4 - Szczera opinia",
+    "thumb": "https://img.youtube.com/vi/gxTQhhVGrEY/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=gxTQhhVGrEY"
+  },
+  {
     "videoId": "hFH7KslNY5c",
     "title": "Dostałem od Blizzarda MOJĄ POSTAĆ?",
     "thumb": "https://img.youtube.com/vi/hFH7KslNY5c/hqdefault.jpg",
@@ -40,11 +46,5 @@
     "title": "5 Tricków na łatwiejszą kampanię w Path of Exile 2",
     "thumb": "https://img.youtube.com/vi/8AbSxWYPfVs/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=8AbSxWYPfVs"
-  },
-  {
-    "videoId": "1viGh08QeWU",
-    "title": "Dopracowałem mój najlepszy build jako starter na 0.5.0! - Path of Exile 2 Return of the Ancients",
-    "thumb": "https://img.youtube.com/vi/1viGh08QeWU/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=1viGh08QeWU"
   }
 ]

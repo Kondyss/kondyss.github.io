@@ -1,5 +1,11 @@
 [
   {
+    "videoId": "5zmUuqozBYg",
+    "title": "Wszystko o nowym sezonie w Diablo 4! - Podsumowanie zapowiedzi sezonu Przebudzenia",
+    "thumb": "https://img.youtube.com/vi/5zmUuqozBYg/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=5zmUuqozBYg"
+  },
+  {
     "videoId": "l0oXwv8ZjoM",
     "title": "Te BUFFY DELIRIUM są PRZESADZONE! - zmiany w mojej farmie w Path of Exile 2 0.5.3",
     "thumb": "https://img.youtube.com/vi/l0oXwv8ZjoM/hqdefault.jpg",
@@ -40,11 +46,5 @@
     "title": "Najtrudniejszy przeciwnik dla Mieczy",
     "thumb": "https://img.youtube.com/vi/BNwqb8tHxSw/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=BNwqb8tHxSw"
-  },
-  {
-    "videoId": "6fWudbNlazQ",
-    "title": "Dodatkowe obrażenia na Twojej postaci w Path of Exile 2!",
-    "thumb": "https://img.youtube.com/vi/6fWudbNlazQ/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=6fWudbNlazQ"
   }
 ]

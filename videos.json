@@ -1,5 +1,11 @@
 [
   {
+    "videoId": "rpuI7JSdwYk",
+    "title": "To najszybszy sposób na levelowanie w Sezonie 14 w Diablo 4!",
+    "thumb": "https://img.youtube.com/vi/rpuI7JSdwYk/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=rpuI7JSdwYk"
+  },
+  {
     "videoId": "6Ck98wqFlAc",
     "title": "Mój Starter na Sezon Przebudzenia - Barbarzyńca Trąba+Rzut【Poradnik \"Od Zera\" | Diablo 4】",
     "thumb": "https://img.youtube.com/vi/6Ck98wqFlAc/hqdefault.jpg",
@@ -40,11 +46,5 @@
     "title": "STWÓRZ ZE MNĄ! - 5 modowe Jewele w Path of Exile 2 | Poradnik Craftu Path of Exile 2",
     "thumb": "https://img.youtube.com/vi/py3U-WxzPLc/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=py3U-WxzPLc"
-  },
-  {
-    "videoId": "QoOx_MYDunI",
-    "title": "Poczułem WIZJĘ nowego atlasu w Path of Exile 2",
-    "thumb": "https://img.youtube.com/vi/QoOx_MYDunI/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=QoOx_MYDunI"
   }
 ]

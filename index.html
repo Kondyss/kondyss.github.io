@@ -279,6 +279,46 @@
     .game-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 6px; }
     .logo-d4, .logo-poe2, .logo-poe, .logo-le { background: transparent; }
 
+    /* ── EVENT ITEM (Muzeum Allflame) — świeci bez najechania, bo to aktywny event ── */
+    @keyframes eventGlowPulse {
+      0%, 100% { box-shadow: inset 0 0 0 1px rgba(185,28,28,0.35), 0 0 14px rgba(185,28,28,0.22); }
+      50%      { box-shadow: inset 0 0 0 1px rgba(185,28,28,0.65), 0 0 26px rgba(185,28,28,0.5); }
+    }
+    @keyframes eventDotPulse {
+      0%, 100% { transform: scale(1);   opacity: 1;   box-shadow: 0 0 6px #ef4444; }
+      50%      { transform: scale(1.4); opacity: 0.75; box-shadow: 0 0 12px #ef4444; }
+    }
+
+    .game-nav-item.game-nav-event {
+      position: relative;
+      color: var(--text);
+      background: linear-gradient(90deg, rgba(185,28,28,0.14), rgba(185,28,28,0.02));
+      border-left-color: var(--accent);
+      animation: eventGlowPulse 2.4s ease-in-out infinite;
+    }
+    .game-nav-item.game-nav-event:hover {
+      background: linear-gradient(90deg, rgba(185,28,28,0.24), rgba(185,28,28,0.05));
+    }
+    .game-nav-event-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+    .game-nav-event-title { line-height: 1.15; }
+    .game-nav-event-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .game-nav-event-tag .event-live-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #ef4444;
+      flex-shrink: 0;
+      animation: eventDotPulse 1.6s ease-in-out infinite;
+    }
+
     /* ═══════════════════════════════
        MOBILE GAME NAV BAR
     ═══════════════════════════════ */
@@ -1300,6 +1340,10 @@
     <div class="game-logo logo-le"><img src="/img/logos/le.webp" alt="Last Epoch" /></div>
     Last Epoch
   </a>
+  <a href="/muzeum-allflame.html" class="game-nav-event" style="color:var(--accent);">
+    <div class="game-logo logo-poe"><img src="/img/logos/poe.webp" alt="Path of Exile" /></div>
+    Muzeum Allflame 🔴
+  </a>
 </div>
 
 <!-- ── LEFT GAME SIDEBAR (desktop, persistent) ── -->
@@ -1332,6 +1376,16 @@
       <img src="/img/logos/le.webp" alt="Last Epoch" />
     </div>
     Last Epoch
+  </a>
+
+  <a href="/muzeum-allflame.html" class="game-nav-item game-nav-event">
+    <div class="game-logo logo-poe">
+      <img src="/img/logos/poe.webp" alt="Path of Exile" />
+    </div>
+    <div class="game-nav-event-text">
+      <span class="game-nav-event-title">Muzeum Allflame</span>
+      <span class="game-nav-event-tag"><span class="event-live-dot"></span> Event trwa</span>
+    </div>
   </a>
 </aside>
 

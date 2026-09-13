@@ -1,5 +1,11 @@
 [
   {
+    "videoId": "uoHi-aKefqg",
+    "title": "Moje pierwsze myśli o zapowiedzi Diablo V (Prosto z Blizzconu)",
+    "thumb": "https://img.youtube.com/vi/uoHi-aKefqg/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=uoHi-aKefqg"
+  },
+  {
     "videoId": "iqMCBBdKzt4",
     "title": "Najwięcej obrażeń na kampanii kiedykolwiek! | Klipy ze startu 0.5.5 do Path of Exile 2",
     "thumb": "https://img.youtube.com/vi/iqMCBBdKzt4/hqdefault.jpg",
@@ -40,11 +46,5 @@
     "title": "Path of Exile 2: Duelist Act 1+ Gameplay (Gamescom 2026)",
     "thumb": "https://img.youtube.com/vi/4GVKw5rnREo/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=4GVKw5rnREo"
-  },
-  {
-    "videoId": "CVZ06pABw7k",
-    "title": "Przeszedłem Path of Exile 2 MIECZAMI! [Patch 0.5]",
-    "thumb": "https://img.youtube.com/vi/CVZ06pABw7k/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=CVZ06pABw7k"
   }
 ]

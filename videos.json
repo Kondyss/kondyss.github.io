@@ -1,5 +1,11 @@
 [
   {
+    "videoId": "0kpSo2RhvBE",
+    "title": "Spróbowałem Build Sezonu - Jest Potężny! | Blazing Scream Warlock",
+    "thumb": "https://img.youtube.com/vi/0kpSo2RhvBE/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=0kpSo2RhvBE"
+  },
+  {
     "videoId": "lXO0u_DB1v8",
     "title": "Nie udało im się znerfić Barbarzyńcy! - Rozprucie Sezon 15",
     "thumb": "https://img.youtube.com/vi/lXO0u_DB1v8/hqdefault.jpg",
@@ -40,11 +46,5 @@
     "title": "Miecze obrzydziły mi Buławy, więc startuję Kuszą! - Galvanic Shard Witchhunter Starter",
     "thumb": "https://img.youtube.com/vi/u4WSg_LAvw0/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=u4WSg_LAvw0"
-  },
-  {
-    "videoId": "pDqELzbmZ9w",
-    "title": "Dwa kolejne buildy na Duelistę! - Wyjaśnienie Blood i Sand Stance",
-    "thumb": "https://img.youtube.com/vi/pDqELzbmZ9w/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=pDqELzbmZ9w"
   }
 ]

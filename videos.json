@@ -1,5 +1,11 @@
 [
   {
+    "videoId": "cBIKDFPjG-E",
+    "title": "Dlatego inni mają więcej obrażeń od Ciebie w Diablo 4!",
+    "thumb": "https://img.youtube.com/vi/cBIKDFPjG-E/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=cBIKDFPjG-E"
+  },
+  {
     "videoId": "xMdHW0_J_A4",
     "title": "NIESPODZIEWANY SOJUSZNIK DIABLO 5 - Reakcja na film Chrisa Wilsona o zapowiedzi Diablo 5",
     "thumb": "https://img.youtube.com/vi/xMdHW0_J_A4/hqdefault.jpg",
@@ -40,11 +46,5 @@
     "title": "Znamy najsilniejszą klasę na start Sezonu 15! - Kim zagrać w Sezon Dziedzictwa Piekła",
     "thumb": "https://img.youtube.com/vi/dh1oc26pBIM/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=dh1oc26pBIM"
-  },
-  {
-    "videoId": "acBoWGkyRgM",
-    "title": "Jak zdobyć Pochodnię Piekielnego Ognia w Diablo 4 - Jak dostać się do Uber Tristram",
-    "thumb": "https://img.youtube.com/vi/acBoWGkyRgM/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=acBoWGkyRgM"
   }
 ]

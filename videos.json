@@ -1,5 +1,11 @@
 [
   {
+    "videoId": "kGwwuFaYIaw",
+    "title": "Spróbowałem WoW Forever jako NOWY GRACZ",
+    "thumb": "https://img.youtube.com/vi/kGwwuFaYIaw/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=kGwwuFaYIaw"
+  },
+  {
     "videoId": "V9qWREM0QGk",
     "title": "Zagadka Annihilusa rozwiązana! - Jak zdobyć Unikatową Pieczęć i przywołać Diablo Klona w Diablo 4",
     "thumb": "https://img.youtube.com/vi/V9qWREM0QGk/hqdefault.jpg",
@@ -40,11 +46,5 @@
     "title": "Diablo 5 i przyszłość Diablo 4 - Moje przemyślenia",
     "thumb": "https://img.youtube.com/vi/kxS3VQ1KL2Q/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=kxS3VQ1KL2Q"
-  },
-  {
-    "videoId": "0kpSo2RhvBE",
-    "title": "Spróbowałem Build Sezonu - Jest Potężny! | Blazing Scream Warlock",
-    "thumb": "https://img.youtube.com/vi/0kpSo2RhvBE/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=0kpSo2RhvBE"
   }
 ]

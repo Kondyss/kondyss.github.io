@@ -1,5 +1,11 @@
 [
   {
+    "videoId": "94gUgSuPQaM",
+    "title": "Wielkie zmiany balansu, brak uberów i co dalej z PoE 1? - Podsumowanie wywiadów z Path of Exile 2",
+    "thumb": "https://img.youtube.com/vi/94gUgSuPQaM/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=94gUgSuPQaM"
+  },
+  {
     "videoId": "l44nGCGpHKY",
     "title": "Progres po 24h od startu! - Jak przejść na Static Strike Juggernauta i porady do buildu",
     "thumb": "https://img.youtube.com/vi/l44nGCGpHKY/hqdefault.jpg",
@@ -40,11 +46,5 @@
     "title": "Streszczenie dnia 1 Exilecon - Zmiany do Path of Exile 2 i Path of Exile 1",
     "thumb": "https://img.youtube.com/vi/-oe6OSFF9Io/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=-oe6OSFF9Io"
-  },
-  {
-    "videoId": "Z2BKCSW7bic",
-    "title": "Path of Exile 2 ujawniło wersję 1.0 (PEŁNE INFO Z EXILECONU)",
-    "thumb": "https://img.youtube.com/vi/Z2BKCSW7bic/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=Z2BKCSW7bic"
   }
 ]
